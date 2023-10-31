@@ -1,0 +1,893 @@
+.silverContainer {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+  /* position: relative; */
+  /* top: 0;
+  left: 900px; */
+  width: 100%;
+}
+.phoneBg{
+  /* background-color: white; */
+  background: transparent;
+  width: 250px;
+  height: 500px;
+  position: fixed;
+}
+
+
+.silverContainer .div {
+
+  box-shadow: 1px 12px 20px 1px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  background-color: #ffffff;
+  transform: scale(0.53) translate(-0%, -42%);
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border-radius: 55px 55px 40px 40px;
+  /* scrollbar-width: thin; */
+  width: 414px;
+  height: 896px;
+  /* height:675px  ; */
+  /* position: relative; */
+}
+
+.silverContainer .overlap {
+  position: absolute;
+  width: 547px;
+  height: 849px;
+  top: 64px;
+  left: -3px;
+}
+
+.silverContainer .overlap-group {
+  position: absolute;
+  width: 547px;
+  height: 845px;
+  top: 4px;
+  left: 0;
+}
+
+.silverContainer .rectangle {
+  position: absolute;
+  width: 414px;
+  height: 812px;
+  top: 33px;
+  left: 0;
+  background: linear-gradient(
+    358.45deg,
+    #e4eafe -0.49%,
+    rgba(233, 236, 242, 0) 96.85%
+  );
+  /* background: linear-gradient(180deg, rgb(228.35, 233.87, 253.73) 0%, rgba(233, 236, 242, 0) 100%); */
+}
+
+.silverContainer .ellipse {
+  position: absolute;
+  width: 217px;
+  height: 217px;
+  top: 17px;
+  left: 166px;
+  border-radius: 108.5px;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgb(175, 189, 239) 0%,
+    rgba(175, 189, 239, 0) 100%
+  );
+}
+
+.silverContainer .ellipse2 {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  top: 42px;
+  left: 207px;
+  border-radius: 170px;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgb(38, 210, 196) 0%,
+    rgba(38, 210, 196, 0) 100%
+  );
+}
+
+.silverContainer .text-wrapper {
+  position: absolute;
+  width: 134px;
+  top: 22px;
+  left: 40px;
+  font-family: "Poppins", Helvetica;
+  font-weight: 400;
+  color: var(--x-383737);
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 18.2px;
+  white-space: nowrap;
+}
+
+.silverContainer .ic-round-bluetooth {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 23px;
+  left: 19px;
+}
+
+.silverContainer .element-eu {
+  position: absolute;
+  width: 209px;
+  height: 285px;
+  top: 30px;  
+  left: 208px;
+  /* object-fit: cover; */
+  object-fit: fill;
+  rotate: 1.48deg;
+}
+
+.silverContainer .rectangle-2 {
+  position: absolute;
+  width: 414px;
+  height: 86px;
+  top: 742px;
+  left: 3px;
+  background-color: #ffffff;
+}
+
+.silverContainer .text-wrapper-2 {
+  position: absolute;
+  top: 790px;
+  left: 31px;
+  font-family: "Inter", Helvetica;
+  font-weight: 500;
+  color: #1e293b;
+  font-size: 13.2px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.silverContainer .group {
+  position: absolute;
+  width: 43px;
+  height: 47px;
+  top: 760px;
+  left: 356px;
+}
+
+.silverContainer .material-symbols {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  top: 0;
+  left: 7px;
+}
+
+.silverContainer .text-wrapper-3 {
+  position: absolute;
+  top: 31px;
+  left: 0;
+  font-family: "Inter", Helvetica;
+  font-weight: 500;
+  color: var(--grey-1);
+  font-size: 13.2px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.silverContainer .group-2 {
+  position: absolute;
+  width: 27px;
+  height: 47px;
+  top: 760px;
+  left: 292px;
+}
+
+.silverContainer .text-wrapper-4 {
+  position: absolute;
+  top: 31px;
+  left: 0;
+  font-family: "Inter", Helvetica;
+  font-weight: 500;
+  color: #b4b6b8;
+  font-size: 13.2px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.silverContainer .ic-baseline-map {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.silverContainer .group-3 {
+  position: absolute;
+  width: 50px;
+  height: 48px;
+  top: 759px;
+  left: 201px;
+}
+
+.silverContainer .img {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  top: 0;
+  left: 10px;
+}
+
+.silverContainer .text-wrapper-5 {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  font-family: "Inter", Helvetica;
+  font-weight: 500;
+  color: var(--grey-1);
+  font-size: 13.2px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.silverContainer .ic-round-home {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: 758px;
+  left: 36px;
+}
+
+.silverContainer .rectangle-3 {
+  position: absolute;
+  width: 160px;
+  height: 190px;
+  top: 98px;
+  left: 22px;
+  background-color: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0px 0px 7px #b3b3b340;
+}
+
+.silverContainer .mask-group {
+  position: absolute;
+  width: 174px;
+  height: 152px;
+  /* fill: green; */
+  /* fill: linear-gradient(180deg, #1ECBBD 0%, rgba(30, 203, 189, 0.00) 100%); */
+  top: 143px;
+  left: 15px;
+}
+
+.silverContainer .group-4 {
+  position: absolute;
+  width: 153px;
+  height: 163px;
+  top: 114px;
+  left: 37px;
+}
+
+.silverContainer .text-wrapper-6 {
+  position: absolute;
+  top: 22px;
+  left: 1px;
+  font-family: "Inter", Helvetica;
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 47px;
+  letter-spacing: 0;
+  line-height: 47px;
+  white-space: nowrap;
+}
+
+.silverContainer .overlap-2 {
+  position: absolute;
+  width: 74px;
+  height: 20px;
+  top: 47px;
+  left: 63px;
+}
+
+.silverContainer .text-wrapper-7 {
+  position: absolute;
+  width: 47px;
+  top: 1px;
+  left: 27px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: var(--x-383737);
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 18.2px;
+  white-space: nowrap;
+}
+
+.silverContainer .text-wrapper-8 {
+  position: absolute;
+  width: 56px;
+  top: 0;
+  left: 0;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: var(--x-383737);
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 18.2px;
+  white-space: nowrap;
+}
+
+.silverContainer .ic-baseline-eco {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.silverContainer .text-wrapper-9 {
+  position: absolute;
+  top: 1px;
+  left: 26px;
+  font-family: "Inter", Helvetica;
+  font-weight: 600;
+  color: #19b459;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.silverContainer .text-wrapper-10 {
+  position: absolute;
+  top: 74px;
+  left: 3px;
+  font-family: "Inter", Helvetica;
+  font-weight: 600;
+  color: var(--x-383737);
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.silverContainer .text-wrapper-11 {
+  position: absolute;
+  width: 51px;
+  top: 75px;
+  left: 78px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: var(--x-383737);
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 18.2px;
+  white-space: nowrap;
+}
+
+.silverContainer .text-wrapper-12 {
+  position: absolute;
+  top: 144px;
+  left: 23px;
+  font-family: "Inter", Helvetica;
+  font-weight: 600;
+  color: var(--x-383737);
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 18px;
+  white-space: nowrap;
+}
+
+.silverContainer .text-wrapper-13 {
+  position: absolute;
+  width: 65px;
+  top: 146px;
+  left: 62px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: var(--x-383737);
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 18.2px;
+  white-space: nowrap;
+}
+
+.silverContainer .ph-dots-three {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: 0;
+  left: 377px;
+}
+
+.silverContainer .rectangle-4 {
+  position: absolute;
+  width: 338px;
+  height: 60px;
+  top: 421px;
+  left: 43px;
+  background-color: #ffffff;
+  border-radius: 8.38px;
+  box-shadow: 0px 4px 4px #aeaeae40;
+}
+
+.silverContainer .majesticons-arrow-up {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 435px;
+  left: 94px;
+}
+
+.silverContainer .text-wrapper-14 {
+  position: absolute;
+  width: 178px;
+  top: 437px;
+  left: 128px;
+  font-family: "Inter", Helvetica;
+  font-weight: 500;
+  color: #89969f;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 23.4px;
+  white-space: nowrap;
+}
+
+.silverContainer .vector-wrapper {
+  position: absolute;
+  width: 91px;
+  height: 60px;
+  top: 421px;
+  left: 290px;
+  background-color: #26d2c4;
+  /* background-color: #1ecbbd; */
+  border-radius: 8.38px;
+}
+
+.silverContainer .vector {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  top: 17px;
+  left: 33px;
+}
+
+.silverContainer .group-5 {
+  position: absolute;
+  width: 39px;
+  height: 54px;
+  top: 753px;
+  left: 122px;
+}
+
+.silverContainer .text-wrapper-15 {
+  position: absolute;
+  top: 38px;
+  left: 0;
+  font-family: "Inter", Helvetica;
+  font-weight: 500;
+  color: #b4b6b8;
+  font-size: 13.2px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.silverContainer .mdi-motorbike {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  top: 0;
+  left: 0;
+}
+
+.silverContainer .overlap-wrapper {
+  position: absolute;
+  width: 267px;
+  height: 24px;
+  top: 345px;
+  left: 77px;
+}
+
+.silverContainer .overlap-3 {
+  position: relative;
+  width: 263px;
+  height: 24px;
+  background-color: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0px 0px 4px #92929240;
+}
+
+.silverContainer .text-wrapper-16 {
+  position: absolute;
+  width: 122px;
+  top: 3px;
+  left: 11px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #89969f;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 18.2px;
+  white-space: nowrap;
+}
+
+.silverContainer .text-wrapper-17 {
+  position: absolute;
+  width: 137px;
+  top: 3px;
+  left: 121px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: var(--x-383737);
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 18.2px;
+  white-space: nowrap;
+}
+
+.silverContainer .rectangle-5 {
+  position: absolute;
+  width: 111px;
+  height: 143px;
+  top: 549px;
+  left: 23px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 0px 7px #c5c5c540;
+}
+
+.silverContainer .rectangle-6 {
+  position: absolute;
+  width: 111px;
+  height: 143px;
+  top: 549px;
+  left: 155px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 0px 7px #c5c5c540;
+}
+
+.silverContainer .mask-group-2 {
+  left: 148px;
+  position: absolute;
+  width: 125px;
+  height: 157px;
+  top: 542px;
+}
+
+.silverContainer .rectangle-7 {
+  position: absolute;
+  width: 111px;
+  height: 143px;
+  top: 549px;
+  left: 286px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 0px 7px #c5c5c540;
+}
+
+.silverContainer .mask-group-3 {
+  left: 280px;
+  position: absolute;
+  width: 125px;
+  height: 157px;
+  top: 542px;
+}
+
+.silverContainer .text-wrapper-18 {
+  top: 34px;
+  position: absolute;
+  left: 0;
+  transform: rotate(0.34deg);
+  font-family: "Inter", Helvetica;
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 21px;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.silverContainer .text-wrapper-19 {
+  position: absolute;
+  top: 0;
+  left: 7px;
+  font-family: "Inter", Helvetica;
+  font-weight: 600;
+  color: var(--x-383737);
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 18px;
+  white-space: nowrap;
+}
+.silverContainer .text-wrapper-20 {
+  top: 82px;
+  position: absolute;
+  left: 0;
+  transform: rotate(0.34deg);
+  font-family: "Inter", Helvetica;
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 21px;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.silverContainer .text-wrapper-21 {
+  position: absolute;
+  top: 48px;
+  left: 18px;
+  font-family: "Inter", Helvetica;
+  font-weight: 600;
+  color: var(--x-383737);
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 18px;
+  white-space: nowrap;
+}
+.silverContainer .text-wrapper-sports {
+  top: 82px;
+  position: absolute;
+  left: 0;
+  transform: rotate(0.34deg);
+  font-family: "Inter", Helvetica;
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 21px;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.silverContainer .text-wrapper-sports2 {
+  position: absolute;
+  top: 48px;
+  left: 4px;
+  font-family: "Inter", Helvetica;
+  font-weight: 600;
+  color: var(--x-383737);
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 18px;
+  white-space: nowrap;
+}
+
+.silverContainer .group-6 {
+  position: absolute;
+  width: 70px;
+  height: 55px;
+  top: 613px;
+  left: 309px;
+}
+
+.silverContainer .group-7 {
+  position: absolute;
+  width: 70px;
+  height: 103px;
+  top: 565px;
+  left: 179px;
+}
+.silverContainer .group-8 {
+  position: absolute;
+  width: 70px;
+  height: 103px;
+  top: 565px;
+  left: 45px;
+  z-index: 1;
+}
+
+.silverContainer .ic-baseline-eco-2 {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  top: 0;
+  left: 15px;
+}
+.silverContainer .ic-baseline-sports-2 {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 0;
+  left: 15px;
+}
+
+.silverContainer .vector-2 {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  top: 572px;
+  left: 335px;
+}
+
+.silverContainer .mask-group-4 {
+  left: 16px;
+  position: absolute;
+  width: 125px;
+  height: 157px;
+  top: 542px;
+}
+
+.silverContainer .text-wrapper-22 {
+  position: absolute;
+  top: 0;
+  left: 22px;
+  font-family: "Poppins", Helvetica;
+  font-weight: 600;
+  color: var(--x-383737);
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.silverContainer .iphone-SE {
+  position: absolute;
+  width: 375px;
+  height: 20px;
+  top: 15px;
+  left: 19px;
+}
+
+.silverContainer .time {
+  position: absolute;
+  top: 2px;
+  left: 163px;
+  font-family: "SF Pro Text-Semibold", Helvetica;
+  font-weight: 400;
+  color: var(--systemblack);
+  font-size: 12px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.silverContainer .right-side {
+  position: absolute;
+  width: 92px;
+  height: 16px;
+  top: 3px;
+  left: 279px;
+}
+
+.silverContainer .icon-battery {
+  position: absolute;
+  width: 26px;
+  height: 12px;
+  top: 2px;
+  left: 64px;
+}
+
+.silverContainer .reserve-wrapper {
+  position: absolute;
+  width: 24px;
+  height: 12px;
+  top: 0;
+  left: 0;
+  background-image: url(https://c.animaapp.com/7pdrDurb/img/body-1.svg);
+  background-size: 100% 100%;
+}
+
+.silverContainer .reserve {
+  position: absolute;
+  width: 20px;
+  height: 8px;
+  top: 2px;
+  left: 2px;
+}
+
+.silverContainer .terminal {
+  position: absolute;
+  width: 2px;
+  height: 5px;
+  top: 3px;
+  left: 25px;
+}
+
+.silverContainer .text-wrapper-23 {
+  position: absolute;
+  top: 0;
+  left: 29px;
+  font-family: "SF Pro Text-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--systemblack);
+  font-size: 12px;
+  text-align: right;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.silverContainer .icon-alarm {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: 0;
+  left: 0;
+}
+
+.silverContainer .alarm {
+  position: absolute;
+  width: 10px;
+  height: 9px;
+  top: 2px;
+  left: 2px;
+}
+
+.silverContainer .icon-bluetooth {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: 0;
+  left: 15px;
+}
+
+.silverContainer .bluetooth {
+  position: absolute;
+  width: 7px;
+  height: 12px;
+  top: 1px;
+  left: 3px;
+}
+
+.silverContainer .left-side {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 4px;
+  position: absolute;
+  top: 3px;
+  left: 4px;
+}
+
+.silverContainer .icon-signal {
+  position: relative;
+  width: 21px;
+  height: 14px;
+}
+
+.silverContainer .empty-bar {
+  position: absolute;
+  width: 3px;
+  height: 10px;
+  top: 2px;
+  left: 16px;
+}
+
+.silverContainer .full-bars {
+  position: absolute;
+  width: 12px;
+  height: 8px;
+  top: 4px;
+  left: 2px;
+}
+
+.silverContainer .carrier {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "SF Pro Text-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--systemblack);
+  font-size: 12px;
+  letter-spacing: -0.05px;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.silverContainer .icon-wifi {
+  position: relative;
+  width: 15px;
+  height: 14px;
+}
+
+.silverContainer .wi-fi {
+  position: absolute;
+  width: 14px;
+  height: 10px;
+  top: 2px;
+  left: 0;
+}

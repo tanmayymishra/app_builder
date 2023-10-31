@@ -1,0 +1,43 @@
+* {
+  margin: none;
+  padding: none;
+  box-sizing: border-box;
+}
+.cotainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  background-color: #fff;
+}
+.phoneImg {
+  width: 250px;
+  height: 500px;
+  position: fixed;
+  top: 150px;
+  right: 60px;
+}
+.appLogo {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  top: 465px;
+  right: 90px;
+}
+.appTextContainer {
+  position: fixed;
+  top: 515px;
+  right: 110px;
+}
+.appName {
+  /* position: fixed; */
+  max-width: 60px;
+  color: white;
+  position: absolute;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

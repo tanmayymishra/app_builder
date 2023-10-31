@@ -1,0 +1,159 @@
+
+{
+  "appTheme":{
+    "type": "Fusion",
+    "primaryColor":"0xff1FA3FF",
+    "secondaryColor":"0xff89969F",
+    "accentColor":"0xffB2DFFF",
+    "supportedLanguages":{
+      "English": "en",
+      "हिंदी": "hi"
+    },
+    "font":"/fonts",
+    "appLogo":"assets/other/mainLogo.png",
+    "launcherLogo": "assets/other/launcherLogo.png"
+  },
+  "account":{
+    "appName":"Demo",
+    "appLauncherName":"Demo",
+    "brandName": "Thingsup",
+    "brandInfo": "Thingsup is a highly scalable & secure IoT Monitoring Platform to connect your devices.",
+    "adminAccount":"demo@iobot.in",
+    "serverURL": "https://trackapi.thingsup.io",
+    "privacyPolicyURL":"https://thingsup.io/privacy-policy/",
+    "termsAndConditionURL":"https://thingsup.io/terms-of-use/"
+  },
+  "packages":{
+    "android":{
+      "packageName":"io.thingsup.demo",
+      "releaseStorePassword":"",
+      "releaseKeyPassword":"",
+      "releaseKeyAlias":"",
+      "releaseStoreFile":"/files/keystore/key.jks"
+    }
+  },
+  "features":{
+    "mapLocation":{
+      "showDeviceLocation": false,
+      "androidKey":"AIzaSyDvNmlatpNGWmippGvvpg5GZn-w5ToNWdw",
+      "iosKey":"AIzaSyDvNmlatpNGWmippGvvpg5GZn-w5ToNWdw"
+    },
+    "tripPlanning":{
+      "mapBoxAccessToken":"sk.eyJ1IjoidGhpbmdzdXAiLCJhIjoiY2wzc2E0ZmU3MHR4MjNpcGYybGF0MjJsMyJ9._GxpvHYiAUGFQ_1RQkaLPQ",
+      "turnByTurnNavigation":true
+    },
+    "alerts":{
+      "periodicAlert":{},
+      "geofenceAlert":{}
+    },
+    "notifications":{},
+    "ticketSystem":{},
+    "rewards":{},
+    "pushNotification":{},
+    "envBenefits":{
+      "savedTrees":{"p1":0.1,"p2":0},
+      "co2Emission":{"p1":0.5,"p2":0},
+      "savedMoneyOnFuel":{"p1":2,"p2":0}
+    },
+    "immobilization":{},
+    "tripAnalysis":{},
+    "userDocumentUpload":{},
+    "sendDataToCloud":{
+      "transmittingFrequency": 10
+    },
+    "serviceStation":{
+      "serviceStationUrl": "https://anasnew99.github.io/test-gh-pages/serviceStations.json"
+    },
+    "chargingStation": {
+      "chargingStationUrl": "https://anasnew99.github.io/test-gh-pages/chargingStations.json"
+    },
+    "bleFeatures": {
+      "bleCommunication": {
+        "clusterBLEName": "Thingsup",
+        "securityCode": "R2hISb"
+      },
+      "callDetails": {},
+      "smsDetails": {}
+    }
+  },
+  "deviceInfo":{
+    "bikeModels": {
+      "wolf": {
+        "frontViewImage": "assets/other/bike_img_front.png",
+        "sideViewImage": "assets/other/bike_img_side.png",
+        "inclinedViewImage": "assets/other/bike_img_inclined.png",
+        "modes": {
+          "Eco": {
+            "id": 1,
+            "modeImage": "assets/other/mode1.png",
+            "range": {"p1":1,"p2":0},
+            "SOC": {"p1":1,"p2":0}
+          },
+          "Sports": {
+            "id": 2,
+            "modeImage": "assets/other/mode2.png",
+            "range": {"p1":0.8,"p2":0},
+            "SOC": {"p1":1,"p2":0}
+          },
+          "Hyper": {
+            "id": 3,
+            "modeImage": "assets/other/mode3.png",
+            "range": {"p1":0.6,"p2":0},
+            "SOC": {"p1":1,"p2":0}
+          },
+          "default": {
+            "id": 0,
+            "modeImage": "assets/other/mode1.png",
+            "range": {"p1":0.6,"p2":0},
+            "SOC": {"p1":1,"p2":0}
+          }
+        },
+        "minimumVoltage": 52,
+        "maximumVoltage": 82,
+        "vehicleManual": "https://readme.atherenergy.com",
+        "batteryAlerts": {
+          "batteryVoltage": {"min":"","max":"","event":""},
+          "batteryTemperature": {"min":"","max":"","event":""}
+        }
+      },
+      "default": {
+        "frontViewImage": "assets/other/bike_img_front.png",
+        "sideViewImage": "assets/other/bike_img_side.png",
+        "inclinedViewImage": "assets/other/bike_img_inclined.png",
+        "modes": {
+          "Eco": {
+            "id": 1,
+            "modeImage": "assets/other/mode1.png",
+            "range": {"p1":0.6,"p2":0},
+            "SOC": {"p1":1,"p2":0}
+          },
+          "Sports": {
+            "id": 2,
+            "modeImage": "assets/other/mode2.png",
+            "range": {"p1":1,"p2":0},
+            "SOC": {"p1":1,"p2":0}
+          },
+          "Hyper": {
+            "id": 3,
+            "modeImage": "assets/other/mode3.png",
+            "range": {"p1":0.8,"p2":0},
+            "SOC": {"p1":1,"p2":0}
+          },
+          "default": {
+            "id": 0,
+            "modeImage": "assets/other/mode1.png",
+            "range": {"p1":0.6,"p2":0},
+            "SOC": {"p1":1,"p2":0}
+          }
+        },
+        "minimumVoltage": 52,
+        "maximumVoltage": 82,
+        "vehicleManual": "https://readme.atherenergy.com",
+        "batteryAlerts": {
+          "batteryVoltage": {"min":"","max":"","event":""},
+          "batteryTemperature": {"min":"","max":"","event":""}
+        }
+      }
+    }
+  }
+}

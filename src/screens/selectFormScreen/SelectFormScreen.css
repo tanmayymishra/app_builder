@@ -1,0 +1,23 @@
+.formContainer{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #29242c;
+    color: #fff;
+}
+.formContainer .section{
+    width: 30%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(57, 48, 83, 0.3);
+    box-shadow: 7px 7px 20px -1px rgba(25,24,31,0.62);
+    -webkit-box-shadow: 7px 7px 20px -1px rgba(25,24,31,0.62);
+    -moz-box-shadow: 7px 7px 20px -1px rgba(25,24,31,0.62);
+    text-align: center;
+    padding: 50px;
+    
+}
