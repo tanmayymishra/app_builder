@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import ModernTheme from "./screens/modernTheme/ModernTheme";
 import FussionTheme from "./screens/fussionTheme/FussionTheme";
@@ -13,7 +13,9 @@ import HomeScreen from "./screens/homeScreen/HomeScreen";
 import AppBuilderPage from "./components/appBuilderPage/AppBuilderPage";
 import MaterialLayout from "./components/layout/MaterialLayout";
 import SelectFormScreen from "./screens/selectFormScreen/SelectFormScreen";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoginFormScreen from "./screens/loginScreen/LoginFormScreen";
+import Protected from "./Protected";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
   const [initValueForm, setInitValueForm] = useState("");
@@ -34,7 +36,6 @@ function App() {
     launcherLogo: "",
   });
   const [activeStep, setActiveStep] = useState(0);
-
   console.log(selectForm, "select formm");
   return (
     <>
@@ -44,13 +45,21 @@ function App() {
             <ColorContext.Provider value={{ colors, setColors }}>
               <BrowserRouter>
                 <Routes>
-                  <Route path="/" element={<SelectFormScreen />} />
+                  <Route path="/" element={<Navigate to="/login" />} />
+                  <Route path="/login" element={<LoginFormScreen />} />
+                  <Route
+                    path="/select-form"
+                    element={
+                      <Protected>
+                        <SelectFormScreen />
+                      </Protected>
+                    }
+                  />
                 </Routes>
               </BrowserRouter>
-              {selectForm.length > 0 ? (
+              {/* {selectForm.length > 0 ? (
                 <MaterialLayout>
                   <div className={activeStep === 1 ? "appHomeScreen" : "app"}>
-                    {/* <Route path="/form" element={a}/> */}
                     <AppBuilderPage selectForm={selectForm} />
                     {appDetails.theme === "Classic" ? (
                       <ClassicTheme />
@@ -64,7 +73,7 @@ function App() {
                 </MaterialLayout>
               ) : (
                 <SelectFormScreen setSelectForm={setSelectForm} />
-              )}
+              )} */}
             </ColorContext.Provider>
           </AppDetailsContext.Provider>
         </DefaultContext.Provider>
