@@ -1,19 +1,25 @@
-.loginform{
-    width:400px;
-    height:400px;
-    background-color:rgba(196, 255, 242, 0.3);
-    position: absolute;
-    left:50%;
-    top:50%;
-    transform: translate(-50%,-50%);
-    border-radius:5px;
+.loginform {
+  width: 400px;
+  height: 400px;
+  background-color:#f2f2f2;
+  color: #ffffff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.formheading{
-    text-align: center;
-    font-size:2rem;
-    font-weight:600;
-    color:rgba(24, 24, 24,0.7);
+.formheading {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgba(24, 24, 24, 0.65);
 }
-.loginfields{
-    width:auto;
+.loginfields {
+  width: auto;
 }
