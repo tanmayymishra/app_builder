@@ -1,0 +1,19 @@
+.loginform{
+    width:400px;
+    height:400px;
+    background-color:rgba(196, 255, 242, 0.3);
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    border-radius:5px;
+}
+.formheading{
+    text-align: center;
+    font-size:2rem;
+    font-weight:600;
+    color:rgba(24, 24, 24,0.7);
+}
+.loginfields{
+    width:auto;
+}
