@@ -1,23 +1,17 @@
 import React, { useState } from "react";
 import "./App.css";
-import ModernTheme from "./screens/modernTheme/ModernTheme";
-import FussionTheme from "./screens/fussionTheme/FussionTheme";
-import ClassicTheme from "./screens/classicTheme/ClassicTheme";
 import {
   ColorContext,
   DefaultContext,
   AppDetailsContext,
   StepContext,
+  BuildContext,
 } from "./context/contexts";
-import HomeScreen from "./screens/homeScreen/HomeScreen";
-import AppBuilderPage from "./components/appBuilderPage/AppBuilderPage";
-import MaterialLayout from "./components/layout/MaterialLayout";
-import SelectFormScreen from "./screens/selectFormScreen/SelectFormScreen";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import RoutingApp from "./RoutingApp";
+import build from "@date-io/date-fns";
 
 function App() {
   const [initValueForm, setInitValueForm] = useState("");
-  const [selectForm, setSelectForm] = useState("");
   const [colors, setColors] = useState({
     primary: "#26d2c4",
     secondary: "#3b37ff",
@@ -33,38 +27,22 @@ function App() {
     appLauncherName: "",
     launcherLogo: "",
   });
+  const [buildDetails, setBuildDetails] = useState({
+    credBase64:"YWRtaW46YWRtaW4=",
+    app: "",
+    version: "",
+    buildId: "",
+  });
   const [activeStep, setActiveStep] = useState(0);
-
-  console.log(selectForm, "select formm");
   return (
     <>
       <StepContext.Provider value={{ activeStep, setActiveStep }}>
         <DefaultContext.Provider value={{ defaultBike, setDefaultBike }}>
           <AppDetailsContext.Provider value={{ appDetails, setAppDetails }}>
             <ColorContext.Provider value={{ colors, setColors }}>
-              <BrowserRouter>
-                <Routes>
-                  <Route path="/" element={<SelectFormScreen />} />
-                </Routes>
-              </BrowserRouter>
-              {selectForm.length > 0 ? (
-                <MaterialLayout>
-                  <div className={activeStep === 1 ? "appHomeScreen" : "app"}>
-                    {/* <Route path="/form" element={a}/> */}
-                    <AppBuilderPage selectForm={selectForm} />
-                    {appDetails.theme === "Classic" ? (
-                      <ClassicTheme />
-                    ) : appDetails.theme === "Fusion" ? (
-                      <FussionTheme />
-                    ) : (
-                      <ModernTheme />
-                    )}
-                    {activeStep === 1 ? <HomeScreen /> : ""}
-                  </div>
-                </MaterialLayout>
-              ) : (
-                <SelectFormScreen setSelectForm={setSelectForm} />
-              )}
+              <BuildContext.Provider value={{buildDetails, setBuildDetails}}>
+                <RoutingApp activeStep={activeStep} appDetails={appDetails} buildDetails={buildDetails}/>
+              </BuildContext.Provider>
             </ColorContext.Provider>
           </AppDetailsContext.Provider>
         </DefaultContext.Provider>

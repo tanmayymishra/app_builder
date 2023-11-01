@@ -5,6 +5,12 @@
   outline: none;
   transition: 0.3s ease all;
 }
+/* fix dropdown width */
+
+/* html{
+  height: 100vh;
+  overflow: hidden;
+} */
 html{
   overflow-y: scroll;
   font-family: 'Inter',sans-serif;

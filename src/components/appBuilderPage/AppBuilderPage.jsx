@@ -13,10 +13,12 @@ import {
   ColorContext,
   StepContext,
   DefaultContext,
+  BuildContext,
 } from "../../context/contexts";
 // import formInitialValues from './formModel/formInitialValues';
 import useStyles from "./styles";
 import ValSchema from "../validation/ValSchema";
+import axios from "axios";
 
 const steps = ["Account Details", "App Theme", "Models", "Features", "Build"];
 const { formId, formField } = BuilderFormModel;
@@ -53,14 +55,22 @@ export function ScrollToError() {
 }
 
 export default function AppBuilderPage({selectForm}) {
+  
+
   const [finalData, setFinalData] = useState({});
   const { colors } = useContext(ColorContext);
   const { activeStep, setActiveStep } = useContext(StepContext);
   const { defaultBike, setDefaultBike } = useContext(DefaultContext);
-  
+  const {buildDetails, setBuildDetails, buildId, credBase64}= useContext(BuildContext)
   const classes = useStyles();
   const isLastStep = activeStep === steps.length - 1;
   const currentValidationSchema = ValSchema[activeStep];
+  // const onunload= ()=>{
+  //   window.location.href="/"
+  // }
+  // useEffect(()=>{
+  //   onunload()
+  // },[buildDetails.app])
   const initValuesDemo = {
     account: {
       appName: "zzzzzz",
@@ -468,27 +478,39 @@ export default function AppBuilderPage({selectForm}) {
       },
     },
   };
-
+  let axiosConfig = {
+    headers: { Authorization: `Bearer ${buildDetails.credBase64}` }
+  }
+ 
   function _sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
-
   async function _submitForm(values, actions) {
+    const postData={
+      appname:buildDetails.app,
+      version:buildDetails.version,
+      buildconfig:{
+        values
+      }
+    }
     await _sleep(1000);
     alert(JSON.stringify(values, null, 2));
+    
+    axios.post(`http://192.168.29.46:3001/build?appname=${buildDetails.app}`,postData, axiosConfig)
+    .then((res)=>{
+      console.log(res, "after build axios response")
+    })
+    .catch((err)=>console.log(err, "after build axios error"))
+
     console.log(values, "form value data");
     actions.setSubmitting(false);
-
     // console.log(obj, "iiiiiiiii")
     setActiveStep(activeStep + 1);
   }
-
   function _handleSubmit(values, actions) {
     if (isLastStep) {
       setFinalData(values);
-
       const oj = {};
-
       values.deviceInfo.bikeModels.forEach((item, index) => {
         let key = item.modelName;
         oj[key] = item;
