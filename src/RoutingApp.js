@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import NewForm from "./screens/newFormScreen/NewForm";
+import LoginFormScreen from "./screens/loginScreen/LoginFormScreen";
+import Protected from "./Protected";
 
 import "./App.css";
 import FormScreens from "./FormScreens";
@@ -14,12 +16,22 @@ const RoutingApp = ({ activeStep, appDetails, buildDetails }) => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<NewForm setSelectForm={setSelectForm} />} />
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<LoginFormScreen />} />
+          <Route
+            path="/newform"
+            element={
+              <Protected>
+                <NewForm setSelectForm={setSelectForm}/>
+              </Protected>
+            }
+          />
+          {/* <Route path="/newform" element={<NewForm setSelectForm={setSelectForm} />} /> */}
           <Route
             path="/form"
             element={
               !buildDetails.version ? (
-                <Navigate to="/" setSelectForm={setSelectForm} />
+                <Navigate to="/newform" setSelectForm={setSelectForm} />
               ) : (
                 <FormScreens
                   selectForm={selectForm}

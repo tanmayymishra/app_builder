@@ -33,7 +33,7 @@ const LoginFormScreen = () => {
           localStorage.setItem("password", password);
           localStorage.setItem("isAuthenticated", true);
           console.log("Login Successful...");
-          navigate("/select-form");
+          navigate("/newform");
           console.log("select form navigate");
           setLoginDetails({ username: "", password: "" });
         } else {
