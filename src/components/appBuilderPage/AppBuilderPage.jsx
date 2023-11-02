@@ -266,24 +266,38 @@ export default function AppBuilderPage({ selectForm }) {
       selectForm === "new"
         ? axios
             .post(
-              `http://192.168.29.46:3001/build?appname=${buildDetails.app}`,
+              `http://192.168.29.48:3001/build?appname=${buildDetails.app}`,
               postData,
               axiosConfig
             )
             .then((res) => {
               console.log(res, "after build axios response");
             })
-            .catch((err) => console.log(err, "after build axios error"))
+            .catch((err) => {
+              setSnackbarDetails({
+                open: true,
+                data:err.message ? err.message:"Network Error",
+                type: "error",
+              });
+              console.log(err, "after build axios error") 
+            })
         : axios
             .post(
-              `http://192.168.29.46:3001/build?appname=${buildDetails.app}&buildid=${buildDetails.buildId}`,
+              `http://192.168.29.48:3001/build?appname=${buildDetails.app}&buildid=${buildDetails.buildId}`,
               postData,
               axiosConfig
             )
             .then((res) => {
               console.log(res, "after build axios response");
             })
-            .catch((err) => console.log(err, "after build axios error"));
+            .catch((err) => {
+              setSnackbarDetails({
+                open: true,
+                data:err.message ? err.message:"Network Error",
+                type: "error",
+              });
+              console.log(err, "after build axios error");
+            });
     }
 
     console.log(values, "form value data");

@@ -10,11 +10,16 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { BuildContext, InitialFormContext } from "../../context/contexts";
+import {
+  BuildContext,
+  InitialFormContext,
+  SnackbarContext,
+} from "../../context/contexts";
 
 const EditForm = () => {
   const { buildDetails, setBuildDetails } = useContext(BuildContext);
-  const { setInitialEditForm}= useContext(InitialFormContext)
+  const { setInitialEditForm } = useContext(InitialFormContext);
+  const { snackbarDetails, setSnackbarDetails } = useContext(SnackbarContext);
   const [appData, setAppData] = useState();
   const [versionData, setVersionData] = useState();
   const [buildIdData, setBuildIdData] = useState();
@@ -26,7 +31,7 @@ const EditForm = () => {
   useEffect(() => {
     // setLoading(true)
     if (buildDetails.app.length > 0) {
-      const baseUrl = `http://192.168.29.46:3001/apps/versions?appname=${buildDetails.app}`;
+      const baseUrl = `http://192.168.29.48:3001/apps/versions?appname=${buildDetails.app}`;
       console.log(baseUrl, "appsssss");
       axios
         .get(baseUrl, {
@@ -34,39 +39,75 @@ const EditForm = () => {
         })
         .then((res) => {
           setVersionData(res.data.data);
+        })
+        .catch((e) => {
+          setSnackbarDetails({
+            open: true,
+            data: e.message ? e.message : "Network Error",
+            type: "error",
+          });
         });
       axios
-        .get(`http://192.168.29.46:3001/build?appname=${buildDetails.app}`, {
+        .get(`http://192.168.29.48:3001/build?appname=${buildDetails.app}`, {
           headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
         })
         .then((res) => {
           setBuildIdData(res.data.data);
+        })
+        .catch((e) => {
+          setSnackbarDetails({
+            open: true,
+            data: e.message ? e.message : "Network Error",
+            type: "error",
+          });
         });
     }
   }, [buildDetails.app]);
 
   const getApps = async () => {
-    const res = await axios.get("http://192.168.29.46:3001/apps/", {
-      headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
-    });
-    setAppData(res.data.data);
+    try {
+      const res = await axios.get("http://192.168.29.48:3001/apps/", {
+        headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
+      });
+      if (res) {
+        setAppData(res.data.data);
+      }
+    } catch (e) {
+      console.log("error value getApps...",e);
+      setSnackbarDetails({
+        open: true,
+        data: e.message ? e.message : "Can't Fetch Apps",
+        type: "error",
+      });
+    }
   };
   const handleSelectBuildId = (e) => {
     setBuildDetails((prev) => ({ ...prev, buildId: e.target.value }));
     axios
       .get(
-        `http://192.168.29.46:3001/build?appname=${buildDetails.app}&buildid=${e.target.value}`,
+        `http://192.168.29.48:3001/build?appname=${buildDetails.app}&buildid=${e.target.value}`,
         {
           headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
         }
       )
       .then((res) => {
         // setBuildConfig(res.data.data);
-        setBuildDetails(prev=>({...prev, version:res.data.data.version}))
-        setInitialEditForm(res.data.data.buildconfig)
+        setBuildDetails((prev) => ({
+          ...prev,
+          version: res.data.data.version,
+        }));
+        setInitialEditForm(res.data.data.buildconfig);
         console.log(res.data.data.buildconfig, "resssssssss");
+      })
+      .catch((e) => {
+        console.log("error value",e);
+        setSnackbarDetails({
+          open: true,
+          data: e.message ? e.message : "Can't Fetch Current Version",
+          type: "error",
+        });
       });
-  }
+  };
 
   return (
     <div className="editFormContainer">
@@ -140,7 +181,7 @@ const EditForm = () => {
 
           <Grid item xs={12} xm={6}>
             <Button
-            className="editButton"
+              className="editButton"
               variant="contained"
               disabled={!buildDetails.version}
               sx={{

@@ -48,7 +48,7 @@ const LoginFormScreen = () => {
     const { username, password } = loginDetails;
     if (username && password) {
       try {
-        const response = await axios.post("http://192.168.29.46:3001/login", {
+        const response = await axios.post("http://192.168.29.48:3001/login", {
           username,
           password,
         });
@@ -64,7 +64,8 @@ const LoginFormScreen = () => {
           navigate("/login");
         }
       } catch (e) {
-        setSnackbarDetails({open:true, data:e.message, type:"error"});
+        console.log("login error",e);
+        setSnackbarDetails({open:true, data:e.message ? e.message:"Network Error", type:"error"});
       }
     } else {
       console.log("plz fill the login form");
