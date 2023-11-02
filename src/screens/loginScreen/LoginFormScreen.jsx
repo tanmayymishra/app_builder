@@ -5,14 +5,36 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { SnackbarContext } from "../../context/contexts";
 import SnackbarComponenet from "../../components/snackbarComponent/SnackbarComponent";
+import InputAdornment from "@mui/material/InputAdornment";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  root: {
+    "& label.Mui-focused": {
+      color: "#004080",
+    },
+    "& .MuiOutlinedInput-root": {
+      "&.Mui-focused fieldset": {
+        borderColor: "#004080",
+      },
+    },
+  },
+});
 
 const LoginFormScreen = () => {
+  const classes = useStyles();
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
   const [loginDetails, setLoginDetails] = useState({
     username: "",
     password: "",
   });
   const {snackbarDetails, setSnackbarDetails}= useContext(SnackbarContext)
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleLoginChange = (e) => {
     if (e.target.name == "username") {
@@ -55,7 +77,7 @@ const LoginFormScreen = () => {
         sx={{
           height: "100vh",
           width: "100%",
-          backgroundColor: "rgba(0,0,0,0.2)",
+          backgroundColor: "rgba(0,0,0,0.3)",
         }}
       >
         <Stack sx={{ p: 4 }} className="loginform">
@@ -64,23 +86,47 @@ const LoginFormScreen = () => {
             <TextField
               required
               id="username"
+              className={classes.root}
               label="UserName"
               name="username"
               placeholder="Enter Username"
               value={loginDetails.username}
               onChange={handleLoginChange}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start" sx={{ cursor: "pointer" }}>
+                    <AccountCircle />
+                  </InputAdornment>
+                ),
+              }}
             />
             <TextField
               required
               id="password"
+              className={classes.root}
               label="Password"
               name="password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Enter Password"
               value={loginDetails.password}
               onChange={handleLoginChange}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment
+                    position="start"
+                    sx={{ cursor: "pointer" }}
+                    onClick={handleClickShowPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </InputAdornment>
+                ),
+              }}
             />
-            <Button variant="contained" onClick={handleLoginSubmit}>
+            <Button
+              variant="contained"
+              sx={{ p: 1.5, backgroundColor: "#3085C3!important" }}
+              onClick={handleLoginSubmit}
+            >
               Login
             </Button>
           </Stack>
