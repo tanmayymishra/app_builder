@@ -159,7 +159,11 @@ const ValSchema = [
         view: Yup.boolean(),
         transmittingFrequency: Yup.string().when("view", {
           is: true,
-          then: () => Yup.string().required("This field is required"),
+          then: () => Yup.string().required("This field is required").test(
+            'Is positive?', 
+            'ERROR: The number must be greater than 0!', 
+            (value) => value > 0
+          ),
         }),
       }),
       serviceStation: Yup.object().shape({

@@ -290,6 +290,7 @@ const FeauresForm = (props) => {
         {values.features.sendDataToCloud.view ? (
           <Grid item xs={12} sm={6}>
             <InputField
+            type="number"
               name="features.sendDataToCloud.transmittingFrequency"
               label="Transmitting Frequency"
               fullWidth

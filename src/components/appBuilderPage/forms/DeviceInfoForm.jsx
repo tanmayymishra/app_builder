@@ -79,13 +79,13 @@ const DeviceInfoForm = ({ formField }) => {
     vehicleManual: "",
     batteryAlerts: {
       batteryVoltage: {
-        min: "",
-        max: "",
+        min: 0,
+        max: 0,
         event: "",
       },
       batteryTemperature: {
-        min: "",
-        max: "",
+        min: 0,
+        max: 0,
         event: "",
       },
     },
@@ -465,6 +465,7 @@ const DeviceInfoForm = ({ formField }) => {
                   <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
                       <InputField
+                      type="number"
                         name={`deviceInfo.bikeModels.${index}.minimumVoltage`}
                         label="Minimum"
                         fullWidth
@@ -472,6 +473,7 @@ const DeviceInfoForm = ({ formField }) => {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                       <InputField
+                      type="number"
                         name={`deviceInfo.bikeModels.${index}.maximumVoltage`}
                         label="Maximum"
                         fullWidth
@@ -496,6 +498,7 @@ const DeviceInfoForm = ({ formField }) => {
                   <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
                       <InputField
+                      type="number"
                         name={`deviceInfo.bikeModels.${index}.batteryAlerts.batteryVoltage.min`}
                         label="Min"
                         fullWidth
@@ -503,6 +506,7 @@ const DeviceInfoForm = ({ formField }) => {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                       <InputField
+                      type="number"
                         name={`deviceInfo.bikeModels.${index}.batteryAlerts.batteryVoltage.max`}
                         label="Max"
                         fullWidth
@@ -522,6 +526,7 @@ const DeviceInfoForm = ({ formField }) => {
                   <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
                       <InputField
+                      type="number"
                         name={`deviceInfo.bikeModels.${index}.batteryAlerts.batteryTemperature.min`}
                         label="Min"
                         fullWidth
@@ -529,6 +534,7 @@ const DeviceInfoForm = ({ formField }) => {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                       <InputField
+                      type="number"
                         name={`deviceInfo.bikeModels.${index}.batteryAlerts.batteryTemperature.max`}
                         label="Max"
                         fullWidth

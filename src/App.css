@@ -11,10 +11,10 @@
   height: 100vh;
   overflow: hidden;
 } */
-html{
-  overflow-y: scroll;
+/* html{
+  overflow-y:scroll;
   font-family: 'Inter',sans-serif;
-}
+} */
 /* width */
 ::-webkit-scrollbar {
   width: 7px;

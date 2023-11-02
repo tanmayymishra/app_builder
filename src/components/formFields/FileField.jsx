@@ -61,15 +61,16 @@ export default function FileField(props) {
                   : "rgba(0, 0, 0, 0.54)",
               // color: form.error?.length > 1 ? "black" : "white"
             },
-            // accept:"image/png, .svg"
+            //  accept: "image/png, .svg"
+            accept:field.name ==="packages.android.googleServiceJson" ? "application/JSON":field.name ==="packages.android.releaseStoreFile"?".jks":"image/png, .svg, .jpeg"
           }}
           onChange={(e) => {
             handleChange(e);
           }}
         />
-        {field.value && (
-          <Thumb file={field.value} src={field.value} variant="small"></Thumb>
-        )}
+        {field.value && field.name !== "packages.android.googleServiceJson" && field.name !== "packages.android.releaseStoreFile" ?(
+          <Thumb file={field.value} src={field.value} variant="small"></Thumb> 
+        ):""}
     </>
   );
 }

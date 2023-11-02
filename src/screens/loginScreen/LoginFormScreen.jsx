@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import "./LoginFormScreen.css";
 import { Stack, Button, TextField } from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { SnackbarContext } from "../../context/contexts";
+import SnackbarComponenet from "../../components/snackbarComponent/SnackbarComponent";
 
 const LoginFormScreen = () => {
   const navigate = useNavigate();
@@ -10,6 +12,7 @@ const LoginFormScreen = () => {
     username: "",
     password: "",
   });
+  const {snackbarDetails, setSnackbarDetails}= useContext(SnackbarContext)
 
   const handleLoginChange = (e) => {
     if (e.target.name == "username") {
@@ -27,28 +30,25 @@ const LoginFormScreen = () => {
           username,
           password,
         });
-        console.log("login response", response);
         if (response.status == 200) {
+          setSnackbarDetails({ open:true, data:response.message?response.message:"Logged In", type:"success"});
+          // <SnackbarComponenet open={()=>setOpenSnackbar(true)}/>
           localStorage.setItem("username", username);
           localStorage.setItem("password", password);
           localStorage.setItem("isAuthenticated", true);
-          console.log("Login Successful...");
-          navigate("/newform");
-          console.log("select form navigate");
+          navigate("/chooseform");
           setLoginDetails({ username: "", password: "" });
         } else {
-          console.log("Login Failed...");
           navigate("/login");
         }
       } catch (e) {
-        console.log("login error", e);
+        setSnackbarDetails({open:true, data:e.message, type:"error"});
       }
     } else {
       console.log("plz fill the login form");
     }
   };
 
-  console.log("login form", loginDetails);
   return (
     <>
       <Stack

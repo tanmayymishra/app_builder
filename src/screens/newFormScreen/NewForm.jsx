@@ -8,22 +8,21 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
-
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { BuildContext } from "../../context/contexts";
+import { BuildContext, SnackbarContext } from "../../context/contexts";
 
-const NewForm = ({ setSelectForm }) => {
+const NewForm = () => {
     const {buildDetails, setBuildDetails}= useContext(BuildContext)
+    const {snackbarDetails, setSnackbarDetails}= useContext(SnackbarContext)
   const [appData, setAppData] = useState();
   const [versionData, setVersionData] = useState();
     // const [loading, setLoading]= useState(false)
-
-  useEffect(() => {
-    getApps();
-  }, []);
-
-  useEffect(()=>{
+    useEffect(() => {
+      getApps();
+    }, []);
+    
+    useEffect(()=>{
       // setLoading(true)
      if (buildDetails.app.length > 0) {
     const baseUrl = `http://192.168.29.46:3001/apps/versions?appname=${buildDetails.app}`;
@@ -32,24 +31,36 @@ const NewForm = ({ setSelectForm }) => {
     .then((res)=>{
         setVersionData(res.data.data)
     })
+    .catch((error)=>{
+      setSnackbarDetails({ open:true, data:error.message?error.message:"Server Error", type:"error"});
+    })
   }
   },[buildDetails.app])
 
       const getApps = async () => {
-        const res = await axios.get("http://192.168.29.46:3001/apps/", {
-          headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
-        });
-        setAppData(res.data.data);
+        try {
+          const res = await axios.get("http://192.168.29.46:3001/apps/", {
+            headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
+          });
+          if (res.status == 200){
+            setAppData(res.data.data);    
+          }
+        } catch (error) {
+          console.log(error, "errorrr")
+          setSnackbarDetails({ open:true, data:error.message?error.message:"Server Error", type:"error"});
+        }
+        // const res = await axios.get("http://192.168.29.46:3001/apps/", {
+        //   headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
+        // });
+        // console.log(res, "errorrrr")
       };
-     
-
   return (
-    <div className="formContainer">
+    <div className="newFormContainer">
       <section className="section">
-        <h1>Build a new App</h1>
+        <h1>BUILD A NEW APP</h1>
         {/* <div className="buttonsContainer"> */}
         <Grid container spacing={3} mt={1}>
-          <Grid item xs={12} xm={6} sx={{ maxWidth: "100% !important" }}>
+          <Grid item xs={12} xm={6}>
             <FormControl fullWidth>
               <InputLabel id="app-label">Select APP</InputLabel>
               <Select
@@ -86,8 +97,10 @@ const NewForm = ({ setSelectForm }) => {
               </Select>
             </FormControl>
           </Grid>
+        </Grid>
           <Grid item xs={12} xm={6}>
             <Button
+            className="newButton"
               variant="contained"
               disabled={!buildDetails.version}
               sx={{
@@ -100,7 +113,6 @@ const NewForm = ({ setSelectForm }) => {
               <Link to="/form" style={{color:"white"}}>Start Building</Link>
             </Button>
           </Grid>
-        </Grid>
         {/* </div> */}
       </section>
     </div>

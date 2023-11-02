@@ -1,0 +1,794 @@
+{
+  "project_info": {
+    "project_number": "780556342793",
+    "project_id": "thingsup-coldchain-prod",
+    "storage_bucket": "thingsup-coldchain-prod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780556342793:android:378d920066bdfa23670ad8",
+        "android_client_info": {
+          "package_name": "io.thingsup.aaryansws"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780556342793-4krvjo38eb3qgm3jk83v9nqevk1rtmv4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.aaryansws",
+            "certificate_hash": "165b848f253a15f051b3207baeba871b014bd156"
+          }
+        },
+        {
+          "client_id": "780556342793-fm7ana43caosjm1jfckattjol48smdde.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.aaryansws",
+            "certificate_hash": "499163999b3bc46645c25d5609d5e5c3f026a9d3"
+          }
+        },
+        {
+          "client_id": "780556342793-p08dnj7ss1ih1ofvqi9hmacr9v22cabb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.aaryansws",
+            "certificate_hash": "c0b1dc04b87b341572214dca36793d00a15f80e0"
+          }
+        },
+        {
+          "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX-ACpRk3Wz_QwYBFIKX1mMCBN1ek0NII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "780556342793-1sodc5d1jk9d3ona6f8en9pa6gkld7j2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.thingsup.priyadarshani"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780556342793:android:de9475aab684a590670ad8",
+        "android_client_info": {
+          "package_name": "io.thingsup.bletelemetry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX-ACpRk3Wz_QwYBFIKX1mMCBN1ek0NII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "780556342793-1sodc5d1jk9d3ona6f8en9pa6gkld7j2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.thingsup.priyadarshani"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780556342793:android:a557d57d727b2a3f670ad8",
+        "android_client_info": {
+          "package_name": "io.thingsup.bu4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780556342793-rtdfrb1imfn64i6mhglc6g373k33npp9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.bu4",
+            "certificate_hash": "adbafc47a86fb45b69b8279387d2222109f2ad70"
+          }
+        },
+        {
+          "client_id": "780556342793-snm02l9s2cmieiu7vrlatr243fkdmarp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.bu4",
+            "certificate_hash": "165b848f253a15f051b3207baeba871b014bd156"
+          }
+        },
+        {
+          "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX-ACpRk3Wz_QwYBFIKX1mMCBN1ek0NII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "780556342793-1sodc5d1jk9d3ona6f8en9pa6gkld7j2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.thingsup.priyadarshani"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780556342793:android:93317593102a328a670ad8",
+        "android_client_info": {
+          "package_name": "io.thingsup.deltic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780556342793-4n82b0mrqi2oncvvdbbptmlts6rrq2s9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.deltic",
+            "certificate_hash": "d4389ea424e17c0d3a598e8d9775a4cb9d06e54a"
+          }
+        },
+        {
+          "client_id": "780556342793-a8orjc3hev36pjbf3olpanukgiam0gh4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.deltic",
+            "certificate_hash": "165b848f253a15f051b3207baeba871b014bd156"
+          }
+        },
+        {
+          "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX-ACpRk3Wz_QwYBFIKX1mMCBN1ek0NII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "780556342793-1sodc5d1jk9d3ona6f8en9pa6gkld7j2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.thingsup.priyadarshani"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780556342793:android:09cfd082e13975a5670ad8",
+        "android_client_info": {
+          "package_name": "io.thingsup.ewheelie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX-ACpRk3Wz_QwYBFIKX1mMCBN1ek0NII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "780556342793-1sodc5d1jk9d3ona6f8en9pa6gkld7j2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.thingsup.priyadarshani"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780556342793:android:11d4c0299873ac78670ad8",
+        "android_client_info": {
+          "package_name": "io.thingsup.gemopai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780556342793-2ibdtgk9phbi0lm7d5d4erj0rhbs1qa4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.gemopai",
+            "certificate_hash": "165b848f253a15f051b3207baeba871b014bd156"
+          }
+        },
+        {
+          "client_id": "780556342793-ng33cvcnume1ucj09f36greonvolak3i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.gemopai",
+            "certificate_hash": "2837a7e1ad6d10946820dd43e7bb62c9f440a2bf"
+          }
+        },
+        {
+          "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX-ACpRk3Wz_QwYBFIKX1mMCBN1ek0NII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "780556342793-1sodc5d1jk9d3ona6f8en9pa6gkld7j2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.thingsup.priyadarshani"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780556342793:android:85790ed078ab5637670ad8",
+        "android_client_info": {
+          "package_name": "io.thingsup.ivoomi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX-ACpRk3Wz_QwYBFIKX1mMCBN1ek0NII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "780556342793-1sodc5d1jk9d3ona6f8en9pa6gkld7j2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.thingsup.priyadarshani"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780556342793:android:7fae4f55dc2b87f4670ad8",
+        "android_client_info": {
+          "package_name": "io.thingsup.joyebike"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780556342793-jbdu72lbsiquhmm4e0i5g2lcpvevo24d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.joyebike",
+            "certificate_hash": "c8f07f1ac45e61f7aa934fb3f145081fdd554e4f"
+          }
+        },
+        {
+          "client_id": "780556342793-l4gbjoue64cpn0q31988meuaqo12f3sk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.joyebike",
+            "certificate_hash": "c6e9db6b444b68cac7dbff1f1fdc0f1b03152df2"
+          }
+        },
+        {
+          "client_id": "780556342793-pajr9unbk1ak2bfcvuead64jcbj9uf8b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.joyebike",
+            "certificate_hash": "b6b350e8e694fbe18d52018716d608ae810f6716"
+          }
+        },
+        {
+          "client_id": "780556342793-rcdroktrof185t2sjevrllg365shlhdo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.joyebike",
+            "certificate_hash": "84b5c6986e16d60b543edb10486f37bd5ae5ef5e"
+          }
+        },
+        {
+          "client_id": "780556342793-trj3fvlda6m2u0makrcsnrh0omb94c2e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.joyebike",
+            "certificate_hash": "c5955e916e1ff0e9c1b7b057b4a10e936612fffd"
+          }
+        },
+        {
+          "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX-ACpRk3Wz_QwYBFIKX1mMCBN1ek0NII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "780556342793-1sodc5d1jk9d3ona6f8en9pa6gkld7j2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.thingsup.priyadarshani"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780556342793:android:f19c1affe61d9a58670ad8",
+        "android_client_info": {
+          "package_name": "io.thingsup.mirakle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780556342793-eurhkl84qt6pjtuehmn1rd8ja5q72p39.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.mirakle",
+            "certificate_hash": "165b848f253a15f051b3207baeba871b014bd156"
+          }
+        },
+        {
+          "client_id": "780556342793-fnjdevuqrjradv23c0129i1a20t5pe59.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.mirakle",
+            "certificate_hash": "1ba16e596a804ab4f669be4aeb969d84b52957d2"
+          }
+        },
+        {
+          "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX-ACpRk3Wz_QwYBFIKX1mMCBN1ek0NII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "780556342793-1sodc5d1jk9d3ona6f8en9pa6gkld7j2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.thingsup.priyadarshani"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780556342793:android:c1017061deb2ddb3670ad8",
+        "android_client_info": {
+          "package_name": "io.thingsup.novelis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780556342793-9h9or9r2vr6pr9bo1d1vqbm4olaesupq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.novelis",
+            "certificate_hash": "99b6a89020bafe2409ebeca41a371615f5aa87d3"
+          }
+        },
+        {
+          "client_id": "780556342793-o5kr4189f594jb2e0cji31te40v6p1cr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.novelis",
+            "certificate_hash": "a5fdd9dbb6cbb58163701c3c4361354db0649301"
+          }
+        },
+        {
+          "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX-ACpRk3Wz_QwYBFIKX1mMCBN1ek0NII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "780556342793-1sodc5d1jk9d3ona6f8en9pa6gkld7j2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.thingsup.priyadarshani"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780556342793:android:68543fc51197385d670ad8",
+        "android_client_info": {
+          "package_name": "io.thingsup.okinawa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780556342793-ivb3pq11l6s7rdvk3afn1iaek60na8oq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.okinawa",
+            "certificate_hash": "035482fc8ae1ce7bef555eed9c3f8104c1b925b3"
+          }
+        },
+        {
+          "client_id": "780556342793-qujkr8mjs49a6aqcq4kf7q6jg02mpk43.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.okinawa",
+            "certificate_hash": "165b848f253a15f051b3207baeba871b014bd156"
+          }
+        },
+        {
+          "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX-ACpRk3Wz_QwYBFIKX1mMCBN1ek0NII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "780556342793-1sodc5d1jk9d3ona6f8en9pa6gkld7j2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.thingsup.priyadarshani"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780556342793:android:c36821d9dcd94de3670ad8",
+        "android_client_info": {
+          "package_name": "io.thingsup.orchids"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780556342793-0cbkdegjhdsh3stu89l0aomnvg6d6tm7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.orchids",
+            "certificate_hash": "980be27606aa6acedb47b77c9f3586e8de696b0c"
+          }
+        },
+        {
+          "client_id": "780556342793-b09jss69ddabp7815bmq5tci5fc8ld85.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.orchids",
+            "certificate_hash": "d72c21e4b14a0a305e33abd1e4c05d8933883ec8"
+          }
+        },
+        {
+          "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX-ACpRk3Wz_QwYBFIKX1mMCBN1ek0NII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "780556342793-1sodc5d1jk9d3ona6f8en9pa6gkld7j2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.thingsup.priyadarshani"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780556342793:android:2928283f7fd1c5ba670ad8",
+        "android_client_info": {
+          "package_name": "io.thingsup.priyadarshani"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780556342793-0alaeq3r025e9n922eockic9pqva9t3j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.priyadarshani",
+            "certificate_hash": "3ee22287e4415a02ecf70e6b3a3d317374377985"
+          }
+        },
+        {
+          "client_id": "780556342793-76dda0v1tngld34fhrehcfot61hgdh3m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.priyadarshani",
+            "certificate_hash": "521c68208d4f1dd00e59498e5957e5e9a015e369"
+          }
+        },
+        {
+          "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX-ACpRk3Wz_QwYBFIKX1mMCBN1ek0NII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "780556342793-1sodc5d1jk9d3ona6f8en9pa6gkld7j2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.thingsup.priyadarshani"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780556342793:android:fa8f8129e15332eb670ad8",
+        "android_client_info": {
+          "package_name": "io.thingsup.taser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX-ACpRk3Wz_QwYBFIKX1mMCBN1ek0NII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "780556342793-1sodc5d1jk9d3ona6f8en9pa6gkld7j2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.thingsup.priyadarshani"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780556342793:android:9cd69b2137d4590f670ad8",
+        "android_client_info": {
+          "package_name": "io.thingsup.trackapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX-ACpRk3Wz_QwYBFIKX1mMCBN1ek0NII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "780556342793-1sodc5d1jk9d3ona6f8en9pa6gkld7j2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.thingsup.priyadarshani"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780556342793:android:2e7eb6ee2a61bb43670ad8",
+        "android_client_info": {
+          "package_name": "io.thingsup.virtusmotors"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780556342793-qlto8m3qvm5jmo66748al3mcpvdhkdo3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.virtusmotors",
+            "certificate_hash": "165b848f253a15f051b3207baeba871b014bd156"
+          }
+        },
+        {
+          "client_id": "780556342793-vqd26p7n7g1fkqb0ap81821d05lm9tv2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.thingsup.virtusmotors",
+            "certificate_hash": "3707d093ae4e3e51315910c15268023c86b2ddd1"
+          }
+        },
+        {
+          "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX-ACpRk3Wz_QwYBFIKX1mMCBN1ek0NII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780556342793-b5m0ir00l6n4hp6q6jfndo7j24l1t6v8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "780556342793-1sodc5d1jk9d3ona6f8en9pa6gkld7j2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.thingsup.priyadarshani"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

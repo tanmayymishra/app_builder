@@ -19,6 +19,21 @@ const PackagesForm = (props) => {
             fullWidth
           />
         </Grid>
+        <Grid item xs={12} >
+          <FileField
+            name="packages.android.googleServiceJson"
+            label="Google Service JSON"
+            type="file"
+            InputLabelProps={{
+                shrink: true,
+              }}
+              value={undefined}
+                   
+                // accept="application/JSON"
+             
+            fullWidth
+          />
+        </Grid> 
       <Grid item xs={12}>
           <InputField
             name="packages.android.releaseStorePassword"
@@ -52,6 +67,7 @@ const PackagesForm = (props) => {
             fullWidth
           />
         </Grid>       
+            
       </Grid>
     </React.Fragment>
   );
