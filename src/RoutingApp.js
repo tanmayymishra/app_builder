@@ -8,11 +8,11 @@ import FormScreens from "./FormScreens";
 import EditForm from "./screens/editForm/EditForm";
 import ChooseForm from "./screens/chooseForm/ChooseForm";
 import SnackbarComponenet from "./components/snackbarComponent/SnackbarComponent";
+import LoaderComponent from "./components/loaderComponent/LoaderComponent"
 // import SelectFormScreen from "./screens/selectFormScreen/SelectFormScreen";
 
 const RoutingApp = ({ activeStep, appDetails, buildDetails }) => {
   const [selectForm, setSelectForm] = useState("");
-  console.log(buildDetails, "seeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
   return (
     <>
       <BrowserRouter>
@@ -66,6 +66,7 @@ const RoutingApp = ({ activeStep, appDetails, buildDetails }) => {
         </Routes>
       </BrowserRouter>
       <SnackbarComponenet />
+      <LoaderComponent />
     </>
   );
 };

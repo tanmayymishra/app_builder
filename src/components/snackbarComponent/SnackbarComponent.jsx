@@ -14,7 +14,7 @@ function SnackbarComponenet(props) {
   return (
     <div className="snackbarContainer">
       <Snackbar open={snackbarDetails.open} autoHideDuration={4000} onClose={handleClose} className="snackbar">
-        <Alert onClose={handleClose}severity={snackbarDetails.type?snackbarDetails.type:"success"}>
+        <Alert onClose={handleClose} severity={snackbarDetails.type?snackbarDetails.type:"success"}>
           {snackbarDetails.data}
         </Alert>
       </Snackbar>

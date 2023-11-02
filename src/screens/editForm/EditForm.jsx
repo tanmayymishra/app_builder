@@ -10,62 +10,94 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { BuildContext, InitialFormContext } from "../../context/contexts";
+import { BuildContext, InitialFormContext, SnackbarContext,LoaderContext } from "../../context/contexts";
 
 const EditForm = () => {
-  const { buildDetails, setBuildDetails } = useContext(BuildContext);
-  const { setInitialEditForm}= useContext(InitialFormContext)
   const [appData, setAppData] = useState();
   const [versionData, setVersionData] = useState();
   const [buildIdData, setBuildIdData] = useState();
-  // const [loading, setLoading]= useState(false)
+  const { buildDetails, setBuildDetails } = useContext(BuildContext);
+  const { setInitialEditForm}= useContext(InitialFormContext)
+  const { setSnackbarDetails}= useContext(SnackbarContext)
+  const {setLoading}= useContext(LoaderContext)
+
   useEffect(() => {
     getApps();
   }, []);
 
   useEffect(() => {
-    // setLoading(true)
     if (buildDetails.app.length > 0) {
-      const baseUrl = `http://192.168.29.46:3001/apps/versions?appname=${buildDetails.app}`;
+      setLoading(true)
+      const baseUrl = `http://192.168.29.48:3001/apps/versions?appname=${buildDetails.app}`;
       console.log(baseUrl, "appsssss");
       axios
         .get(baseUrl, {
           headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
         })
         .then((res) => {
+          setLoading(false)
           setVersionData(res.data.data);
-        });
+        })
+        .catch((e)=>{
+          setLoading(false)
+        })
       axios
-        .get(`http://192.168.29.46:3001/build?appname=${buildDetails.app}`, {
+        .get(`http://192.168.29.48:3001/build?appname=${buildDetails.app}`, {
           headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
         })
         .then((res) => {
           setBuildIdData(res.data.data);
-        });
+        })
+        .catch((e)=>{
+          setLoading(false)
+        })
     }
   }, [buildDetails.app]);
 
   const getApps = async () => {
-    const res = await axios.get("http://192.168.29.46:3001/apps/", {
-      headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
-    });
-    setAppData(res.data.data);
+    try {
+      setLoading(true)
+      const res = await axios.get("http://192.168.29.48:3001/apps/", {
+        headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
+      });
+      if (res) {
+        setLoading(false)
+        setAppData(res.data.data);
+      }
+    } catch (e) {
+      setLoading(false)
+      console.log("error value getApps...",e);
+      setSnackbarDetails({
+        open: true,
+        data: e.message ? e.message : "Can't Fetch Apps",
+        type: "error",
+      });
+    }
+    // const res = await axios.get("http://192.168.29.48:3001/apps/", {
+    //   headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
+    // });
+    // setAppData(res?.data.data);
   };
   const handleSelectBuildId = (e) => {
+    setLoading(true)
     setBuildDetails((prev) => ({ ...prev, buildId: e.target.value }));
     axios
       .get(
-        `http://192.168.29.46:3001/build?appname=${buildDetails.app}&buildid=${e.target.value}`,
+        `http://192.168.29.48:3001/build?appname=${buildDetails.app}&buildid=${e.target.value}`,
         {
           headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
         }
       )
       .then((res) => {
+        setLoading(false)
         // setBuildConfig(res.data.data);
         setBuildDetails(prev=>({...prev, version:res.data.data.version}))
         setInitialEditForm(res.data.data.buildconfig)
         console.log(res.data.data.buildconfig, "resssssssss");
-      });
+      })
+      .catch((e)=>{
+        setLoading(false)
+      })
   }
 
   return (

@@ -3,8 +3,7 @@ import "./LoginFormScreen.css";
 import { Stack, Button, TextField } from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { SnackbarContext } from "../../context/contexts";
-import SnackbarComponenet from "../../components/snackbarComponent/SnackbarComponent";
+import { SnackbarContext, LoaderContext } from "../../context/contexts";
 import InputAdornment from "@mui/material/InputAdornment";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import Visibility from "@mui/icons-material/Visibility";
@@ -32,8 +31,8 @@ const LoginFormScreen = () => {
     username: "",
     password: "",
   });
-  const {snackbarDetails, setSnackbarDetails}= useContext(SnackbarContext)
-
+  const { setSnackbarDetails}= useContext(SnackbarContext)
+  const {setLoading}= useContext(LoaderContext)
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleLoginChange = (e) => {
@@ -48,11 +47,13 @@ const LoginFormScreen = () => {
     const { username, password } = loginDetails;
     if (username && password) {
       try {
-        const response = await axios.post("http://192.168.29.46:3001/login", {
+        setLoading(true)
+        const response = await axios.post("http://192.168.29.48:3001/login", {
           username,
           password,
         });
         if (response.status == 200) {
+          setLoading(false)
           setSnackbarDetails({ open:true, data:response.message?response.message:"Logged In", type:"success"});
           // <SnackbarComponenet open={()=>setOpenSnackbar(true)}/>
           localStorage.setItem("username", username);
@@ -61,13 +62,16 @@ const LoginFormScreen = () => {
           navigate("/chooseform");
           setLoginDetails({ username: "", password: "" });
         } else {
+          setLoading(false)
           navigate("/login");
         }
       } catch (e) {
-        setSnackbarDetails({open:true, data:e.message, type:"error"});
+        setLoading(false)
+        console.log(e, "errorrr")
+        setSnackbarDetails({open:true, data:e.message?e.message:"Network Error", type:"error"});
       }
     } else {
-      console.log("plz fill the login form");
+      setSnackbarDetails({ open:true, data:"Enter Login Details", type:"error"});
     }
   };
 

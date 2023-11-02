@@ -10,28 +10,30 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { BuildContext, SnackbarContext } from "../../context/contexts";
+import { BuildContext, SnackbarContext, LoaderContext } from "../../context/contexts";
 
 const NewForm = () => {
-    const {buildDetails, setBuildDetails}= useContext(BuildContext)
-    const {snackbarDetails, setSnackbarDetails}= useContext(SnackbarContext)
   const [appData, setAppData] = useState();
   const [versionData, setVersionData] = useState();
-    // const [loading, setLoading]= useState(false)
+  const {buildDetails, setBuildDetails}= useContext(BuildContext)
+  const {snackbarDetails, setSnackbarDetails}= useContext(SnackbarContext)
+  const {setLoading}= useContext(LoaderContext)
     useEffect(() => {
       getApps();
     }, []);
     
     useEffect(()=>{
-      // setLoading(true)
-     if (buildDetails.app.length > 0) {
-    const baseUrl = `http://192.168.29.46:3001/apps/versions?appname=${buildDetails.app}`;
+      if (buildDetails.app.length > 0) {
+       setLoading(true)
+    const baseUrl = `http://192.168.29.48:3001/apps/versions?appname=${buildDetails.app}`;
     console.log(baseUrl, "appsssss");
     axios.get(baseUrl, { headers: { Authorization: `Bearer ${buildDetails.credBase64}`}})
     .then((res)=>{
+      setLoading(false)
         setVersionData(res.data.data)
     })
     .catch((error)=>{
+      setLoading(false)
       setSnackbarDetails({ open:true, data:error.message?error.message:"Server Error", type:"error"});
     })
   }
@@ -39,17 +41,20 @@ const NewForm = () => {
 
       const getApps = async () => {
         try {
-          const res = await axios.get("http://192.168.29.46:3001/apps/", {
+          setLoading(true)
+          const res = await axios.get("http://192.168.29.48:3001/apps/", {
             headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
           });
           if (res.status == 200){
+            setLoading(false)
             setAppData(res.data.data);    
           }
         } catch (error) {
+          setLoading(false)
           console.log(error, "errorrr")
           setSnackbarDetails({ open:true, data:error.message?error.message:"Server Error", type:"error"});
         }
-        // const res = await axios.get("http://192.168.29.46:3001/apps/", {
+        // const res = await axios.get("http://192.168.29.48:3001/apps/", {
         //   headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
         // });
         // console.log(res, "errorrrr")

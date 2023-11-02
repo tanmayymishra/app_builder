@@ -6,8 +6,6 @@ import AppThemeForm from "./forms/AppThemeForm";
 import DeviceInfoForm from "./forms/DeviceInfoForm";
 import FeaturesForm from "./forms/FeaturesForm";
 import PackagesForm from "./forms/PackagesForm";
-// import BuildSuccess from './buildSuccess/BuildSuccess';
-// import validationSchema from './formModel/validationSchema';
 import { BuilderFormModel } from "./formModel/BuilderFormModel";
 import {
   ColorContext,
@@ -15,9 +13,9 @@ import {
   DefaultContext,
   BuildContext,
   InitialFormContext,
-  SnackbarContext
+  SnackbarContext,
+  LoaderContext,
 } from "../../context/contexts";
-// import formInitialValues from './formModel/formInitialValues';
 import useStyles from "./styles";
 import ValSchema from "../validation/ValSchema";
 import axios from "axios";
@@ -68,13 +66,13 @@ export default function AppBuilderPage({ selectForm }) {
   const { defaultBike, setDefaultBike } = useContext(DefaultContext);
   const { buildDetails, setBuildDetails, buildId, credBase64 } =
     useContext(BuildContext);
-    const { snackbarDetails, setSnackbarDetails }= useContext(SnackbarContext)
+  const { snackbarDetails, setSnackbarDetails } = useContext(SnackbarContext);
+  const { loading, setLoading } = useContext(LoaderContext);
   const classes = useStyles();
   const isLastStep = activeStep === steps.length - 1;
   const currentValidationSchema = ValSchema[activeStep];
   console.log(initialEditForm, buildDetails.buildId, "initial edit form");
-  
- 
+
   const initValues = {
     account: {
       appName: "",
@@ -90,8 +88,6 @@ export default function AppBuilderPage({ selectForm }) {
       primaryColor: `${colors.primary}`,
       secondaryColor: `${colors.secondary}`,
       accentColor: `${colors.accent}`,
-      // font: undefined,
-      // assets: "",
       appLogo: "",
       appLauncherName: "",
       launcherLogo: "",
@@ -253,12 +249,11 @@ export default function AppBuilderPage({ selectForm }) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
   async function _submitForm(values, actions) {
+    setLoading(true);
     const postData = {
       appname: buildDetails.app,
       version: buildDetails.version,
-      buildconfig: {
-        values,
-      },
+      buildconfig: values,
     };
     await _sleep(1000);
     // alert(JSON.stringify(values, null, 2));
@@ -266,29 +261,34 @@ export default function AppBuilderPage({ selectForm }) {
       selectForm === "new"
         ? axios
             .post(
-              `http://192.168.29.46:3001/build?appname=${buildDetails.app}`,
+              `http://192.168.29.48:3001/build?appname=${buildDetails.app}`,
               postData,
               axiosConfig
             )
             .then((res) => {
+              setLoading(false);
               console.log(res, "after build axios response");
             })
-            .catch((err) => console.log(err, "after build axios error"))
+            .catch((err) => {
+              setLoading(false);
+              console.log(err, "after build axios error");
+            })
         : axios
             .post(
-              `http://192.168.29.46:3001/build?appname=${buildDetails.app}&buildid=${buildDetails.buildId}`,
+              `http://192.168.29.48:3001/build?appname=${buildDetails.app}&buildid=${buildDetails.buildId}`,
               postData,
               axiosConfig
             )
             .then((res) => {
+              setLoading(false);
               console.log(res, "after build axios response");
             })
-            .catch((err) => console.log(err, "after build axios error"));
+            .catch((err) => {
+              setLoading(false);
+              console.log(err, "after build axios error");
+            });
     }
-
-    console.log(values, "form value data");
     actions.setSubmitting(false);
-    // console.log(obj, "iiiiiiiii")
     setActiveStep(activeStep + 1);
   }
   function _handleSubmit(values, actions) {
@@ -335,7 +335,7 @@ export default function AppBuilderPage({ selectForm }) {
           ) : (
             <Formik
               initialValues={
-                selectForm === "new" ? initValues : initialEditForm.values
+                selectForm === "new" ? initValues : initialEditForm
               }
               // validationSchema={currentValidationSchema}
               onSubmit={_handleSubmit}
