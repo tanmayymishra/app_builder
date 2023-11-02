@@ -272,6 +272,12 @@ export default function AppBuilderPage({ selectForm }) {
             .catch((err) => {
               setLoading(false);
               console.log(err, "after build axios error");
+              setSnackbarDetails({
+                open: true,
+                data:err.message ? err.message:"Network Error",
+                type: "error",
+              });
+              console.log(err, "after build axios error") 
             })
         : axios
             .post(
@@ -285,6 +291,11 @@ export default function AppBuilderPage({ selectForm }) {
             })
             .catch((err) => {
               setLoading(false);
+              setSnackbarDetails({
+                open: true,
+                data:err.message ? err.message:"Network Error",
+                type: "error",
+              });
               console.log(err, "after build axios error");
             });
     }

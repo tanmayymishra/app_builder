@@ -10,15 +10,21 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { BuildContext, InitialFormContext, SnackbarContext,LoaderContext } from "../../context/contexts";
+import {
+  BuildContext,
+  InitialFormContext,
+  SnackbarContext,
+  LoaderContext
+} from "../../context/contexts";
 
 const EditForm = () => {
+  const { buildDetails, setBuildDetails } = useContext(BuildContext);
+  const { setInitialEditForm } = useContext(InitialFormContext);
+  const { snackbarDetails, setSnackbarDetails } = useContext(SnackbarContext);
   const [appData, setAppData] = useState();
   const [versionData, setVersionData] = useState();
   const [buildIdData, setBuildIdData] = useState();
-  const { buildDetails, setBuildDetails } = useContext(BuildContext);
-  const { setInitialEditForm}= useContext(InitialFormContext)
-  const { setSnackbarDetails}= useContext(SnackbarContext)
+
   const {setLoading}= useContext(LoaderContext)
 
   useEffect(() => {
@@ -38,9 +44,14 @@ const EditForm = () => {
           setLoading(false)
           setVersionData(res.data.data);
         })
-        .catch((e)=>{
+        .catch((e) => {
           setLoading(false)
-        })
+          setSnackbarDetails({
+            open: true,
+            data: e.message ? e.message : "Network Error",
+            type: "error",
+          });
+        });
       axios
         .get(`http://192.168.29.48:3001/build?appname=${buildDetails.app}`, {
           headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
@@ -48,9 +59,15 @@ const EditForm = () => {
         .then((res) => {
           setBuildIdData(res.data.data);
         })
-        .catch((e)=>{
+       
+        .catch((e) => {
           setLoading(false)
-        })
+          setSnackbarDetails({
+            open: true,
+            data: e.message ? e.message : "Network Error",
+            type: "error",
+          });
+        });
     }
   }, [buildDetails.app]);
 
@@ -64,7 +81,7 @@ const EditForm = () => {
         setLoading(false)
         setAppData(res.data.data);
       }
-    } catch (e) {
+  } catch (e) {
       setLoading(false)
       console.log("error value getApps...",e);
       setSnackbarDetails({
@@ -91,14 +108,23 @@ const EditForm = () => {
       .then((res) => {
         setLoading(false)
         // setBuildConfig(res.data.data);
-        setBuildDetails(prev=>({...prev, version:res.data.data.version}))
-        setInitialEditForm(res.data.data.buildconfig)
+        setBuildDetails((prev) => ({
+          ...prev,
+          version: res.data.data.version,
+        }));
+        setInitialEditForm(res.data.data.buildconfig);
         console.log(res.data.data.buildconfig, "resssssssss");
       })
-      .catch((e)=>{
+      .catch((e) => {
         setLoading(false)
-      })
-  }
+        console.log("error value",e);
+        setSnackbarDetails({
+          open: true,
+          data: e.message ? e.message : "Can't Fetch Current Version",
+          type: "error",
+        });
+      });
+  };
 
   return (
     <div className="editFormContainer">
@@ -172,7 +198,7 @@ const EditForm = () => {
 
           <Grid item xs={12} xm={6}>
             <Button
-            className="editButton"
+              className="editButton"
               variant="contained"
               disabled={!buildDetails.version}
               sx={{
