@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Button, Typography, CircularProgress } from "@mui/material";
+import { Button } from "@mui/material";
 import { Formik, Form, useFormikContext } from "formik";
 import AccountForm from "./forms/AccountForm";
 import AppThemeForm from "./forms/AppThemeForm";
@@ -71,7 +71,7 @@ export default function AppBuilderPage({ selectForm }) {
   const classes = useStyles();
   const isLastStep = activeStep === steps.length - 1;
   const currentValidationSchema = ValSchema[activeStep];
-  console.log(initialEditForm, buildDetails.buildId, "initial edit form");
+  console.log(initialEditForm, buildDetails, "initial edit form");
 
   const initValues = {
     account: {
@@ -101,56 +101,56 @@ export default function AppBuilderPage({ selectForm }) {
           inclinedViewImage: "",
           modes: {
             Eco: {
-              id: 1,
+              id: "",
               modeImage: "",
               range: {
-                p1: 0.6,
-                p2: 0,
+                p1: "",
+                p2: "",
               },
               SOC: {
-                p1: 1,
-                p2: 0,
+                p1: "",
+                p2: "",
               },
             },
             Sports: {
-              id: 2,
+              id: "",
               modeImage: "",
               range: {
-                p1: 0.9,
-                p2: 0,
+                p1: "",
+                p2: "",
               },
               SOC: {
-                p1: 1,
-                p2: 0,
+                p1: "",
+                p2: "",
               },
             },
             Hyper: {
-              id: 3,
+              id: "",
               modeImage: "",
               range: {
-                p1: 1.1,
-                p2: 0,
+                p1: "",
+                p2: "",
               },
               SOC: {
-                p1: 1,
-                p2: 0,
+                p1: "",
+                p2: "",
               },
             },
             default: {
-              id: 0,
+              id: "",
               modeImage: "",
               range: {
-                p1: 0.6,
-                p2: 0,
+                p1: "",
+                p2: "",
               },
               SOC: {
-                p1: 1,
-                p2: 0,
+                p1: "",
+                p2: "",
               },
             },
           },
-          minimumVoltage: 52,
-          maximumVoltage: 82,
+          minimumVoltage:"",
+          maximumVoltage:"",
           vehicleManual: "",
           batteryAlerts: {
             batteryVoltage: {
@@ -209,7 +209,7 @@ export default function AppBuilderPage({ selectForm }) {
       // chargingStation:false,
       notifications: false,
       sendDataToCloud: {
-        transmittingFrequency: 0,
+        transmittingFrequency: "",
         view: false,
       },
       serviceStation: {
@@ -222,8 +222,8 @@ export default function AppBuilderPage({ selectForm }) {
       },
       bleFeatures: {
         bleCommunication: {
-          clusterBLEName: "Thingsup",
-          securityCode: "R2hISb",
+          clusterBLEName: "",
+          securityCode: "",
         },
         callDetails: false,
         smsDetails: false,
@@ -267,6 +267,7 @@ export default function AppBuilderPage({ selectForm }) {
             )
             .then((res) => {
               setLoading(false);
+              setActiveStep(activeStep + 1);
               console.log(res, "after build axios response");
             })
             .catch((err) => {
@@ -274,10 +275,10 @@ export default function AppBuilderPage({ selectForm }) {
               console.log(err, "after build axios error");
               setSnackbarDetails({
                 open: true,
-                data:err.message ? err.message:"Network Error",
+                data: err.message ? err.message : "Network Error",
                 type: "error",
               });
-              console.log(err, "after build axios error") 
+              console.log(err, "after build axios error");
             })
         : axios
             .post(
@@ -287,20 +288,20 @@ export default function AppBuilderPage({ selectForm }) {
             )
             .then((res) => {
               setLoading(false);
+              setActiveStep(activeStep + 1);
               console.log(res, "after build axios response");
             })
             .catch((err) => {
               setLoading(false);
               setSnackbarDetails({
                 open: true,
-                data:err.message ? err.message:"Network Error",
+                data: err.message ? err.message : "Network Error",
                 type: "error",
               });
               console.log(err, "after build axios error");
             });
     }
     actions.setSubmitting(false);
-    setActiveStep(activeStep + 1);
   }
   function _handleSubmit(values, actions) {
     if (isLastStep) {
@@ -348,7 +349,7 @@ export default function AppBuilderPage({ selectForm }) {
               initialValues={
                 selectForm === "new" ? initValues : initialEditForm
               }
-              // validationSchema={currentValidationSchema}
+              validationSchema={currentValidationSchema}
               onSubmit={_handleSubmit}
               validateOnChange={false}
               validateOnBlur={false}
@@ -381,12 +382,6 @@ export default function AppBuilderPage({ selectForm }) {
                       >
                         {isLastStep ? "Build App" : "Next"}
                       </Button>
-                      {isSubmitting && (
-                        <CircularProgress
-                          size={24}
-                          className={classes.buttonProgress}
-                        />
-                      )}
                     </div>
                   </div>
                 </Form>

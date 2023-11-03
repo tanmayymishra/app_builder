@@ -41,8 +41,8 @@ const EditForm = () => {
           headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
         })
         .then((res) => {
-          setLoading(false)
           setVersionData(res.data.data);
+          setLoading(false)
         })
         .catch((e) => {
           setLoading(false)
@@ -78,8 +78,8 @@ const EditForm = () => {
         headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
       });
       if (res) {
-        setLoading(false)
         setAppData(res.data.data);
+        setLoading(false)
       }
   } catch (e) {
       setLoading(false)
@@ -200,7 +200,7 @@ const EditForm = () => {
             <Button
               className="editButton"
               variant="contained"
-              disabled={!buildDetails.version}
+              disabled={!buildDetails.version && !buildDetails.buildId}
               sx={{
                 backgroundColor: "#29242c",
                 "&:hover": {

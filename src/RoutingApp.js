@@ -48,7 +48,6 @@ const RoutingApp = ({ activeStep, appDetails, buildDetails }) => {
               </Protected>
             }
           />
-          {/* <Route path="/newform" element={<NewForm setSelectForm={setSelectForm} />} /> */}
           <Route
             path="/form"
             element={

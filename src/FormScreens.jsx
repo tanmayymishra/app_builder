@@ -5,18 +5,20 @@ import ClassicTheme from './screens/classicTheme/ClassicTheme'
 import FussionTheme from './screens/fussionTheme/FussionTheme'
 import ModernTheme from './screens/modernTheme/ModernTheme'
 import HomeScreen from "./screens/homeScreen/HomeScreen";
-import { InitialFormContext, AppDetailsContext } from './context/contexts'
+import { InitialFormContext, AppDetailsContext, LoaderContext } from './context/contexts'
 
 const FormScreens = ({activeStep,selectForm, appDetails}) => {
  
   const {initialEditForm} = useContext(InitialFormContext)
   const {setAppDetails} = useContext(AppDetailsContext)
-  // useEffect(()=>{
-  //   initialEditForm.length>0 && setAppDetails(prev=>({...prev, theme:initialEditForm?.appTheme?.type}))
-    
-  // },[])
-  console.log(initialEditForm, "vvvvvvvvvvvv")
-  console.log(appDetails, "aaaaaaaaaa")
+  const {setLoading} = useContext(LoaderContext)
+  useEffect(()=>{
+    setLoading(true)
+    selectForm === "edit" && initialEditForm && setAppDetails(prev=>({...prev, theme:initialEditForm?.appTheme?.type})) 
+    setTimeout(()=>{
+      setLoading(false)
+    },[1000])
+  },[])
   return (
     <MaterialLayout>
       <div className={activeStep === 1 ? "appHomeScreen" : "app"}>

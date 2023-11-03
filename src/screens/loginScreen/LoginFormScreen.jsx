@@ -81,7 +81,8 @@ const LoginFormScreen = () => {
         sx={{
           height: "100vh",
           width: "100%",
-          backgroundColor: "rgba(0,0,0,0.3)",
+          // backgroundColor: "rgba(0,0,0,0.3)",
+          backgroundColor: "#29242c",
         }}
       >
         <Stack sx={{ p: 4 }} className="loginform">
@@ -92,6 +93,9 @@ const LoginFormScreen = () => {
               id="username"
               className={classes.root}
               label="UserName"
+              style={{
+                marginTop:"25px"
+              }}
               name="username"
               placeholder="Enter Username"
               value={loginDetails.username}
@@ -128,7 +132,10 @@ const LoginFormScreen = () => {
             />
             <Button
               variant="contained"
-              sx={{ p: 1.5, backgroundColor: "#3085C3!important" }}
+              sx={{ p: 1.5, backgroundColor: "#3085C3!important"}}
+              style={{
+                marginTop:"50px"
+              }}
               onClick={handleLoginSubmit}
             >
               Login

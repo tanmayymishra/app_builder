@@ -62,7 +62,7 @@ export default function FileField(props) {
               // color: form.error?.length > 1 ? "black" : "white"
             },
             //  accept: "image/png, .svg"
-            accept:field.name ==="packages.android.googleServiceJson" ? "application/JSON":field.name ==="packages.android.releaseStoreFile"?".jks":"image/png, .svg, .jpeg"
+            accept:field.name ==="packages.android.googleServiceJson" ? "application/JSON":field.name ==="packages.android.releaseStoreFile"?".jks":"image/png"
           }}
           onChange={(e) => {
             handleChange(e);
