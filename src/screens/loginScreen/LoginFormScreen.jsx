@@ -43,8 +43,9 @@ const LoginFormScreen = () => {
     }
   };
 
-  const handleLoginSubmit = async () => {
+  const handleLoginSubmit = async (e) => {
     const { username, password } = loginDetails;
+    e.preventDefault();
     if (username && password) {
       try {
         setLoading(true)
@@ -87,6 +88,7 @@ const LoginFormScreen = () => {
       >
         <Stack sx={{ p: 4 }} className="loginform">
           <p className="formheading">Sign In</p>
+          <form onSubmit={handleLoginSubmit}>
           <Stack spacing={3} sx={{ p: 3 }} className="loginfields">
             <TextField
               required
@@ -131,6 +133,7 @@ const LoginFormScreen = () => {
               }}
             />
             <Button
+              type="submit"
               variant="contained"
               sx={{ p: 1.5, backgroundColor: "#3085C3!important"}}
               style={{
@@ -141,6 +144,7 @@ const LoginFormScreen = () => {
               Login
             </Button>
           </Stack>
+          </form>
         </Stack>
       </Stack>
     </>
