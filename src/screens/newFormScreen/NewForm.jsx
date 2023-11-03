@@ -10,55 +10,70 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { BuildContext, SnackbarContext, LoaderContext } from "../../context/contexts";
+import {
+  BuildContext,
+  SnackbarContext,
+  LoaderContext,
+} from "../../context/contexts";
 
 const NewForm = () => {
   const [appData, setAppData] = useState();
   const [versionData, setVersionData] = useState();
-  const {buildDetails, setBuildDetails}= useContext(BuildContext)
-  const {snackbarDetails, setSnackbarDetails}= useContext(SnackbarContext)
-  const {setLoading}= useContext(LoaderContext)
-    useEffect(() => {
-      getApps();
-    }, []);
-    
-    useEffect(()=>{
-      if (buildDetails.app.length > 0) {
-       setLoading(true)
-    const baseUrl = `http://192.168.29.48:3001/apps/versions?appname=${buildDetails.app}`;
-    console.log(baseUrl, "appsssss");
-    axios.get(baseUrl, { headers: { Authorization: `Bearer ${buildDetails.credBase64}`}})
-    .then((res)=>{
-      setLoading(false)
-        setVersionData(res.data.data)
-    })
-    .catch((error)=>{
-      setLoading(false)
-      setSnackbarDetails({ open:true, data:error.message?error.message:"Server Error", type:"error"});
-    })
-  }
-  },[buildDetails.app])
+  const { buildDetails, setBuildDetails } = useContext(BuildContext);
+  const { snackbarDetails, setSnackbarDetails } = useContext(SnackbarContext);
+  const { setLoading } = useContext(LoaderContext);
+  useEffect(() => {
+    getApps();
+  }, []);
 
-      const getApps = async () => {
-        try {
-          setLoading(true)
-          const res = await axios.get("http://192.168.29.48:3001/apps/", {
-            headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
+  useEffect(() => {
+    if (buildDetails.app.length > 0) {
+      setLoading(true);
+      const baseUrl = `http://15.206.158.9:3001/apps/versions?appname=${buildDetails.app}`;
+      console.log(baseUrl, "appsssss");
+      axios
+        .get(baseUrl, {
+          headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
+        })
+        .then((res) => {
+          setLoading(false);
+          setVersionData(res.data.data);
+        })
+        .catch((error) => {
+          setLoading(false);
+          setSnackbarDetails({
+            open: true,
+            data: error.message ? error.message : "Server Error",
+            type: "error",
           });
-          if (res.status == 200){
-            setLoading(false)
-            setAppData(res.data.data);    
-          }
-        } catch (error) {
-          setLoading(false)
-          console.log(error, "errorrr")
-          setSnackbarDetails({ open:true, data:error.message?error.message:"Server Error", type:"error"});
-        }
-        // const res = await axios.get("http://192.168.29.48:3001/apps/", {
-        //   headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
-        // });
-        // console.log(res, "errorrrr")
-      };
+        });
+    }
+  }, [buildDetails.app]);
+
+  const getApps = async () => {
+    try {
+      setLoading(true);
+      const res = await axios.get("http://15.206.158.9:3001/apps/", {
+        headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
+      });
+      if (res.status == 200) {
+        setLoading(false);
+        setAppData(res.data.data);
+      }
+    } catch (error) {
+      setLoading(false);
+      console.log(error, "errorrr");
+      setSnackbarDetails({
+        open: true,
+        data: error.message ? error.message : "Server Error",
+        type: "error",
+      });
+    }
+    // const res = await axios.get("http://192.168.29.48:3001/apps/", {
+    //   headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
+    // });
+    // console.log(res, "errorrrr")
+  };
   return (
     <div className="newFormContainer">
       <section className="section">
@@ -73,7 +88,9 @@ const NewForm = () => {
                 id="select-app"
                 value={buildDetails.app}
                 label="Select APP"
-                onChange={(e) =>setBuildDetails(prev=>({...prev, app:e.target.value}))}
+                onChange={(e) =>
+                  setBuildDetails((prev) => ({ ...prev, app: e.target.value }))
+                }
               >
                 {appData?.map((item, index) => (
                   <MenuItem key={index} value={item}>
@@ -92,7 +109,12 @@ const NewForm = () => {
                 value={buildDetails.version}
                 label="Select Version"
                 disabled={!versionData}
-                onChange={(e) => setBuildDetails(prev=>({...prev, version:e.target.value}))}
+                onChange={(e) =>
+                  setBuildDetails((prev) => ({
+                    ...prev,
+                    version: e.target.value,
+                  }))
+                }
               >
                 {versionData?.map((item, index) => (
                   <MenuItem key={index} value={item}>
@@ -103,9 +125,10 @@ const NewForm = () => {
             </FormControl>
           </Grid>
         </Grid>
-          <Grid item xs={12} xm={6}>
+        <Grid item xs={12} xm={6}>
+          <Link to="/form" style={{ color: "white" }}>
             <Button
-            className="newButton"
+              className="newButton"
               variant="contained"
               disabled={!buildDetails.version}
               sx={{
@@ -115,9 +138,10 @@ const NewForm = () => {
                 },
               }}
             >
-              <Link to="/form" style={{color:"white"}}>Start Building</Link>
+              Start Building
             </Button>
-          </Grid>
+          </Link>
+        </Grid>
         {/* </div> */}
       </section>
     </div>

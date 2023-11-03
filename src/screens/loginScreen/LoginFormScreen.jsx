@@ -49,7 +49,7 @@ const LoginFormScreen = () => {
     if (username && password) {
       try {
         setLoading(true)
-        const response = await axios.post("http://192.168.29.48:3001/login", {
+        const response = await axios.post("http://15.206.158.9:3001/login", {
           username,
           password,
         });

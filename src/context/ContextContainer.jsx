@@ -17,6 +17,7 @@ const ContextContainer = () => {
     app: "",
     version: "",
     buildId: "",
+    newBuildId:""
   });
   const [loading, setLoading] = useState(false);
   const [colors, setColors] = useState({

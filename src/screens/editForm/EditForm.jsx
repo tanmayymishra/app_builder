@@ -34,7 +34,7 @@ const EditForm = () => {
   useEffect(() => {
     if (buildDetails.app.length > 0) {
       setLoading(true)
-      const baseUrl = `http://192.168.29.48:3001/apps/versions?appname=${buildDetails.app}`;
+      const baseUrl = `http://15.206.158.9:3001/apps/versions?appname=${buildDetails.app}`;
       console.log(baseUrl, "appsssss");
       axios
         .get(baseUrl, {
@@ -53,7 +53,7 @@ const EditForm = () => {
           });
         });
       axios
-        .get(`http://192.168.29.48:3001/build?appname=${buildDetails.app}`, {
+        .get(`http://15.206.158.9:3001/build?appname=${buildDetails.app}`, {
           headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
         })
         .then((res) => {
@@ -74,7 +74,7 @@ const EditForm = () => {
   const getApps = async () => {
     try {
       setLoading(true)
-      const res = await axios.get("http://192.168.29.48:3001/apps/", {
+      const res = await axios.get("http://15.206.158.9:3001/apps/", {
         headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
       });
       if (res) {
@@ -100,7 +100,7 @@ const EditForm = () => {
     setBuildDetails((prev) => ({ ...prev, buildId: e.target.value }));
     axios
       .get(
-        `http://192.168.29.48:3001/build?appname=${buildDetails.app}&buildid=${e.target.value}`,
+        `http://15.206.158.9:3001/build?appname=${buildDetails.app}&buildid=${e.target.value}`,
         {
           headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
         }
@@ -197,6 +197,7 @@ const EditForm = () => {
           </Grid>
 
           <Grid item xs={12} xm={6}>
+            <Link to="/form" style={{ color: "white" }}>
             <Button
               className="editButton"
               variant="contained"
@@ -208,10 +209,9 @@ const EditForm = () => {
                 },
               }}
             >
-              <Link to="/form" style={{ color: "white" }}>
                 Start Editing
-              </Link>
             </Button>
+              </Link>
           </Grid>
         </Grid>
         {/* </div> */}

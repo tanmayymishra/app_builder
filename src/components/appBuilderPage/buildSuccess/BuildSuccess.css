@@ -1,0 +1,8 @@
+.buildContainer{
+    display: flex;
+    height: 75vh;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
