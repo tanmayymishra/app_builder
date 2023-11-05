@@ -1,6 +1,7 @@
 .loginform {
   width: 400px;
-  height: 400px;
+  min-height: 400px;
+  height:auto;
   background-color:#f2f2f2;
   color: #ffffff;
   position: absolute;

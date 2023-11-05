@@ -31,31 +31,54 @@ const LoginFormScreen = () => {
     username: "",
     password: "",
   });
-  const { setSnackbarDetails}= useContext(SnackbarContext)
-  const {setLoading}= useContext(LoaderContext)
+  const [isError, setIsError] = useState({});
+  const { setSnackbarDetails } = useContext(SnackbarContext);
+  const { setLoading } = useContext(LoaderContext);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleLoginChange = (e) => {
     if (e.target.name == "username") {
-      setLoginDetails({ ...loginDetails, username: e.target.value });
+      if (e.target.value.length < 3) {
+        setIsError({
+          ...isError,
+          username: "Username Must Be More Than 2 Characters",
+        });
+        setLoginDetails({ ...loginDetails, username: e.target.value });
+      } else {
+        delete isError["username"];
+        setLoginDetails({ ...loginDetails, username: e.target.value });
+      }
     } else if (e.target.name == "password") {
-      setLoginDetails({ ...loginDetails, password: e.target.value });
+      if (e.target.value.length < 4) {
+        setIsError({
+          ...isError,
+          password: "Password Must Be More Than 4 Characters",
+        });
+        setLoginDetails({ ...loginDetails, password: e.target.value });
+      } else {
+        delete isError["password"];
+        setLoginDetails({ ...loginDetails, password: e.target.value });
+      }
     }
   };
 
   const handleLoginSubmit = async (e) => {
     const { username, password } = loginDetails;
     e.preventDefault();
-    if (username && password) {
+    if (username && password && !Object.keys(isError).length) {
       try {
-        setLoading(true)
-        const response = await axios.post("http://192.168.29.48:3001/login", {
+        setLoading(true);
+        const response = await axios.post("http://15.206.158.9:3001/login", {
           username,
           password,
         });
         if (response.status == 200) {
-          setLoading(false)
-          setSnackbarDetails({ open:true, data:response.message?response.message:"Logged In", type:"success"});
+          setLoading(false);
+          setSnackbarDetails({
+            open: true,
+            data: response.message ? response.message : "Logged In",
+            type: "success",
+          });
           // <SnackbarComponenet open={()=>setOpenSnackbar(true)}/>
           localStorage.setItem("username", username);
           localStorage.setItem("password", password);
@@ -63,19 +86,26 @@ const LoginFormScreen = () => {
           navigate("/chooseform");
           setLoginDetails({ username: "", password: "" });
         } else {
-          setLoading(false)
+          setLoading(false);
           navigate("/login");
         }
       } catch (e) {
-        setLoading(false)
-        console.log(e, "errorrr")
-        setSnackbarDetails({open:true, data:e.message?e.message:"Network Error", type:"error"});
+        setLoading(false);
+        console.log(e, "errorrr");
+        setSnackbarDetails({
+          open: true,
+          data: e.message ? e.message : "Network Error",
+          type: "error",
+        });
       }
     } else {
-      setSnackbarDetails({ open:true, data:"Enter Login Details", type:"error"});
+      setSnackbarDetails({
+        open: true,
+        data: "Enter Login Details",
+        type: "error",
+      });
     }
   };
-
   return (
     <>
       <Stack
@@ -89,61 +119,65 @@ const LoginFormScreen = () => {
         <Stack sx={{ p: 4 }} className="loginform">
           <p className="formheading">Sign In</p>
           <form onSubmit={handleLoginSubmit}>
-          <Stack spacing={3} sx={{ p: 3 }} className="loginfields">
-            <TextField
-              required
-              id="username"
-              className={classes.root}
-              label="UserName"
-              style={{
-                marginTop:"25px"
-              }}
-              name="username"
-              placeholder="Enter Username"
-              value={loginDetails.username}
-              onChange={handleLoginChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start" sx={{ cursor: "pointer" }}>
-                    <AccountCircle />
-                  </InputAdornment>
-                ),
-              }}
-            />
-            <TextField
-              required
-              id="password"
-              className={classes.root}
-              label="Password"
-              name="password"
-              type={showPassword ? "text" : "password"}
-              placeholder="Enter Password"
-              value={loginDetails.password}
-              onChange={handleLoginChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment
-                    position="start"
-                    sx={{ cursor: "pointer" }}
-                    onClick={handleClickShowPassword}
-                  >
-                    {showPassword ? <Visibility /> : <VisibilityOff />}
-                  </InputAdornment>
-                ),
-              }}
-            />
-            <Button
-              type="submit"
-              variant="contained"
-              sx={{ p: 1.5, backgroundColor: "#3085C3!important"}}
-              style={{
-                marginTop:"50px"
-              }}
-              onClick={handleLoginSubmit}
-            >
-              Login
-            </Button>
-          </Stack>
+            <Stack spacing={3} sx={{ p: 3 }} className="loginfields">
+              <TextField
+                required
+                error={isError?.username}
+                helperText={isError?.username ? isError.username : ""}
+                id="username"
+                className={classes.root}
+                label="UserName"
+                style={{
+                  marginTop: "25px",
+                }}
+                name="username"
+                placeholder="Enter Username"
+                value={loginDetails.username}
+                onChange={handleLoginChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start" sx={{ cursor: "pointer" }}>
+                      <AccountCircle />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+              <TextField
+                required
+                error={isError?.password}
+                helperText={isError?.password ? isError.password : ""}
+                id="password"
+                className={classes.root}
+                label="Password"
+                name="password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter Password"
+                value={loginDetails.password}
+                onChange={handleLoginChange}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment
+                      position="start"
+                      sx={{ cursor: "pointer" }}
+                      onClick={handleClickShowPassword}
+                    >
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
+                    </InputAdornment>
+                  ),
+                }}
+              />
+              <Button
+                type="submit"
+                variant="contained"
+                sx={{ p: 1.5, backgroundColor: "#3085C3!important" }}
+                style={{
+                  marginTop: "50px",
+                }}
+                onClick={handleLoginSubmit}
+              >
+                Login
+              </Button>
+            </Stack>
           </form>
         </Stack>
       </Stack>
