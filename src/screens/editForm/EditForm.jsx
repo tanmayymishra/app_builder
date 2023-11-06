@@ -171,7 +171,7 @@ const EditForm = () => {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={12} xm={6}>
+          {/* <Grid item xs={12} xm={6}>
             <FormControl fullWidth>
               <InputLabel id="version-label">Select Version</InputLabel>
               <Select
@@ -194,7 +194,7 @@ const EditForm = () => {
                 ))}
               </Select>
             </FormControl>
-          </Grid>
+          </Grid> */}
 
           <Grid item xs={12} xm={6}>
             <Link to="/form" style={{ color: "white" }}>

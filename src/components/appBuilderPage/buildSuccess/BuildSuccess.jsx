@@ -23,7 +23,7 @@ function BuildSuccess() {
           }
         )
         .then((res) => {
-          console.log(res.data, "resssssssssssssss")
+          console.log(res.data, "resssssssssssssss");
           setStatus(res.data.data.BuildStatus);
           console.log(res.data, "refresh button response");
           setLoading(false);
@@ -58,7 +58,31 @@ function BuildSuccess() {
       setLoading(false);
     }
   };
-  console.log(status, "statussss")
+
+  const handleDownloadApk = () => {
+    console.log("handle download apk");
+    setLoading(true);
+    try {
+      axios({
+        // url: `http://15.206.158.9:3001/build/download?appname=${buildDetails.app}&buildid=${buildDetails.newBuildId}`,
+        method: "GET",
+        headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
+        responseType: "blob", // Important
+      })
+        .then((response) => {
+          FileDownload(response.data, "build.zip");
+          setLoading(false);
+        })
+        .catch((e) => {
+          console.log(e, "download apk api error");
+          setLoading(false);
+        });
+    } catch (error) {
+      setLoading(false);
+    }
+  };
+
+  console.log(status, "statussss");
   return (
     <React.Fragment>
       <div className="buildContainer">
@@ -96,6 +120,16 @@ function BuildSuccess() {
             onClick={handleDownload}
           >
             Download Build
+          </Button>
+        )}
+        {status === "Success" && (
+          <Button
+            sx={{ borderRadius: 10 }}
+            variant="contained"
+            startIcon={<DownloadIcon />}
+            onClick={handleDownloadApk}
+          >
+            Download APK
           </Button>
         )}
       </div>
