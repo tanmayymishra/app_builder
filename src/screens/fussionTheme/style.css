@@ -39,7 +39,8 @@
   height: 896px;
   top: 0;
   left: 0;
-  background: linear-gradient(180deg, rgb(225.25, 238.89, 255) 0%, rgba(233, 236, 242, 0) 100%);
+  background: linear-gradient(358deg, #E1EFFF -0.49%, rgba(233, 236, 242, 0.00) 96.85%);
+    /* background: linear-gradient(180deg, rgb(225.25, 238.89, 255) 0%, rgba(233, 236, 242, 0) 100%); */
 }
 
 .platinumContainer .iphone-SE {
@@ -538,7 +539,7 @@
   left: 179px;
   font-family: "Inter", Helvetica;
   font-weight: 400;
-  color: var(--x-383737);
+  color: black;
   font-size: 14px;
   letter-spacing: 0;
   line-height: 18.2px;

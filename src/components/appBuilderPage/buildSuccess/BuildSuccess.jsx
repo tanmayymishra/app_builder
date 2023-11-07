@@ -4,13 +4,15 @@ import { Typography, Grid, Tooltip, Button } from "@mui/material";
 import DownloadIcon from "@mui/icons-material/Download";
 import IconButton from "@mui/material/IconButton";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import { LoaderContext, BuildContext } from "../../../context/contexts";
+import { LoaderContext, BuildContext ,SnackbarContext} from "../../../context/contexts";
 import axios from "axios";
 
 function BuildSuccess() {
   const [status, setStatus] = useState(false);
   const { setLoading } = useContext(LoaderContext);
   const { buildDetails, setBuildDetails } = useContext(BuildContext);
+  const { snackbarDetails, setSnackbarDetails } = useContext(SnackbarContext);
+
   const FileDownload = require("js-file-download");
   const handleRefresh = () => {
     setLoading(true);
@@ -30,6 +32,11 @@ function BuildSuccess() {
         });
     } catch (error) {
       setLoading(false);
+      setSnackbarDetails({
+        open: true,
+        data: error.message ? error.message : "Network Error",
+        type: "error",
+      });
       console.log(error, "refresh button error");
     }
   };
@@ -37,6 +44,7 @@ function BuildSuccess() {
     setLoading(true);
     try {
       axios({
+        // url: `http://15.206.158.9:3001/build/download?appname=EVApp&buildid=c264c03a-9707-4bce-b131-3e5fd3f5fefe`,
         url: `http://15.206.158.9:3001/build/download?appname=${buildDetails.app}&buildid=${buildDetails.newBuildId}`,
         method: "GET",
         headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
@@ -44,20 +52,33 @@ function BuildSuccess() {
       })
         .then((response) => {
           FileDownload(response.data, "build.zip");
-          setLoading(false);
+          setTimeout(() => {
+            setLoading(false);
+          }, 4000);
         })
         .catch((e) => {
           console.log(e, "download api error");
           setLoading(false);
+          setSnackbarDetails({
+            open: true,
+            data: e.message ? e.message : "Failed to Download",
+            type: "error",
+          });
         });
       // axios.get(`http://http://15.206.158.9:3001/build/download?appname=${buildDetails.app}&buildid=${buildDetails.newBuildId}`)
       // .then((res)=>{
 
       // })
-    } catch (error) {
+    } catch (e) {
       setLoading(false);
+      setSnackbarDetails({
+        open: true,
+        data: e.message ? e.message : "Failed to Download",
+        type: "error",
+      });
     }
   };
+
   console.log(status, "statussss")
   return (
     <React.Fragment>
@@ -87,7 +108,7 @@ function BuildSuccess() {
         >
           Check Status
         </Button>
-        <h4>{status ? status : "Inprogress"}</h4>
+        <h4>{status && status==="Inprogress"?"In Progress":status}</h4>
         {status === "Success" && (
           <Button
             sx={{ borderRadius: 10 }}

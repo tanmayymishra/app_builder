@@ -24,6 +24,7 @@ const NewForm = () => {
   const { setLoading } = useContext(LoaderContext);
   useEffect(() => {
     getApps();
+    
   }, []);
 
   useEffect(() => {

@@ -5,18 +5,25 @@ import {
     Button,
     Grid,
   } from "@mui/material";
-import { BuildContext } from "../../context/contexts";
+import { BuildContext, AppDetailsContext } from "../../context/contexts";
 import {Buffer} from 'buffer';
 
 
 const ChooseForm = ({ setSelectForm }) => {
-  
+  const {appDetails,setAppDetails} = useContext(AppDetailsContext)
+
   const { setBuildDetails}= useContext(BuildContext)
   useEffect(()=>{
     setBuildDetails(prev=>({...prev, credBase64:Buffer.from(`${localStorage.getItem("username")}:${localStorage.getItem("password")}`).toString('Base64') }))
   },[])
   const handleSelect = (e) => {
     setSelectForm(e);
+    if(e==="new"){
+      setAppDetails({
+        ...appDetails, 
+        theme:"Modern",
+      })
+    }
   };
 
   return (

@@ -6,7 +6,6 @@ import { ColorContext, AppDetailsContext,  } from "../../../context/contexts";
 import reactCSS from "reactcss";
 import { useField, useFormikContext } from "formik";
 
-
 const AppThemeForm = (props) => {
 
   const [color1, setColor1] = useState("");

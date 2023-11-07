@@ -26,7 +26,7 @@ const ClassicTheme = () => {
     let values = hex.match(/\w\w/g);
     let [r, g, b] = values.map((k) => parseInt(k, 16));
     let rgb = `rgb(${r},${g},${b})`;
-    let rgba = `rgba( ${r}, ${g}, ${b}, 0 )`;
+    let rgba = `rgba( ${r}, ${g}, ${b}, .4 )`;
     // setColorsRgb(prev=>({...prev, [key]:rgb}))
     objRgb[key] = rgb;
     objRgba[key] = rgba;
@@ -95,7 +95,7 @@ const ClassicTheme = () => {
         </div>
       </div>
       <div className="rectangle-2" style={{
-        background: `linear-gradient(180deg, ${colors.primary} 0%, ${objRgba.primary} 100%)`
+        background: `linear-gradient(90deg, ${colors.primary} 0%, ${objRgba.primary} 100%)`
       }}/>
       <img
         className="ic-baseline-eco"
@@ -190,7 +190,7 @@ const ClassicTheme = () => {
       />
       <img
         className="figure"
-        src={defaultBike.sideViewImage ? defaultBike.sideViewImage:"https://c.animaapp.com/hYkRxqnJ/img/figure.png"}
+        src={defaultBike.sideViewImage ? defaultBike.sideViewImage:require("../../assets/defaultSideView.png")}
         alt="img"
       />
       <div className="group-2">

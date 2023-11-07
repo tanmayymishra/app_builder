@@ -1,18 +1,26 @@
 import React,{useEffect, useContext} from "react";
 import { Grid, Typography } from "@mui/material";
 import { InputField } from "../../formFields";
-import { AppDetailsContext } from "../../../context/contexts";
+import { AppDetailsContext ,ColorContext} from "../../../context/contexts";
 import { useFormikContext } from "formik";
 
 const AccountForm = (props) => {
   const {values}= useFormikContext()
+  const { colors,setColors } = useContext(ColorContext);
+
   const {appDetails, setAppDetails} = useContext(AppDetailsContext)
   useEffect(()=>{
+    setColors(
+      {primary: values.appTheme.primaryColor,
+        secondary:values.appTheme.secondaryColor,
+        accent:values.appTheme.accentColor
+      }
+    )
     setAppDetails({
       ...appDetails,
-      brandName:values.account.brandName,
+      brandName:values?.account?.brandName,
     })
-  },[values.account.brandName])
+  },[values?.account?.brandName])
 
   return (
     <React.Fragment>

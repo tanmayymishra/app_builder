@@ -21,7 +21,7 @@ import {
       backgroundColor:"#29242c",
     },
     root: {
-      borderRadius: "50px",
+      borderRadius: "6px",
       width: 'auto',
       padding:"none",
       marginLeft: theme.spacing(2),
