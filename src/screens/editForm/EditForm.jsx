@@ -14,13 +14,14 @@ import {
   BuildContext,
   InitialFormContext,
   SnackbarContext,
-  LoaderContext
+  LoaderContext,StepContext
 } from "../../context/contexts";
 
 const EditForm = () => {
   const { buildDetails, setBuildDetails } = useContext(BuildContext);
   const { setInitialEditForm } = useContext(InitialFormContext);
   const { snackbarDetails, setSnackbarDetails } = useContext(SnackbarContext);
+  const { activeStep, setActiveStep } = useContext(StepContext);
   const [appData, setAppData] = useState();
   const [versionData, setVersionData] = useState();
   const [buildIdData, setBuildIdData] = useState();
@@ -29,6 +30,7 @@ const EditForm = () => {
 
   useEffect(() => {
     getApps();
+    setActiveStep(0);
   }, []);
 
   useEffect(() => {

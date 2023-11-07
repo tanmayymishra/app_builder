@@ -1,13 +1,21 @@
 import React, { useContext, useState } from "react";
 import "./BuildSuccess.css";
-import { Typography, Grid, Tooltip, Button } from "@mui/material";
+import { Typography, Grid, Tooltip, Button,Stack,} from "@mui/material";
 import DownloadIcon from "@mui/icons-material/Download";
 import IconButton from "@mui/material/IconButton";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { LoaderContext, BuildContext } from "../../../context/contexts";
 import axios from "axios";
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  buildIdHeading: {
+    backgroundColor: "#ffff1a",
+  },
+});
 
 function BuildSuccess() {
+  const classes = useStyles();
   const [status, setStatus] = useState(false);
   const { setLoading } = useContext(LoaderContext);
   const { buildDetails, setBuildDetails } = useContext(BuildContext);
@@ -89,6 +97,7 @@ function BuildSuccess() {
         <Typography variant="h4" gutterBottom>
           Your App has been build successfully.
         </Typography>
+        <Typography variant="h6">Build ID -<span className={classes.buildIdHeading}>{buildDetails.newBuildId}</span></Typography>
 
         {/* <Tooltip title="Check Status">
           <IconButton
@@ -101,7 +110,7 @@ function BuildSuccess() {
             <RefreshIcon />
           </IconButton> 
         </Tooltip> */}
-
+        
         <Button
           sx={{ borderRadius: 10 }}
           variant="contained"
@@ -112,6 +121,7 @@ function BuildSuccess() {
           Check Status
         </Button>
         <h4>{status ? status : "Inprogress"}</h4>
+        <Stack direction="row" spacing={3}>
         {status === "Success" && (
           <Button
             sx={{ borderRadius: 10 }}
@@ -126,12 +136,14 @@ function BuildSuccess() {
           <Button
             sx={{ borderRadius: 10 }}
             variant="contained"
+            color="secondary"
             startIcon={<DownloadIcon />}
             onClick={handleDownloadApk}
           >
             Download APK
           </Button>
         )}
+        </Stack>
       </div>
     </React.Fragment>
   );

@@ -16,6 +16,7 @@ import {
   InitialFormContext,
   SnackbarContext,
   LoaderContext,
+  BuildVersionContext,
 } from "../../context/contexts";
 import useStyles from "./styles";
 import ValSchema from "../validation/ValSchema";
@@ -27,10 +28,10 @@ import BuildSuccess from "./buildSuccess/BuildSuccess";
 const { formId, formField } = BuilderFormModel;
 
 function _renderStepContent(step, values, setFieldValue, errors, checkBuildId) {
- // console.log(values, "formik data values");
- // console.log("checkBuildId id", checkBuildId);
+  // console.log(values, "formik data values");
+  // console.log("checkBuildId id", checkBuildId);
   if (checkBuildId) {
-   // console.log("In Steppers Count 6");
+    // console.log("In Steppers Count 6");
     switch (step) {
       case 0:
         return <AccountForm formField={formField} />;
@@ -50,7 +51,7 @@ function _renderStepContent(step, values, setFieldValue, errors, checkBuildId) {
         return <div>Not Found</div>;
     }
   } else {
-   // console.log("In Steppers Count 5");
+    // console.log("In Steppers Count 5");
     switch (step) {
       case 0:
         return <AccountForm formField={formField} />;
@@ -94,6 +95,7 @@ export default function AppBuilderPage({ selectForm }) {
   const { defaultBike, setDefaultBike } = useContext(DefaultContext);
   const { buildDetails, setBuildDetails, buildId, credBase64 } =
     useContext(BuildContext);
+  const { buildVersion, setBuildVersion } = useContext(BuildVersionContext);
   const checkBuildId = buildDetails.buildId;
   //console.log("build context values", checkBuildId,buildDetails);
   const { snackbarDetails, setSnackbarDetails } = useContext(SnackbarContext);
@@ -101,10 +103,17 @@ export default function AppBuilderPage({ selectForm }) {
   const classes = useStyles();
   const isLastStep = activeStep === steps.length - 1;
   const currentValidationSchema = ValSchema[activeStep];
-  console.log("is last step",steps[activeStep]);
- // console.log(initialEditForm, buildDetails, "initial edit form");
+  console.log("is last step", steps[activeStep]);
+  console.log(
+    "previous build version",
+    buildDetails.version,
+    "app builder build version",
+    buildVersion
+  );
+
+  // console.log(initialEditForm, buildDetails, "initial edit form");
   useEffect(() => {
-  //  console.log("Welcome To The App Builder Page !");
+    //  console.log("Welcome To The App Builder Page !");
     checkBuildId
       ? setSteps([
           "Account Details",
@@ -121,7 +130,7 @@ export default function AppBuilderPage({ selectForm }) {
           "Features",
           "Build",
         ]);
-  },[checkBuildId]);
+  }, [checkBuildId]);
 
   const initValues = {
     account: {
@@ -298,12 +307,25 @@ export default function AppBuilderPage({ selectForm }) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
   async function _submitForm(values, actions) {
+    //setBuildDetails({...buildDetails,version:buildVersion.version});
     setLoading(true);
-    const postData = {
-      appname: buildDetails.app,
-      version: buildDetails.version,
-      buildconfig: values,
-    };
+    let postData = {};
+    if(buildVersion.version && buildDetails.version !== buildVersion.version ){
+      postData = {
+        appname: buildDetails.app,
+        version: buildVersion.version,
+        buildconfig: values,
+      };
+    } 
+    else{
+       postData = {
+        appname: buildDetails.app,
+        version: buildDetails.version,
+        buildconfig: values,
+      };
+    }
+   
+    console.log("Post Data version",buildDetails.version,postData,buildVersion.version);
     await _sleep(1000);
     // alert(JSON.stringify(values, null, 2));
     {
@@ -311,6 +333,7 @@ export default function AppBuilderPage({ selectForm }) {
         ? axios
             .post(
               `http://15.206.158.9:3001/build?appname=${buildDetails.app}`,
+              //postData,
               postData,
               axiosConfig
             )
@@ -335,7 +358,8 @@ export default function AppBuilderPage({ selectForm }) {
             })
         : axios
             .post(
-              `http://15.206.158.9:3001/build?appname=${buildDetails.app}&buildid=${buildDetails.buildId}`,
+              `http://15.206.158.9:3001/build`,
+             // `http://15.206.158.9:3001/build?appname=${buildDetails.app}&buildid=${buildDetails.buildId}`,
               postData,
               axiosConfig
             )
@@ -431,18 +455,44 @@ export default function AppBuilderPage({ selectForm }) {
                       </Button>
                     )}
                     <div className={classes.wrapper}>
-                      <Button
-                        disabled={isSubmitting}
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                        className={classes.button}
-                      >
-                    {/* {
-                      steps[activeStep] === "Previous Build"  ? "Rebuild App" : isLastStep ? "Build App" : "Next"
-                    }     */}
-                        {isLastStep ? "Build App" : "Next"}
-                      </Button>
+                      {steps[activeStep] === "Previous Build" &&
+                      buildVersion.version !== buildDetails.version ? (
+                        <Button
+                          disabled={
+                            isSubmitting ||
+                            (!buildVersion.version ||
+                            buildVersion.isBuild ) || (buildVersion.isBuild)
+                          }
+                          type="submit"
+                          variant="contained"
+                          color="primary"
+                          className={classes.button}
+                        >
+                          Rebuild App
+                        </Button>
+                      ) : steps[activeStep] === "Previous Build"  ? (
+                        <Button
+                          disabled
+                          type="submit"
+                          variant="contained"
+                          color="primary"
+                          className={classes.button}
+                        >
+                          Rebuild App
+                        </Button>
+                      ) : null}
+
+                      {steps[activeStep] !== "Previous Build" ? (
+                        <Button
+                          disabled={isSubmitting}
+                          type="submit"
+                          variant="contained"
+                          color="primary"
+                          className={classes.button}
+                        >
+                          {isLastStep ? "Build App" : "Next"}
+                        </Button>
+                      ) : null}
                     </div>
                   </div>
                 </Form>

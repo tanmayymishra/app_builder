@@ -7,7 +7,7 @@ import {
   BuildContext,
   InitialFormContext,
   SnackbarContext,
-  LoaderContext,
+  LoaderContext,BuildVersionContext
 } from "./contexts";
 import RoutingApp from "../RoutingApp";
 
@@ -42,6 +42,7 @@ const ContextContainer = () => {
     data: "",
     type: "error",
   });
+  const [buildVersion,setBuildVersion] = useState({version:"",isBuild:false}); 
   return (
     <>
       <StepContext.Provider value={{ activeStep, setActiveStep }}>
@@ -49,6 +50,7 @@ const ContextContainer = () => {
           <InitialFormContext.Provider
             value={{ initialEditForm, setInitialEditForm }}
           >
+            <BuildVersionContext.Provider value={{buildVersion,setBuildVersion}} >
             <AppDetailsContext.Provider value={{ appDetails, setAppDetails }}>
               <ColorContext.Provider value={{ colors, setColors }}>
                 <BuildContext.Provider
@@ -68,6 +70,7 @@ const ContextContainer = () => {
                 </BuildContext.Provider>
               </ColorContext.Provider>
             </AppDetailsContext.Provider>
+            </BuildVersionContext.Provider>
           </InitialFormContext.Provider>
         </DefaultContext.Provider>
       </StepContext.Provider>

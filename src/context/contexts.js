@@ -8,3 +8,4 @@ export const BuildContext= createContext("")
 export const InitialFormContext= createContext("")
 export const SnackbarContext= createContext("")
 export const LoaderContext= createContext("")
+export const BuildVersionContext = createContext("");
