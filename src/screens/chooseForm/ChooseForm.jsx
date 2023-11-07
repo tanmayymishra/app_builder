@@ -5,16 +5,26 @@ import {
     Button,
     Grid,
   } from "@mui/material";
-import { BuildContext, AppDetailsContext } from "../../context/contexts";
+import { BuildContext,StepContext,BuildVersionContext,AppDetailsContext } from "../../context/contexts";
 import {Buffer} from 'buffer';
 
 
 const ChooseForm = ({ setSelectForm }) => {
+  
+  const {buildDetails,setBuildDetails}= useContext(BuildContext);
+  const { activeStep, setActiveStep } = useContext(StepContext);
+  const { buildVersion, setBuildVersion } = useContext(BuildVersionContext);
   const {appDetails,setAppDetails} = useContext(AppDetailsContext)
 
-  const { setBuildDetails}= useContext(BuildContext)
+  console.log("choose form builddetails",buildDetails,activeStep);
   useEffect(()=>{
-    setBuildDetails(prev=>({...prev, credBase64:Buffer.from(`${localStorage.getItem("username")}:${localStorage.getItem("password")}`).toString('Base64') }))
+    //setBuildDetails(prev=>({...prev, credBase64:Buffer.from(`${localStorage.getItem("username")}:${localStorage.getItem("password")}`).toString('Base64') }))
+    setActiveStep(0);
+    setBuildDetails(prev=>({ app: "",
+    version: "",
+    buildId: "",
+    newBuildId:"", credBase64:Buffer.from(`${localStorage.getItem("username")}:${localStorage.getItem("password")}`).toString('Base64') }))
+    setBuildVersion({version:"",isBuild:false});
   },[])
   const handleSelect = (e) => {
     setSelectForm(e);

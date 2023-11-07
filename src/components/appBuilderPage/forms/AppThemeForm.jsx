@@ -43,7 +43,6 @@ const AppThemeForm = (props) => {
   const themeOptions=[]
   const handleColorChange = (type, e) => {
     setFieldValue(`appTheme.${type}Color`, e.hex)
-    console.log(type, e, "handle color change");
     type === "primary"
       ? setColors({ ...colors, primary: e.hex })
       : "secondary"

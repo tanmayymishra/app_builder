@@ -14,13 +14,14 @@ import {
   BuildContext,
   InitialFormContext,
   SnackbarContext,
-  LoaderContext
+  LoaderContext,StepContext
 } from "../../context/contexts";
 
 const EditForm = () => {
   const { buildDetails, setBuildDetails } = useContext(BuildContext);
   const { setInitialEditForm } = useContext(InitialFormContext);
   const { snackbarDetails, setSnackbarDetails } = useContext(SnackbarContext);
+  const { activeStep, setActiveStep } = useContext(StepContext);
   const [appData, setAppData] = useState();
   const [versionData, setVersionData] = useState();
   const [buildIdData, setBuildIdData] = useState();
@@ -29,6 +30,7 @@ const EditForm = () => {
 
   useEffect(() => {
     getApps();
+    setActiveStep(0);
   }, []);
 
   useEffect(() => {
@@ -171,7 +173,7 @@ const EditForm = () => {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={12} xm={6}>
+          {/* <Grid item xs={12} xm={6}>
             <FormControl fullWidth>
               <InputLabel id="version-label">Select Version</InputLabel>
               <Select
@@ -194,7 +196,7 @@ const EditForm = () => {
                 ))}
               </Select>
             </FormControl>
-          </Grid>
+          </Grid> */}
 
           <Grid item xs={12} xm={6}>
             <Link to="/form" style={{ color: "white" }}>

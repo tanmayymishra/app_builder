@@ -4,7 +4,7 @@ import { InputField, CheckboxField, SelectField } from "../../formFields";
 import { Form, FieldArray } from "formik";
 
 const DeviceInfoForm = ({ formField, values }) => {
-  console.log(values, "device info form values");
+  //console.log(values, "device info form values");
 
   return (
     <React.Fragment>

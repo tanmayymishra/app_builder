@@ -6,6 +6,7 @@ import AppThemeForm from "./forms/AppThemeForm";
 import DeviceInfoForm from "./forms/DeviceInfoForm";
 import FeaturesForm from "./forms/FeaturesForm";
 import PackagesForm from "./forms/PackagesForm";
+import BuildForm from "./forms/BuildForm";
 import { BuilderFormModel } from "./formModel/BuilderFormModel";
 import {
   ColorContext,
@@ -15,32 +16,58 @@ import {
   InitialFormContext,
   SnackbarContext,
   LoaderContext,
+  BuildVersionContext,
 } from "../../context/contexts";
 import useStyles from "./styles";
 import ValSchema from "../validation/ValSchema";
 import axios from "axios";
 import BuildSuccess from "./buildSuccess/BuildSuccess";
 
-const steps = ["Account Details", "App Theme", "Models", "Features", "Build"];
+//const steps = ["Account Details", "App Theme", "Models", "Features", "Build"];
+
 const { formId, formField } = BuilderFormModel;
 
-function _renderStepContent(step, values, setFieldValue, errors) {
-  console.log(values, "formik data values");
-  switch (step) {
-    case 0:
-      return <AccountForm formField={formField} />;
-    case 1:
-      return <AppThemeForm formField={formField} errors={errors} />;
-    case 2:
-      return <DeviceInfoForm formField={formField} />;
-    case 3:
-      return <FeaturesForm formField={formField} />;
-    case 4:
-      return <PackagesForm formField={formField} />;
-    // case 5:
-    //   return <BuildSuccess formField={formField}/>;
-    default:
-      return <div>Not Found</div>;
+function _renderStepContent(step, values, setFieldValue, errors, checkBuildId) {
+  // console.log(values, "formik data values");
+  // console.log("checkBuildId id", checkBuildId);
+  if (checkBuildId) {
+    // console.log("In Steppers Count 6");
+    switch (step) {
+      case 0:
+        return <AccountForm formField={formField} />;
+      case 1:
+        return <AppThemeForm formField={formField} errors={errors} />;
+      case 2:
+        return <DeviceInfoForm formField={formField} />;
+      case 3:
+        return <FeaturesForm formField={formField} />;
+      case 4:
+        return <PackagesForm formField={formField} />;
+      case 5:
+        return <BuildForm formField={formField} />;
+      // case 5:
+      //   return <BuildSuccess formField={formField}/>;
+      default:
+        return <div>Not Found</div>;
+    }
+  } else {
+    // console.log("In Steppers Count 5");
+    switch (step) {
+      case 0:
+        return <AccountForm formField={formField} />;
+      case 1:
+        return <AppThemeForm formField={formField} errors={errors} />;
+      case 2:
+        return <DeviceInfoForm formField={formField} />;
+      case 3:
+        return <FeaturesForm formField={formField} />;
+      case 4:
+        return <PackagesForm formField={formField} />;
+      // case 5:
+      //   return <BuildSuccess formField={formField}/>;
+      default:
+        return <div>Not Found</div>;
+    }
   }
 }
 
@@ -59,6 +86,7 @@ export function ScrollToError() {
 }
 
 export default function AppBuilderPage({ selectForm }) {
+  const [steps, setSteps] = useState([]);
   const [finalData, setFinalData] = useState({});
   const { colors } = useContext(ColorContext);
   const { initialEditForm, setInitialEditForm } =
@@ -67,12 +95,42 @@ export default function AppBuilderPage({ selectForm }) {
   const { defaultBike, setDefaultBike } = useContext(DefaultContext);
   const { buildDetails, setBuildDetails, buildId, credBase64 } =
     useContext(BuildContext);
+  const { buildVersion, setBuildVersion } = useContext(BuildVersionContext);
+  const checkBuildId = buildDetails.buildId;
+  //console.log("build context values", checkBuildId,buildDetails);
   const { snackbarDetails, setSnackbarDetails } = useContext(SnackbarContext);
   const { loading, setLoading } = useContext(LoaderContext);
   const classes = useStyles();
   const isLastStep = activeStep === steps.length - 1;
   const currentValidationSchema = ValSchema[activeStep];
-  console.log(initialEditForm, buildDetails, "initial edit form");
+  console.log("is last step", steps[activeStep]);
+  console.log(
+    "previous build version",
+    buildDetails.version,
+    "app builder build version",
+    buildVersion
+  );
+
+  // console.log(initialEditForm, buildDetails, "initial edit form");
+  useEffect(() => {
+    //  console.log("Welcome To The App Builder Page !");
+    checkBuildId
+      ? setSteps([
+          "Account Details",
+          "App Theme",
+          "Models",
+          "Features",
+          "Packages",
+          "Previous Build",
+        ])
+      : setSteps([
+          "Account Details",
+          "App Theme",
+          "Models",
+          "Features",
+          "Build",
+        ]);
+  }, [checkBuildId]);
 
   const initValues = {
     account: {
@@ -150,8 +208,8 @@ export default function AppBuilderPage({ selectForm }) {
               },
             },
           },
-          minimumVoltage:"",
-          maximumVoltage:"",
+          minimumVoltage: "",
+          maximumVoltage: "",
           vehicleManual: "",
           batteryAlerts: {
             batteryVoltage: {
@@ -249,6 +307,7 @@ export default function AppBuilderPage({ selectForm }) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
   async function _submitForm(values, actions) {
+    //setBuildDetails({...buildDetails,version:buildVersion.version});
     setLoading(true);
     const postData = {
       appname: buildDetails.app,
@@ -441,8 +500,11 @@ export default function AppBuilderPage({ selectForm }) {
             )
             .then((res) => {
               setLoading(false);
-              setBuildDetails(prev=>({...prev, newBuildId:res?.data?.data?.buildid}))
-              setActiveStep(activeStep + 1);             
+              setBuildDetails((prev) => ({
+                ...prev,
+                newBuildId: res?.data?.data?.buildid,
+              }));
+              setActiveStep(activeStep + 1);
               console.log(res, "after build axios response");
             })
             .catch((err) => {
@@ -458,12 +520,16 @@ export default function AppBuilderPage({ selectForm }) {
         : axios
             .post(
               `http://15.206.158.9:3001/build/`,
+             // `http://15.206.158.9:3001/build?appname=${buildDetails.app}&buildid=${buildDetails.buildId}`,
               postData,
               axiosConfig
             )
             .then((res) => {
               setLoading(false);
-              setBuildDetails(prev=>({...prev, newBuildId:res?.data?.data?.buildid}))
+              setBuildDetails((prev) => ({
+                ...prev,
+                newBuildId: res?.data?.data?.buildid,
+              }));
               setActiveStep(activeStep + 1);
               console.log(res, "after build axios response");
             })
@@ -507,20 +573,20 @@ export default function AppBuilderPage({ selectForm }) {
   function _handleBack() {
     setActiveStep(activeStep - 1);
   }
-  console.log(buildDetails, "bbbbbbbbbb")
+  console.log(buildDetails, "bbbbbbbbbb");
   console.log(finalData, "final submit data");
   return (
     <div className={classes.container}>
       <React.Fragment>
         <React.Fragment>
           {activeStep === steps.length ? (
-              <BuildSuccess />
+            <BuildSuccess />
+          ) : (
             // <>
             //   <div style={{ height: "75vh" }}>
             //     <h1 style={{ color: "green" }}>SUCCESS</h1>
             //   </div>
             // </>
-          ) : (
             <Formik
               initialValues={
                 selectForm === "new" ? initValues : selectForm === "edit"? initialEditForm:initValues
@@ -539,7 +605,8 @@ export default function AppBuilderPage({ selectForm }) {
                     activeStep,
                     values,
                     setFieldValue,
-                    errors
+                    errors,
+                    checkBuildId
                   )}
 
                   <div className={classes.buttons}>
@@ -549,15 +616,44 @@ export default function AppBuilderPage({ selectForm }) {
                       </Button>
                     )}
                     <div className={classes.wrapper}>
-                      <Button
-                        disabled={isSubmitting}
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                        className={classes.button}
-                      >
-                        {isLastStep ? "Build App" : "Next"}
-                      </Button>
+                      {steps[activeStep] === "Previous Build" &&
+                      buildVersion.version !== buildDetails.version ? (
+                        <Button
+                          disabled={
+                            isSubmitting ||
+                            (!buildVersion.version ||
+                            buildVersion.isBuild ) || (buildVersion.isBuild)
+                          }
+                          type="submit"
+                          variant="contained"
+                          color="primary"
+                          className={classes.button}
+                        >
+                          Rebuild App
+                        </Button>
+                      ) : steps[activeStep] === "Previous Build"  ? (
+                        <Button
+                          disabled
+                          type="submit"
+                          variant="contained"
+                          color="primary"
+                          className={classes.button}
+                        >
+                          Rebuild App
+                        </Button>
+                      ) : null}
+
+                      {steps[activeStep] !== "Previous Build" ? (
+                        <Button
+                          disabled={isSubmitting}
+                          type="submit"
+                          variant="contained"
+                          color="primary"
+                          className={classes.button}
+                        >
+                          {isLastStep ? "Build App" : "Next"}
+                        </Button>
+                      ) : null}
                     </div>
                   </div>
                 </Form>

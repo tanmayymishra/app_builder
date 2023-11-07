@@ -12,7 +12,7 @@ export default function FileField(props) {
   const { value } = field;
   // const [currFile, setCurrFile] = useState(value.file)
   // const [currSrc, setCurrSrc] = useState(value.src)
-  console.log(value, "valueeee");
+  //console.log(value, "valueeee");
   function _renderHelperText() {
     const [touched, error, value] = at(form, "touched", "error");
     if (touched && error) {
@@ -22,7 +22,7 @@ export default function FileField(props) {
     }
   }
   // console.log(form, field, "formik form values")
-  console.log(form, "metaaaaaaa");
+  // console.log(form, "metaaaaaaa");
   const handleChange = async (e) => {
     console.log(e.currentTarget.files[0], "file field event");
     // console.log(field, "field props in file field")
