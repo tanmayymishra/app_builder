@@ -494,8 +494,8 @@ export default function AppBuilderPage({ selectForm }) {
         ? axios
             .post(
               `http://15.206.158.9:3001/build/`,
-              // postData,
               postData,
+              // liteData,
               axiosConfig
             )
             .then((res) => {
