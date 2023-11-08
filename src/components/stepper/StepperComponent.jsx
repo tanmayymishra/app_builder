@@ -4,7 +4,6 @@ import { StepContext, BuildContext } from "../../context/contexts";
 import useStyles from "../appBuilderPage/styles";
 import StepButton from "@mui/material/StepButton";
 
-//const steps = ["Account Details", "App Theme", "Models", "Features", "Build"];
 
 const StepperComponent = () => {
   const [steps, setSteps] = useState([]);
