@@ -304,11 +304,21 @@ export default function AppBuilderPage({ selectForm }) {
   async function _submitForm(values, actions) {
     //setBuildDetails({...buildDetails,version:buildVersion.version});
     setLoading(true);
-    const postData = {
-      appname: buildDetails.app,
-      version: buildDetails.version,
-      buildconfig: values,
-    };
+    let postData = {};
+    if(buildVersion.version && buildDetails.version !== buildVersion.version ){
+      postData = {
+        appname: buildDetails.app,
+        version: buildVersion.version,
+        buildconfig: values,
+      };
+    } 
+    else{
+       postData = {
+        appname: buildDetails.app,
+        version: buildDetails.version,
+        buildconfig: values,
+      };
+    }
    
     const liteData= {
       appname: "EVApp",
