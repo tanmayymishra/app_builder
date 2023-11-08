@@ -1,10 +1,14 @@
 import React, { useContext, useState } from "react";
 import "./BuildSuccess.css";
-import { Typography, Grid, Tooltip, Button,Stack,} from "@mui/material";
+import { Typography, Grid, Tooltip, Button, Stack } from "@mui/material";
 import DownloadIcon from "@mui/icons-material/Download";
 import IconButton from "@mui/material/IconButton";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import { LoaderContext, BuildContext ,SnackbarContext} from "../../../context/contexts";
+import {
+  LoaderContext,
+  BuildContext,
+  SnackbarContext,
+} from "../../../context/contexts";
 import axios from "axios";
 import { makeStyles } from "@mui/styles";
 
@@ -33,9 +37,9 @@ function BuildSuccess() {
           }
         )
         .then((res) => {
-          console.log(res.data, "resssssssssssssss");
+          //console.log(res.data, "resssssssssssssss");
           setStatus(res.data.data.BuildStatus);
-          console.log(res.data, "refresh button response");
+          //console.log(res.data, "refresh button response");
           setLoading(false);
         });
     } catch (error) {
@@ -55,14 +59,15 @@ function BuildSuccess() {
         // url: `http://15.206.158.9:3001/build/download?appname=EVApp&buildid=c264c03a-9707-4bce-b131-3e5fd3f5fefe`,
         url: `http://15.206.158.9:3001/build/download?appname=${buildDetails.app}&buildid=${buildDetails.newBuildId}`,
         method: "GET",
+        timeout:300000,
         headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
         responseType: "blob", // Important
       })
         .then((response) => {
           FileDownload(response.data, "build.zip");
-          setTimeout(() => {
-            setLoading(false);
-          }, 4000);
+          // setTimeout(() => {
+          //   setLoading(false);
+          // }, 4000);
         })
         .catch((e) => {
           console.log(e, "download api error");
@@ -115,9 +120,14 @@ function BuildSuccess() {
     <React.Fragment>
       <div className="buildContainer">
         <Typography variant="h4" gutterBottom>
-          Your App has been build successfully.
+          Your App Has Been Build Successfully.
         </Typography>
-        <Typography variant="h6">Build ID -<span className={classes.buildIdHeading}>{buildDetails.newBuildId}</span></Typography>
+        <Typography variant="h6">
+          Build ID -
+          <span className={classes.buildIdHeading}>
+            {buildDetails.newBuildId}
+          </span>
+        </Typography>
 
         {/* <Tooltip title="Check Status">
           <IconButton
@@ -130,7 +140,7 @@ function BuildSuccess() {
             <RefreshIcon />
           </IconButton> 
         </Tooltip> */}
-        
+
         <Button
           sx={{ borderRadius: 10 }}
           variant="contained"
@@ -140,29 +150,29 @@ function BuildSuccess() {
         >
           Check Status
         </Button>
-        <h4>{status && status==="Inprogress"?"In Progress":status}</h4>
+        <h4>{status && status === "Inprogress" ? "In Progress" : status}</h4>
         <Stack direction="row" spacing={3}>
-        {status === "Success" && (
-          <Button
-            sx={{ borderRadius: 10 }}
-            variant="contained"
-            startIcon={<DownloadIcon />}
-            onClick={handleDownload}
-          >
-            Download Build
-          </Button>
-        )}
-        {status === "Success" && (
-          <Button
-            sx={{ borderRadius: 10 }}
-            variant="contained"
-            color="secondary"
-            startIcon={<DownloadIcon />}
-            onClick={handleDownloadApk}
-          >
-            Download APK
-          </Button>
-        )}
+          {status === "Success" && (
+            <Button
+              sx={{ borderRadius: 10 }}
+              variant="contained"
+              startIcon={<DownloadIcon />}
+              onClick={handleDownload}
+            >
+              Download Build
+            </Button>
+          )}
+          {status === "Success" && (
+            <Button
+              sx={{ borderRadius: 10 }}
+              variant="contained"
+              color="secondary"
+              startIcon={<DownloadIcon />}
+              onClick={handleDownloadApk}
+            >
+              Download APK
+            </Button>
+          )}
         </Stack>
       </div>
     </React.Fragment>

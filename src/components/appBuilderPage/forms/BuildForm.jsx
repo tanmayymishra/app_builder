@@ -18,7 +18,8 @@ import RefreshIcon from "@mui/icons-material/Refresh";
 import {
   LoaderContext,
   BuildContext,
-  SnackbarContext,BuildVersionContext
+  SnackbarContext,
+  BuildVersionContext,
 } from "../../../context/contexts";
 import axios from "axios";
 import { makeStyles } from "@mui/styles";
@@ -34,7 +35,7 @@ function BuildForm() {
   const [buildChecked, setBuildChecked] = useState(false);
   const { snackbarDetails, setSnackbarDetails } = useContext(SnackbarContext);
   const { buildDetails, setBuildDetails } = useContext(BuildContext);
-  const { buildVersion,setBuildVersion} = useContext(BuildVersionContext);
+  const { buildVersion, setBuildVersion } = useContext(BuildVersionContext);
   const [versionData, setVersionData] = useState();
   const [version, setVersion] = useState(buildDetails.version);
   const [status, setStatus] = useState(false);
@@ -42,15 +43,15 @@ function BuildForm() {
   const FileDownload = require("js-file-download");
   const handleChange = (event) => {
     setBuildChecked(event.target.checked);
-      setBuildVersion({...buildVersion,isBuild:buildChecked})
+    setBuildVersion({ ...buildVersion, isBuild: buildChecked });
   };
   useEffect(() => {
-    setBuildVersion({version:"".version,isBuild:buildChecked});
-  },[]);
+    setBuildVersion({ version: "".version, isBuild: buildChecked });
+  }, []);
   useEffect(() => {
     if (buildDetails.app.length > 0 && buildChecked) {
       setLoading(true);
-      setBuildVersion({...buildVersion,version:""});
+      setBuildVersion({ ...buildVersion, version: "" });
       setVersion(buildDetails.version);
       const baseUrl = `http://15.206.158.9:3001/apps/versions?appname=${buildDetails.app}`;
       console.log(baseUrl, "appsssss");
@@ -75,11 +76,12 @@ function BuildForm() {
 
   const handleDownload = () => {
     setLoading(true);
-    console.log("build details in download",buildDetails);
+    console.log("build details in download", buildDetails);
     try {
       axios({
         url: `http://15.206.158.9:3001/build/download?appname=${buildDetails.app}&buildid=${buildDetails.buildId}`,
         method: "GET",
+        timeout:300000,
         headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
         responseType: "blob", // Important
       })
@@ -122,11 +124,14 @@ function BuildForm() {
     <React.Fragment>
       <div className="buildContainer">
         <Typography variant="h4" gutterBottom>
-          Your App has been Already Build.
+          Your App Has Been Build Successfully.
         </Typography>
-        <Typography variant="h6">Build ID -<span className={classes.buildIdHeading}>{buildDetails.buildId}</span></Typography>
+        <Typography variant="h6">
+          Build ID -
+          <span className={classes.buildIdHeading}>{buildDetails.buildId}</span>
+        </Typography>
         <Stack direction="row" spacing={3}>
-        <Button
+          <Button
             variant="contained"
             sx={{ borderRadius: 10 }}
             startIcon={<DownloadIcon />}
@@ -134,12 +139,12 @@ function BuildForm() {
           >
             Download Build
           </Button>
-        <Button
+          <Button
             sx={{ borderRadius: 10 }}
             variant="contained"
             startIcon={<DownloadIcon />}
             color="secondary"
-           onClick={handleDownloadApk}
+            onClick={handleDownloadApk}
           >
             Download APK
           </Button>
@@ -172,7 +177,10 @@ function BuildForm() {
                   onChange={(e) => {
                     console.log("version value", e.target.value);
                     setVersion(e.target.value);
-                    setBuildVersion({...buildVersion,version:e.target.value});
+                    setBuildVersion({
+                      ...buildVersion,
+                      version: e.target.value,
+                    });
                     // setBuildDetails((prev) => ({
                     //   ...prev,
                     //   version: e.target.value,
