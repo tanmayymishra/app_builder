@@ -120,7 +120,7 @@ function BuildForm() {
         .catch((e) => {
           setSnackbarDetails({
             open: true,
-            data: err.message ? err.message : "Network Error",
+            data: e.message ? e.message : "Network Error",
             type: "error",
           });
           console.log(e, "download apk api error");
