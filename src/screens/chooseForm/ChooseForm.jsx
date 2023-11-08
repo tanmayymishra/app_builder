@@ -16,7 +16,6 @@ const ChooseForm = ({ setSelectForm }) => {
   const { buildVersion, setBuildVersion } = useContext(BuildVersionContext);
   const {appDetails,setAppDetails} = useContext(AppDetailsContext)
 
-  console.log("choose form builddetails",buildDetails,activeStep);
   useEffect(()=>{
     //setBuildDetails(prev=>({...prev, credBase64:Buffer.from(`${localStorage.getItem("username")}:${localStorage.getItem("password")}`).toString('Base64') }))
     setActiveStep(0);
