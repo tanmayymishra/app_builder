@@ -41,14 +41,9 @@ function BuildForm() {
   const { setLoading } = useContext(LoaderContext);
   const FileDownload = require("js-file-download");
   const handleChange = (event) => {
-    console.log("check",event.target.value);
     setBuildChecked(event.target.checked);
       setBuildVersion({...buildVersion,isBuild:buildChecked})
   };
-  console.log("build details", buildDetails);
-  console.log("Rebuild this app yes or no", buildChecked, versionData);
-  console.log("changed version" ,version);
-  console.log("build version",buildVersion);
   useEffect(() => {
     setBuildVersion({version:"".version,isBuild:buildChecked});
   },[]);

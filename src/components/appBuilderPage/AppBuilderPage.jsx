@@ -23,15 +23,12 @@ import ValSchema from "../validation/ValSchema";
 import axios from "axios";
 import BuildSuccess from "./buildSuccess/BuildSuccess";
 
-//const steps = ["Account Details", "App Theme", "Models", "Features", "Build"];
 
 const { formId, formField } = BuilderFormModel;
 
 function _renderStepContent(step, values, setFieldValue, errors, checkBuildId) {
-  // console.log(values, "formik data values");
-  // console.log("checkBuildId id", checkBuildId);
+  
   if (checkBuildId) {
-    // console.log("In Steppers Count 6");
     switch (step) {
       case 0:
         return <AccountForm formField={formField} />;
@@ -51,7 +48,6 @@ function _renderStepContent(step, values, setFieldValue, errors, checkBuildId) {
         return <div>Not Found</div>;
     }
   } else {
-    // console.log("In Steppers Count 5");
     switch (step) {
       case 0:
         return <AccountForm formField={formField} />;
@@ -97,7 +93,6 @@ export default function AppBuilderPage({ selectForm }) {
     useContext(BuildContext);
   const { buildVersion, setBuildVersion } = useContext(BuildVersionContext);
   const checkBuildId = buildDetails.buildId;
-  //console.log("build context values", checkBuildId,buildDetails);
   const { snackbarDetails, setSnackbarDetails } = useContext(SnackbarContext);
   const { loading, setLoading } = useContext(LoaderContext);
   const classes = useStyles();
@@ -113,7 +108,7 @@ export default function AppBuilderPage({ selectForm }) {
 
   // console.log(initialEditForm, buildDetails, "initial edit form");
   useEffect(() => {
-    //  console.log("Welcome To The App Builder Page !");
+     console.log("Welcome To The App Builder Page !");
     checkBuildId
       ? setSteps([
           "Account Details",
@@ -309,11 +304,21 @@ export default function AppBuilderPage({ selectForm }) {
   async function _submitForm(values, actions) {
     //setBuildDetails({...buildDetails,version:buildVersion.version});
     setLoading(true);
-    const postData = {
-      appname: buildDetails.app,
-      version: buildDetails.version,
-      buildconfig: values,
-    };
+    let postData = {};
+    if(buildVersion.version && buildDetails.version !== buildVersion.version ){
+      postData = {
+        appname: buildDetails.app,
+        version: buildVersion.version,
+        buildconfig: values,
+      };
+    } 
+    else{
+       postData = {
+        appname: buildDetails.app,
+        version: buildDetails.version,
+        buildconfig: values,
+      };
+    }
    
     const liteData= {
       appname: "EVApp",
@@ -579,8 +584,8 @@ export default function AppBuilderPage({ selectForm }) {
     <div className={classes.container}>
       <React.Fragment>
         <React.Fragment>
-          {activeStep === steps.length ? (
-            <BuildSuccess />
+          {activeStep === steps.length && (steps.length !== 0) ? (
+             <BuildSuccess /> 
           ) : (
             // <>
             //   <div style={{ height: "75vh" }}>

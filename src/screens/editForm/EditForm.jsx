@@ -173,31 +173,6 @@ const EditForm = () => {
               </Select>
             </FormControl>
           </Grid>
-          {/* <Grid item xs={12} xm={6}>
-            <FormControl fullWidth>
-              <InputLabel id="version-label">Select Version</InputLabel>
-              <Select
-                labelId="version-label"
-                id="select-version"
-                value={buildDetails.version}
-                label="Select Version"
-                disabled={!versionData}
-                onChange={(e) =>
-                  setBuildDetails((prev) => ({
-                    ...prev,
-                    version: e.target.value,
-                  }))
-                }
-              >
-                {versionData?.map((item, index) => (
-                  <MenuItem key={index} value={item}>
-                    {item}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid> */}
-
           <Grid item xs={12} xm={6}>
             <Link to="/form" style={{ color: "white" }}>
             <Button
