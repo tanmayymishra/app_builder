@@ -16,6 +16,7 @@ import {
   SnackbarContext,
   LoaderContext,StepContext
 } from "../../context/contexts";
+import LogoutComponent from "../../components/logout/LogoutComponent";
 
 const EditForm = () => {
   const { buildDetails, setBuildDetails } = useContext(BuildContext);
@@ -130,6 +131,7 @@ const EditForm = () => {
 
   return (
     <div className="editFormContainer">
+      <LogoutComponent />
       <section className="section">
         <h1>SELECT YOUR APP</h1>
         {/* <div className="buttonsContainer"> */}

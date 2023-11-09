@@ -15,6 +15,7 @@ import {
   SnackbarContext,
   LoaderContext,
 } from "../../context/contexts";
+import LogoutComponent from "../../components/logout/LogoutComponent";
 
 const NewForm = () => {
   const [appData, setAppData] = useState();
@@ -77,6 +78,7 @@ const NewForm = () => {
   };
   return (
     <div className="newFormContainer">
+      <LogoutComponent />
       <section className="section">
         <h1>BUILD A NEW APP</h1>
         {/* <div className="buttonsContainer"> */}
