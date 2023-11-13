@@ -97,7 +97,7 @@ function BuildSuccess() {
     setLoading(true);
     try {
       axios({
-        // url: `http://15.206.158.9:3001/build/download?appname=${buildDetails.app}&buildid=${buildDetails.newBuildId}`,
+        url: `http://15.206.158.9:3001/build/download/apk?appname=${buildDetails.app}&buildid=${buildDetails.newBuildId}`,
         method: "GET",
         headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
         responseType: "blob", // Important
