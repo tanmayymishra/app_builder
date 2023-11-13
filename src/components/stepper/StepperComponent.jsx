@@ -10,7 +10,6 @@ const StepperComponent = () => {
   const { buildDetails, setBuildDetails, credBase64 } =
     useContext(BuildContext);
   const buildId = buildDetails.buildId;
-  //console.log("stepper build id", buildId);
 
   useEffect(() => {
     buildId
@@ -30,8 +29,7 @@ const StepperComponent = () => {
           "Build",
         ]);
   }, [buildId]);
-  console.log("build context in stepper", buildId, buildDetails);
-  console.log("steps count",steps);
+ 
   const { activeStep, setActiveStep } = useContext(StepContext);
   const classes = useStyles();
   const handleStep = (step) => () => {

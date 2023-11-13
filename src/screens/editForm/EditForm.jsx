@@ -17,6 +17,7 @@ import {
   LoaderContext,StepContext
 } from "../../context/contexts";
 import LogoutComponent from "../../components/logout/LogoutComponent";
+import {base_url} from "../../Config";
 
 const EditForm = () => {
   const { buildDetails, setBuildDetails } = useContext(BuildContext);
@@ -37,8 +38,8 @@ const EditForm = () => {
   useEffect(() => {
     if (buildDetails.app.length > 0) {
       setLoading(true)
-      const baseUrl = `http://15.206.158.9:3001/apps/versions?appname=${buildDetails.app}`;
-      console.log(baseUrl, "appsssss");
+      const baseUrl = `${base_url}/apps/versions?appname=${buildDetails.app}`;
+  
       axios
         .get(baseUrl, {
           headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
@@ -56,7 +57,7 @@ const EditForm = () => {
           });
         });
       axios
-        .get(`http://15.206.158.9:3001/build?appname=${buildDetails.app}`, {
+        .get(`${base_url}/build?appname=${buildDetails.app}`, {
           headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
         })
         .then((res) => {
@@ -77,7 +78,7 @@ const EditForm = () => {
   const getApps = async () => {
     try {
       setLoading(true)
-      const res = await axios.get("http://15.206.158.9:3001/apps/", {
+      const res = await axios.get(`${base_url}/apps/`, {
         headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
       });
       if (res) {
@@ -86,7 +87,6 @@ const EditForm = () => {
       }
   } catch (e) {
       setLoading(false)
-      console.log("error value getApps...",e);
       setSnackbarDetails({
         open: true,
         data: e.message ? e.message : "Can't Fetch Apps",
@@ -103,7 +103,7 @@ const EditForm = () => {
     setBuildDetails((prev) => ({ ...prev, buildId: e.target.value }));
     axios
       .get(
-        `http://15.206.158.9:3001/build?appname=${buildDetails.app}&buildid=${e.target.value}`,
+        `${base_url}/build?appname=${buildDetails.app}&buildid=${e.target.value}`,
         {
           headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
         }
@@ -116,11 +116,10 @@ const EditForm = () => {
           version: res.data.data.version,
         }));
         setInitialEditForm(res.data.data.buildconfig);
-        console.log(res.data.data.buildconfig, "resssssssss");
+      
       })
       .catch((e) => {
         setLoading(false)
-        console.log("error value",e);
         setSnackbarDetails({
           open: true,
           data: e.message ? e.message : "Can't Fetch Current Version",

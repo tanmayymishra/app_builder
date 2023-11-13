@@ -105,7 +105,6 @@ const DeviceInfoForm = ({ formField }) => {
       // else(setFieldValue(values.deviceInfo.default,""))
     })
   )
-   console.log(models, "bike models")
 
   return (
     <React.Fragment>

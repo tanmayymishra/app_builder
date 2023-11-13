@@ -23,6 +23,7 @@ import {
 } from "../../../context/contexts";
 import axios from "axios";
 import { makeStyles } from "@mui/styles";
+import { base_url } from "../../../Config";
 
 const useStyles = makeStyles({
   buildIdHeading: {
@@ -53,8 +54,7 @@ function BuildForm() {
       setLoading(true);
       setBuildVersion({ ...buildVersion, version: "" });
       setVersion(buildDetails.version);
-      const baseUrl = `http://15.206.158.9:3001/apps/versions?appname=${buildDetails.app}`;
-      console.log(baseUrl, "appsssss");
+      const baseUrl = `${base_url}/apps/versions?appname=${buildDetails.app}`;
       axios
         .get(baseUrl, {
           headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
@@ -76,10 +76,9 @@ function BuildForm() {
 
   const handleDownload = () => {
     setLoading(true);
-    console.log("build details in download", buildDetails);
     try {
       axios({
-        url: `http://15.206.158.9:3001/build/download?appname=${buildDetails.app}&buildid=${buildDetails.buildId}`,
+        url: `${base_url}/build/download?appname=${buildDetails.app}&buildid=${buildDetails.buildId}`,
         method: "GET",
         timeout:300000,
         headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
@@ -95,7 +94,6 @@ function BuildForm() {
             data: e.message ? e.message : "Network Error",
             type: "error",
           });
-          console.log(e, "download api error");
           setLoading(false);
         });
     } catch (error) {
@@ -104,11 +102,10 @@ function BuildForm() {
   };
 
   const handleDownloadApk = () => {
-    console.log("handle download apk");
     setLoading(true);
     try {
       axios({
-        url: `http://15.206.158.9:3001/build/download/apk?appname=${buildDetails.app}&buildid=${buildDetails.buildId}`,
+        url: `${base_url}/build/download/apk?appname=${buildDetails.app}&buildid=${buildDetails.buildId}`,
         method: "GET",
         headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
         responseType: "blob", // Important
@@ -123,7 +120,6 @@ function BuildForm() {
             data: e.message ? e.message : "Network Error",
             type: "error",
           });
-          console.log(e, "download apk api error");
           setLoading(false);
         });
     } catch (error) {
@@ -185,7 +181,6 @@ function BuildForm() {
                   label="Select Version"
                   disabled={!versionData}
                   onChange={(e) => {
-                    console.log("version value", e.target.value);
                     setVersion(e.target.value);
                     setBuildVersion({
                       ...buildVersion,

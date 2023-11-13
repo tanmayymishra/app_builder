@@ -16,6 +16,7 @@ import {
   LoaderContext,
 } from "../../context/contexts";
 import LogoutComponent from "../../components/logout/LogoutComponent";
+import {base_url} from "../../Config";
 
 const NewForm = () => {
   const [appData, setAppData] = useState();
@@ -31,8 +32,7 @@ const NewForm = () => {
   useEffect(() => {
     if (buildDetails.app.length > 0) {
       setLoading(true);
-      const baseUrl = `http://15.206.158.9:3001/apps/versions?appname=${buildDetails.app}`;
-      console.log(baseUrl, "appsssss");
+      const baseUrl = `${base_url}/apps/versions?appname=${buildDetails.app}`;
       axios
         .get(baseUrl, {
           headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
@@ -55,7 +55,7 @@ const NewForm = () => {
   const getApps = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://15.206.158.9:3001/apps/", {
+      const res = await axios.get(`${base_url}/apps/`, {
         headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
       });
       if (res.status == 200) {
@@ -64,7 +64,6 @@ const NewForm = () => {
       }
     } catch (error) {
       setLoading(false);
-      console.log(error, "errorrr");
       setSnackbarDetails({
         open: true,
         data: error.message ? error.message : "Server Error",
@@ -74,7 +73,6 @@ const NewForm = () => {
     // const res = await axios.get("http://192.168.29.48:3001/apps/", {
     //   headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
     // });
-    // console.log(res, "errorrrr")
   };
   return (
     <div className="newFormContainer">

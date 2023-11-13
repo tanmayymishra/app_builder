@@ -10,7 +10,6 @@ import { useFormikContext } from "formik";
 
 const AccountForm = (props) => {
   const { selectForm } = props;
-  console.log(selectForm, "selectttttt");
   const { values } = useFormikContext();
   const { colors, setColors } = useContext(ColorContext);
   const { defaultBike, setDefaultBike } = useContext(DefaultContext);

@@ -11,6 +11,7 @@ import {
 } from "../../../context/contexts";
 import axios from "axios";
 import { makeStyles } from "@mui/styles";
+import {base_url} from "../../../Config";
 
 const useStyles = makeStyles({
   buildIdHeading: {
@@ -31,15 +32,13 @@ function BuildSuccess() {
     try {
       axios
         .get(
-          `http://15.206.158.9:3001/build?appname=${buildDetails.app}&buildid=${buildDetails.newBuildId}`,
+          `${base_url}/build?appname=${buildDetails.app}&buildid=${buildDetails.newBuildId}`,
           {
             headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
           }
         )
         .then((res) => {
-          //console.log(res.data, "resssssssssssssss");
           setStatus(res.data.data.BuildStatus);
-          //console.log(res.data, "refresh button response");
           setLoading(false);
         });
     } catch (error) {
@@ -49,7 +48,6 @@ function BuildSuccess() {
         data: error.message ? error.message : "Network Error",
         type: "error",
       });
-      console.log(error, "refresh button error");
     }
   };
   const handleDownload = () => {
@@ -57,7 +55,7 @@ function BuildSuccess() {
     try {
       axios({
         // url: `http://15.206.158.9:3001/build/download?appname=EVApp&buildid=c264c03a-9707-4bce-b131-3e5fd3f5fefe`,
-        url: `http://15.206.158.9:3001/build/download?appname=${buildDetails.app}&buildid=${buildDetails.newBuildId}`,
+        url: `${base_url}/build/download?appname=${buildDetails.app}&buildid=${buildDetails.newBuildId}`,
         method: "GET",
         timeout:300000,
         headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
@@ -70,7 +68,6 @@ function BuildSuccess() {
           // }, 4000);
         })
         .catch((e) => {
-          console.log(e, "download api error");
           setLoading(false);
           setSnackbarDetails({
             open: true,
@@ -78,10 +75,7 @@ function BuildSuccess() {
             type: "error",
           });
         });
-      // axios.get(`http://http://15.206.158.9:3001/build/download?appname=${buildDetails.app}&buildid=${buildDetails.newBuildId}`)
-      // .then((res)=>{
-
-      // })
+   
     } catch (e) {
       setLoading(false);
       setSnackbarDetails({
@@ -93,11 +87,10 @@ function BuildSuccess() {
   };
 
   const handleDownloadApk = () => {
-    console.log("handle download apk");
     setLoading(true);
     try {
       axios({
-        url: `http://15.206.158.9:3001/build/download/apk?appname=${buildDetails.app}&buildid=${buildDetails.newBuildId}`,
+        url: `${base_url}/build/download/apk?appname=${buildDetails.app}&buildid=${buildDetails.newBuildId}`,
         method: "GET",
         headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
         responseType: "blob", // Important
@@ -107,7 +100,6 @@ function BuildSuccess() {
           setLoading(false);
         })
         .catch((e) => {
-          console.log(e, "download apk api error");
           setLoading(false);
         });
     } catch (error) {
@@ -115,7 +107,7 @@ function BuildSuccess() {
     }
   };
 
-  console.log(status, "statussss");
+
   return (
     <React.Fragment>
       <div className="buildContainer">

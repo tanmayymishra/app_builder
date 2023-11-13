@@ -79,7 +79,7 @@ const AppThemeForm = (props) => {
         accent: false,
           secondary: !displayColorPicker.secondary,
         });
-    // console.log(displayColorPicker,"display color state")
+    
   };
 
   const themeData=[

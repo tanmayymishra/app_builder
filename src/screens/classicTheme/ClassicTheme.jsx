@@ -21,7 +21,6 @@ const ClassicTheme = () => {
     accent: "",
   };
   Object.keys(colors).forEach(function (key) {
-    // console.log(key, colors[key], "aaaaa");
     let hex = colors[key];
     let values = hex.match(/\w\w/g);
     let [r, g, b] = values.map((k) => parseInt(k, 16));

@@ -22,6 +22,7 @@ import useStyles from "./styles";
 import ValSchema from "../validation/ValSchema";
 import axios from "axios";
 import BuildSuccess from "./buildSuccess/BuildSuccess";
+import {base_url} from "../../Config";
 
 
 const { formId, formField } = BuilderFormModel;
@@ -97,18 +98,9 @@ export default function AppBuilderPage({ selectForm }) {
   const classes = useStyles();
   const isLastStep = activeStep === steps.length - 1;
   const currentValidationSchema = ValSchema[activeStep];
-  console.log(buildDetails, "aaaaaaaaaaaaaaaaa")
-  console.log("is last step", steps[activeStep]);
-  console.log(
-    "previous build version",
-    buildDetails.version,
-    "app builder build version",
-    buildVersion
-  );
 
-  // console.log(initialEditForm, buildDetails, "initial edit form");
   useEffect(() => {
-     console.log("Welcome To The App Builder Page !");
+
     checkBuildId
       ? setSteps([
           "Account Details",
@@ -497,7 +489,7 @@ export default function AppBuilderPage({ selectForm }) {
       selectForm === "new"
         ? axios
             .post(
-              `http://15.206.158.9:3001/build/`,
+              `${base_url}/build/`,
               postData,
               // liteData,
               axiosConfig
@@ -509,7 +501,7 @@ export default function AppBuilderPage({ selectForm }) {
                 newBuildId: res?.data?.data?.buildid,
               }));
               setActiveStep(activeStep + 1);
-              console.log(res, "after build axios response");
+             
             })
             .catch((err) => {
               setSnackbarDetails({
@@ -518,13 +510,11 @@ export default function AppBuilderPage({ selectForm }) {
                 type: "error",
               });
               setLoading(false);
-              console.log(err, "after build axios error");
-              console.log(err, "after build axios error");
+
             })
         : axios
             .post(
-              `http://15.206.158.9:3001/build/`,
-             // `http://15.206.158.9:3001/build?appname=${buildDetails.app}&buildid=${buildDetails.buildId}`,
+              `${base_url}/build/`,
               postData,
               axiosConfig
             )
@@ -535,7 +525,7 @@ export default function AppBuilderPage({ selectForm }) {
                 newBuildId: res?.data?.data?.buildid,
               }));
               setActiveStep(activeStep + 1);
-              console.log(res, "after build axios response");
+             
             })
             .catch((err) => {
               setLoading(false);
@@ -544,7 +534,7 @@ export default function AppBuilderPage({ selectForm }) {
                 data: err.message ? err.message : "Network Error",
                 type: "error",
               });
-              console.log(err, "after build axios error");
+             
             });
     }
     actions.setSubmitting(false);
@@ -577,8 +567,7 @@ export default function AppBuilderPage({ selectForm }) {
   function _handleBack() {
     setActiveStep(activeStep - 1);
   }
-  console.log(buildDetails, "bbbbbbbbbb");
-  console.log(finalData, "final submit data");
+
   return (
     <div className={classes.container}>
       <React.Fragment>

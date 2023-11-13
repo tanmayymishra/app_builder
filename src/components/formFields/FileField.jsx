@@ -12,7 +12,6 @@ export default function FileField(props) {
   const { value } = field;
   // const [currFile, setCurrFile] = useState(value.file)
   // const [currSrc, setCurrSrc] = useState(value.src)
-  //console.log(value, "valueeee");
   function _renderHelperText() {
     const [touched, error, value] = at(form, "touched", "error");
     if (touched && error) {
@@ -21,11 +20,10 @@ export default function FileField(props) {
       return form.value?.length > 1 ? "Choose another File" : "Select a Field";
     }
   }
-  // console.log(form, field, "formik form values")
-  // console.log(form, "metaaaaaaa");
+
   const handleChange = async (e) => {
-    console.log(e.currentTarget.files[0], "file field event");
-    // console.log(field, "field props in file field")
+   
+
     const file = e.currentTarget.files[0];
     // const files= e.currentTarget.files.length >1 ? e.currentTarget.files:""
     const reader = new FileReader();

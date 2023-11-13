@@ -9,6 +9,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { makeStyles } from "@mui/styles";
+import {base_url} from "../../Config";
 
 const useStyles = makeStyles({
   root: {
@@ -49,7 +50,7 @@ const LoginFormScreen = () => {
     if (username && password) {
       try {
         setLoading(true)
-        const response = await axios.post("http://15.206.158.9:3001/login", {
+        const response = await axios.post(`${base_url}/login`, {
           username,
           password,
         });
@@ -68,7 +69,6 @@ const LoginFormScreen = () => {
         }
       } catch (e) {
         setLoading(false)
-        console.log(e, "errorrr")
         setSnackbarDetails({open:true, data:e.message?e.message:"Network Error", type:"error"});
       }
     } else {
