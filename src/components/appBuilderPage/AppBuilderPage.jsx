@@ -231,8 +231,12 @@ export default function AppBuilderPage({ selectForm }) {
         view: false,
       },
       ticketSystem: false,
+      
       pushNotification: false,
       rewards: false,
+      cloudDataFetch: false,
+      trackBike: false,
+      tripAnalysis: false,
       envBenefits: {
         savedTrees: {
           p1: "",

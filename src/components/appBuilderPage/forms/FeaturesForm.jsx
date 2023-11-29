@@ -262,6 +262,24 @@ const FeauresForm = (props) => {
           label="Rewards"
         />
       </Grid>
+      <Grid item xs={12} sm={12}>
+        <CheckboxField
+          name="features.cloudDataFetch"
+          label="Cloud Data Fetch"
+        />
+      </Grid>
+      <Grid item xs={12} sm={12}>
+        <CheckboxField
+          name="features.trackBike"
+          label="Track Bike"
+        />
+      </Grid>
+      <Grid item xs={12} sm={12}>
+        <CheckboxField
+          name="features.tripAnalysis"
+          label="Trip Analysis"
+        />
+      </Grid>
       {/* <Grid container spacing={3}>
         <Grid item xs={12} sm={12}>
           <CheckboxField
