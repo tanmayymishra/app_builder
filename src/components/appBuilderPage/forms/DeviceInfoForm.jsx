@@ -19,61 +19,98 @@ const DeviceInfoForm = ({ formField }) => {
   // useEffect(() => {
   //   setFieldValue(values.deviceInfo.bikeModels[0].modelName, "hello")
   // }, [])
+
+
+  const modesObj = {
+    Eco: {
+      id: "",
+      modeName:"",
+      modeImage: "",
+      range: {
+        p1: "",
+        p2: "",
+      },
+      SOC: {
+        p1: "",
+        p2: "",
+      },
+    }
+  };
+
   const bikeModelObj = {
     modelName: "",
     frontViewImage: "",
     sideViewImage: "",
     inclinedViewImage: "",
-    modes: {
+
+
+    // modes: {
+    //   Eco: {
+    //     id: 0,
+    //     modeImage: "",
+    //     range: {
+    //       p1: 0,
+    //       p2: 0,
+    //     },
+    //     SOC: {
+    //       p1: 0,
+    //       p2: 0,
+    //     },
+    //   },
+    //   Sports: {
+    //     id: 0,
+    //     modeImage: "",
+    //     range: {
+    //       p1: 0,
+    //       p2: 0,
+    //     },
+    //     SOC: {
+    //       p1: 1,
+    //       p2: 0,
+    //     },
+    //   },
+    //   Hyper: {
+    //     id: 0,
+    //     modeImage: "",
+    //     range: {
+    //       p1: 0,
+    //       p2: 0,
+    //     },
+    //     SOC: {
+    //       p1: 1,
+    //       p2: 0,
+    //     },
+    //   },
+    //   default: {
+    //     id: 0,
+    //     modeImage: "",
+    //     range: {
+    //       p1: 0,
+    //       p2: 0,
+    //     },
+    //     SOC: {
+    //       p1: 1,
+    //       p2: 0,
+    //     },
+    //   },
+    // },
+
+    modes:[ {
       Eco: {
-        id: 0,
+        id: "",
+        modeName:"",
         modeImage: "",
         range: {
-          p1: 0,
-          p2: 0,
+          p1: "",
+          p2: "",
         },
         SOC: {
-          p1: 0,
-          p2: 0,
-        },
-      },
-      Sports: {
-        id: 0,
-        modeImage: "",
-        range: {
-          p1: 0,
-          p2: 0,
-        },
-        SOC: {
-          p1: 1,
-          p2: 0,
-        },
-      },
-      Hyper: {
-        id: 0,
-        modeImage: "",
-        range: {
-          p1: 0,
-          p2: 0,
-        },
-        SOC: {
-          p1: 1,
-          p2: 0,
-        },
-      },
-      default: {
-        id: 0,
-        modeImage: "",
-        range: {
-          p1: 0,
-          p2: 0,
-        },
-        SOC: {
-          p1: 1,
-          p2: 0,
-        },
-      },
-    },
+          p1: "",
+          p2: "",
+        }
+      }
+    }
+    ],
     minimumVoltage: 0,
     maximumVoltage: 0,
     vehicleManual: "",
@@ -90,6 +127,8 @@ const DeviceInfoForm = ({ formField }) => {
       },
     },
   };
+
+  
   let models=[]
    models=values.deviceInfo.bikeModels.map((item, index)=>{
     return {
@@ -105,7 +144,7 @@ const DeviceInfoForm = ({ formField }) => {
       // else(setFieldValue(values.deviceInfo.default,""))
     })
   )
-
+  console.log("device info values...",values);
   return (
     <React.Fragment>
       <Typography variant="h5" gutterBottom>
@@ -126,15 +165,18 @@ const DeviceInfoForm = ({ formField }) => {
                     <Grid item xs={12} sm={1}>
                       {index > 0 ? (
                         <Tooltip title="Delete Vehicle">
-
-                        <IconButton
-                          aria-label="delete"
-                          size="large"
-                          onClick={() => remove(index)}
+                          <IconButton
+                            aria-label="delete"
+                            size="large"
+                            onClick={() => remove(index)}
                           >
-                          <DeleteIcon fontSize="inherit" color="error" style={{position:"absolute"}}/>
-                        </IconButton>
-                          </Tooltip>
+                            <DeleteIcon
+                              fontSize="inherit"
+                              color="error"
+                              style={{ position: "absolute" }}
+                            />
+                          </IconButton>
+                        </Tooltip>
                       ) : (
                         ""
                       )}
@@ -181,14 +223,149 @@ const DeviceInfoForm = ({ formField }) => {
                           shrink: true,
                         }}
                         value={undefined}
-                            fullWidth
+                        fullWidth
                       />
                     </Grid>
                   </Grid>
+
+                      
+                  
                   <Typography variant="h6" gutterBottom>
                     Modes
                   </Typography>
-                  <Typography variant="h6" gutterBottom>
+                  <FieldArray
+                  name={`deviceInfo.bikeModels.${index}.modes`}
+                  >
+                  {({ insert, remove, push }) => (
+                <>
+                {values.deviceInfo.bikeModels[index].modes.length > 0 &&
+              values.deviceInfo.bikeModels[index].modes.map((mode, ind) => (
+                <>
+               {/* <Typography variant="h6" gutterBottom>
+                    Eco
+                  </Typography> */}
+                  <Grid container spacing={3} mt={1} mb={1}>
+                    <Grid item xs={12} sm={11}>
+                    <Typography variant="h6" gutterBottom>
+                    {`Mode${ind+1}`}
+                  </Typography>
+                    </Grid>
+                   {/* <Grid item xs={12} sm={6} > */}
+                   {/* <Typography variant="h6" gutterBottom>
+                    {mode.Eco.modeName}
+                  </Typography> */}
+
+                        {/* <InputField
+                        name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.modeName`}
+                        label="Mode"
+                        
+                        fullWidth
+                      />
+                   </Grid> */}
+                  
+                    <Grid item xs={12} sm={1}>
+                      {ind > 0 ? (
+                        <Tooltip title="Delete Mode">
+                          <IconButton
+                            aria-label="delete"
+                            size="large"
+                            onClick={() => remove(ind)}
+                          >
+                            <DeleteIcon
+                              fontSize="inherit"
+                              color="error"
+                              style={{ position: "absolute" }}
+                            />
+                          </IconButton>
+                        </Tooltip>
+                      ) : (
+                        ""
+                      )}
+                    </Grid>
+                  </Grid>
+
+                        <Grid container spacing={3}>
+                        <Grid item xs={12} sm={12} mb={2} >
+                         <InputField
+                        name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.modeName`}
+                        label="Mode"
+                        
+                        fullWidth
+                      />
+                   </Grid>
+                        </Grid>
+                         
+
+
+
+                  <Grid container spacing={3}>
+                    <Grid item xs={12} sm={6}>
+                      <InputField
+                        name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.id`}
+                        label="ID"
+                        type="number"
+                        fullWidth
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <FileField
+                        name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.modeImage`}
+                        label="Mode Image"
+                        type="file"
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        value={undefined}
+                        fullWidth
+                      />
+                    </Grid>
+                  </Grid>
+                  <Typography variant="subtitle1" gutterBottom>
+                    Range
+                  </Typography>
+                  <Grid container spacing={3}>
+                    <Grid item xs={12} sm={6}>
+                      <InputField
+                        name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.range.p1`}
+                        label="P1"
+                        type="number"
+                        fullWidth
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <InputField
+                        name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.range.p2`}
+                        label="P2"
+                        type="number"
+                        fullWidth
+                      />
+                    </Grid>
+                  </Grid>
+                  <Typography variant="subtitle1" gutterBottom>
+                    SOC
+                  </Typography>
+                  <Grid container spacing={3}>
+                    <Grid item xs={12} sm={6}>
+                      <InputField
+                        name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.SOC.p1`}
+                        label="P1"
+                        type="number"
+                        fullWidth
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <InputField
+                        name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.SOC.p2`}
+                        label="P2"
+                        type="number"
+                        fullWidth
+                      />
+                    </Grid>
+                  </Grid>
+                
+                </>
+              ))}
+                 {/* <Typography variant="h6" gutterBottom>
                     Eco
                   </Typography>
                   <Grid container spacing={3}>
@@ -213,7 +390,7 @@ const DeviceInfoForm = ({ formField }) => {
                       />
                     </Grid>
                   </Grid>
-
+                    
                   <Typography variant="subtitle1" gutterBottom>
                     Range
                   </Typography>
@@ -255,8 +432,109 @@ const DeviceInfoForm = ({ formField }) => {
                         fullWidth
                       />
                     </Grid>
+                  </Grid> */}
+                  <Tooltip title="Add Mode">
+                    <IconButton
+                      aria-label="Add"
+                      size="large"
+                      onClick={() => push(modesObj)}
+                      //onClick={() => push(bikeModelObj)}
+                      style={{ position: "absolute", fontSize: 40 }}
+                    >
+                      <AddCircleRoundedIcon
+                        fontSize="inherit"
+                        color="primary"
+                      />
+                    </IconButton>
+                  </Tooltip>
+
+                </>
+                  )}
+                  </FieldArray>
+                  {/* <Typography variant="h6" gutterBottom>
+                    Eco
+                  </Typography>
+                  <Grid container spacing={3}>
+                    <Grid item xs={12} sm={6}>
+                      <InputField
+                        name={`deviceInfo.bikeModels.${index}.modes.Eco.id`}
+                        label="ID"
+                        type="number"
+                        fullWidth
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <FileField
+                        name={`deviceInfo.bikeModels.${index}.modes.Eco.modeImage`}
+                        label="Mode Image"
+                        type="file"
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        value={undefined}
+                        fullWidth
+                      />
+                    </Grid>
                   </Grid>
-                  <Typography variant="h6" gutterBottom>
+                    
+                  <Typography variant="subtitle1" gutterBottom>
+                    Range
+                  </Typography>
+                  <Grid container spacing={3}>
+                    <Grid item xs={12} sm={6}>
+                      <InputField
+                        name={`deviceInfo.bikeModels.${index}.modes.Eco.range.p1`}
+                        label="P1"
+                        type="number"
+                        fullWidth
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <InputField
+                        name={`deviceInfo.bikeModels.${index}.modes.Eco.range.p2`}
+                        label="P2"
+                        type="number"
+                        fullWidth
+                      />
+                    </Grid>
+                  </Grid>
+                  <Typography variant="subtitle1" gutterBottom>
+                    SOC
+                  </Typography>
+                  <Grid container spacing={3}>
+                    <Grid item xs={12} sm={6}>
+                      <InputField
+                        name={`deviceInfo.bikeModels.${index}.modes.Eco.SOC.p1`}
+                        label="P1"
+                        type="number"
+                        fullWidth
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <InputField
+                        name={`deviceInfo.bikeModels.${index}.modes.Eco.SOC.p2`}
+                        label="P2"
+                        type="number"
+                        fullWidth
+                      />
+                    </Grid>
+                  </Grid> */}
+                  {/* <Tooltip title="Add Mode">
+                    <IconButton
+                      aria-label="Add"
+                      size="large"
+                      onClick={() => push(modesObj)}
+                      //onClick={() => push(bikeModelObj)}
+                      style={{ position: "absolute", fontSize: 40 }}
+                    >
+                      <AddCircleRoundedIcon
+                        fontSize="inherit"
+                        color="primary"
+                      />
+                    </IconButton>
+                  </Tooltip> */}
+
+                  {/* <Typography variant="h6" gutterBottom>
                     Sports
                   </Typography>
                   <Grid container spacing={3}>
@@ -322,8 +600,8 @@ const DeviceInfoForm = ({ formField }) => {
                         fullWidth
                       />
                     </Grid>
-                  </Grid>
-                  <Typography variant="h6" gutterBottom>
+                  </Grid> */}
+                  {/* <Typography variant="h6" gutterBottom>
                     Hyper
                   </Typography>
                   <Grid container spacing={3}>
@@ -389,8 +667,8 @@ const DeviceInfoForm = ({ formField }) => {
                         fullWidth
                       />
                     </Grid>
-                  </Grid>
-                  <Typography variant="h6" gutterBottom>
+                  </Grid> */}
+                  {/* <Typography variant="h6" gutterBottom>
                     Default
                   </Typography>
                   <Grid container spacing={3}>
@@ -457,14 +735,14 @@ const DeviceInfoForm = ({ formField }) => {
                         fullWidth
                       />
                     </Grid>
-                  </Grid>
-                  <Typography variant="h6" gutterBottom>
+                  </Grid> */}
+                  <Typography variant="h6" gutterBottom sx={{marginTop:"4rem"}}>
                     Minimum & Maximum Voltage
                   </Typography>
                   <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
                       <InputField
-                      type="number"
+                        type="number"
                         name={`deviceInfo.bikeModels.${index}.minimumVoltage`}
                         label="Minimum"
                         fullWidth
@@ -472,7 +750,7 @@ const DeviceInfoForm = ({ formField }) => {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                       <InputField
-                      type="number"
+                        type="number"
                         name={`deviceInfo.bikeModels.${index}.maximumVoltage`}
                         label="Maximum"
                         fullWidth
@@ -497,7 +775,7 @@ const DeviceInfoForm = ({ formField }) => {
                   <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
                       <InputField
-                      type="number"
+                        type="number"
                         name={`deviceInfo.bikeModels.${index}.batteryAlerts.batteryVoltage.min`}
                         label="Min"
                         fullWidth
@@ -505,7 +783,7 @@ const DeviceInfoForm = ({ formField }) => {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                       <InputField
-                      type="number"
+                        type="number"
                         name={`deviceInfo.bikeModels.${index}.batteryAlerts.batteryVoltage.max`}
                         label="Max"
                         fullWidth
@@ -525,7 +803,7 @@ const DeviceInfoForm = ({ formField }) => {
                   <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
                       <InputField
-                      type="number"
+                        type="number"
                         name={`deviceInfo.bikeModels.${index}.batteryAlerts.batteryTemperature.min`}
                         label="Min"
                         fullWidth
@@ -533,7 +811,7 @@ const DeviceInfoForm = ({ formField }) => {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                       <InputField
-                      type="number"
+                        type="number"
                         name={`deviceInfo.bikeModels.${index}.batteryAlerts.batteryTemperature.max`}
                         label="Max"
                         fullWidth
@@ -551,30 +829,29 @@ const DeviceInfoForm = ({ formField }) => {
               ))}
             {/* <Button variant="contained" sx={{fontSize:"50"}} style={{marginTop:"20px"}}>+</Button> */}
             <Tooltip title="Add Vehicle">
-
-            <IconButton
-              aria-label="Add"
-              size="large"
-              onClick={() => push(bikeModelObj)}
-              style={{ position: "absolute", fontSize: 40 }}
+              <IconButton
+                aria-label="Add"
+                size="large"
+                onClick={() => push(bikeModelObj)}
+                style={{ position: "absolute", fontSize: 40 }}
               >
-              <AddCircleRoundedIcon fontSize="inherit" color="primary" />
-            </IconButton>
-              </Tooltip>
+                <AddCircleRoundedIcon fontSize="inherit" color="primary" />
+              </IconButton>
+            </Tooltip>
           </>
         )}
       </FieldArray>
       <Grid container spacing={3}>
-          <Grid item xs={12} sx={{mt:9}}>
-            <SelectField 
-              name="deviceInfo.default"
-              label="Default Vehicle"
-              select
-              data={models}
-              // defaultValue={models[0]?models[0]:""}
-              fullWidth
-            />
-          </Grid>
+        <Grid item xs={12} sx={{ mt: 9 }}>
+          <SelectField
+            name="deviceInfo.default"
+            label="Default Vehicle"
+            select
+            data={models}
+            // defaultValue={models[0]?models[0]:""}
+            fullWidth
+          />
+        </Grid>
       </Grid>
     </React.Fragment>
   );
