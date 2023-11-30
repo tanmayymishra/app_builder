@@ -99,7 +99,7 @@ export default function AppBuilderPage({ selectForm }) {
   const classes = useStyles();
   const isLastStep = activeStep === steps.length - 1;
   const currentValidationSchema = ValSchema[activeStep];
-  const [modesMultiple,setModesMultiple] = useState([]);
+  console.log("initial Edit form",initialEditForm);
 
 
   useEffect(() => {
@@ -317,11 +317,8 @@ export default function AppBuilderPage({ selectForm }) {
       },
     },
   };
-  useEffect(() => {
-    setModesMultiple(initValues.deviceInfo.bikeModels.multipleModes);
-  },[initValues])
-
-  console.log("modes Multiple",modesMultiple);
+ 
+  
   const newInitValues = {...initValues,deviceInfo:{...initValues.deviceInfo}};
   let axiosConfig = {
     headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
@@ -349,7 +346,7 @@ export default function AppBuilderPage({ selectForm }) {
        postData = {
         appname: buildDetails.app,
         version: buildDetails.version,
-        buildconfig: values,
+        buildconfig: parsedValues,
       };
       console.log("post data new App... ",postData);
     }
@@ -528,58 +525,58 @@ export default function AppBuilderPage({ selectForm }) {
     await _sleep(1000);
     // alert(JSON.stringify(values, null, 2));
 
-    // {
-    //   selectForm === "new"
-    //     ? axios
-    //         .post(
-    //          `${base_url}/build/`,
-    //          postData,
-    //           // liteData,
-    //           axiosConfig
-    //         )
-    //         .then((res) => {
-    //           setLoading(false);
-    //           setBuildDetails((prev) => ({
-    //             ...prev,
-    //             newBuildId: res?.data?.data?.buildid,
-    //           }));
-    //           setActiveStep(activeStep + 1);
+    {
+      selectForm === "new"
+        ? axios
+            .post(
+             `${base_url}/build/`,
+             postData,
+              // liteData,
+              axiosConfig
+            )
+            .then((res) => {
+              setLoading(false);
+              setBuildDetails((prev) => ({
+                ...prev,
+                newBuildId: res?.data?.data?.buildid,
+              }));
+              setActiveStep(activeStep + 1);
              
-    //         })
-    //         .catch((err) => {
-    //           setSnackbarDetails({
-    //             open: true,
-    //             data: err.message ? err.message : "Network Error",
-    //             type: "error",
-    //           });
-    //           setLoading(false);
+            })
+            .catch((err) => {
+              setSnackbarDetails({
+                open: true,
+                data: err.message ? err.message : "Network Error",
+                type: "error",
+              });
+              setLoading(false);
 
-    //         })
-    //     : axios
-    //         .post(
-    //          `${base_url}/build/`,
-    //          postData,
-    //           axiosConfig
-    //         )
-    //         .then((res) => {
-    //           setLoading(false);
-    //           setBuildDetails((prev) => ({
-    //             ...prev,
-    //             newBuildId: res?.data?.data?.buildid,
-    //           }));
-    //           setActiveStep(activeStep + 1);
+            })
+        : axios
+            .post(
+             `${base_url}/build/`,
+             postData,
+              axiosConfig
+            )
+            .then((res) => {
+              setLoading(false);
+              setBuildDetails((prev) => ({
+                ...prev,
+                newBuildId: res?.data?.data?.buildid,
+              }));
+              setActiveStep(activeStep + 1);
              
-    //         })
-    //         .catch((err) => {
-    //           setLoading(false);
-    //           setSnackbarDetails({
-    //             open: true,
-    //             data: err.message ? err.message : "Network Error",
-    //             type: "error",
-    //           });
+            })
+            .catch((err) => {
+              setLoading(false);
+              setSnackbarDetails({
+                open: true,
+                data: err.message ? err.message : "Network Error",
+                type: "error",
+              });
              
-    //         });
-    // }
+            });
+    }
     actions.setSubmitting(false);
   }
   function _handleSubmit(values, actions) {

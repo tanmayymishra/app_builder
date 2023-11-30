@@ -18,6 +18,7 @@ import {
 } from "../../context/contexts";
 import LogoutComponent from "../../components/logout/LogoutComponent";
 import {base_url} from "../../Config";
+import DeviceEditInfoParsers from "./DeviceEditInfoParser";
 
 const EditForm = () => {
   const { buildDetails, setBuildDetails } = useContext(BuildContext);
@@ -115,7 +116,11 @@ const EditForm = () => {
           ...prev,
           version: res.data.data.version,
         }));
-        setInitialEditForm(res.data.data.buildconfig);
+        console.log("Response Data Of Edit Form",res.data.data.buildconfig);
+        let pasrsedValues = DeviceEditInfoParsers(res.data.data.buildconfig);
+        console.log("Parsed Values In Edit..",pasrsedValues);
+        setInitialEditForm(pasrsedValues);
+  
       
       })
       .catch((e) => {

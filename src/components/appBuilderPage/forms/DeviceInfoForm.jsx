@@ -20,7 +20,7 @@ const DeviceInfoForm = ({ formField }) => {
   //   setFieldValue(values.deviceInfo.bikeModels[0].modelName, "hello")
   // }, [])
 
-
+  console.log("Edit App Form",values);
   const modesObj = {
     Eco: {
       id: "",
