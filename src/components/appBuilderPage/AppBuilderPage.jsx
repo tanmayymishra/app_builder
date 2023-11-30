@@ -7,6 +7,7 @@ import DeviceInfoForm from "./forms/DeviceInfoForm";
 import FeaturesForm from "./forms/FeaturesForm";
 import PackagesForm from "./forms/PackagesForm";
 import BuildForm from "./forms/BuildForm";
+import DeviceInfoParsers from "./forms/DeviceInfoParsers";
 import { BuilderFormModel } from "./formModel/BuilderFormModel";
 import {
   ColorContext,
@@ -330,6 +331,8 @@ export default function AppBuilderPage({ selectForm }) {
   }
   async function _submitForm(values, actions) {
     //setBuildDetails({...buildDetails,version:buildVersion.version});
+    const parsedValues = DeviceInfoParsers(values);
+    console.log("Parsed values in App Builder",parsedValues);
     console.log("values of modes",values.deviceInfo.bikeModels.modes)
     setLoading(true);
     let postData = {};
@@ -337,7 +340,8 @@ export default function AppBuilderPage({ selectForm }) {
       postData = {
         appname: buildDetails.app,
         version: buildVersion.version,
-        buildconfig: values,
+        //buildconfig: values,
+        buildconfig: parsedValues,
       };
       console.log("Post Data old App...",postData);
     } 
