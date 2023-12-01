@@ -97,16 +97,16 @@ const DeviceInfoForm = ({ formField }) => {
 
     modes:[ {
       Eco: {
-        id: "",
-        modeName:"",
+        id:0,
+        modeName:"default",
         modeImage: "",
         range: {
-          p1: "",
-          p2: "",
+          p1: "1.2",
+          p2: "0.0659",
         },
         SOC: {
-          p1: "",
-          p2: "",
+          p1: "1",
+          p2: "0",
         }
       }
     }

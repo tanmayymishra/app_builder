@@ -25,7 +25,6 @@ import axios from "axios";
 import BuildSuccess from "./buildSuccess/BuildSuccess";
 import {base_url} from "../../Config";
 
-
 const { formId, formField } = BuilderFormModel;
 
 function _renderStepContent(step, values, setFieldValue, errors, checkBuildId, selectForm) {
@@ -149,16 +148,16 @@ export default function AppBuilderPage({ selectForm }) {
           inclinedViewImage: "",
           modes:[ {
             Eco: {
-              id: "",
-              modeName:"",
-              modeImage: "",
+              id:0,
+              modeName:"default",
+              modeImage:"",
               range: {
-                p1: "",
-                p2: "",
+                p1: "1.2",
+                p2: "0.0659",
               },
               SOC: {
-                p1: "",
-                p2: "",
+                p1: "1",
+                p2: "0",
               }
             }
           }
@@ -525,60 +524,62 @@ export default function AppBuilderPage({ selectForm }) {
     await _sleep(1000);
     // alert(JSON.stringify(values, null, 2));
 
-    {
-      selectForm === "new"
-        ? axios
-            .post(
-             `${base_url}/build/`,
-             postData,
-              // liteData,
-              axiosConfig
-            )
-            .then((res) => {
-              setLoading(false);
-              setBuildDetails((prev) => ({
-                ...prev,
-                newBuildId: res?.data?.data?.buildid,
-              }));
-              setActiveStep(activeStep + 1);
+    // {
+    //   selectForm === "new"
+    //     ? axios
+    //         .post(
+    //          `${base_url}/build/`,
+    //          postData,
+    //           // liteData,
+    //           axiosConfig
+    //         )
+    //         .then((res) => {
+    //           setLoading(false);
+    //           setBuildDetails((prev) => ({
+    //             ...prev,
+    //             newBuildId: res?.data?.data?.buildid,
+    //           }));
+    //           setActiveStep(activeStep + 1);
              
-            })
-            .catch((err) => {
-              setSnackbarDetails({
-                open: true,
-                data: err.message ? err.message : "Network Error",
-                type: "error",
-              });
-              setLoading(false);
+    //         })
+    //         .catch((err) => {
+    //           setSnackbarDetails({
+    //             open: true,
+    //             data: err.message ? err.message : "Network Error",
+    //             type: "error",
+    //           });
+    //           setLoading(false);
 
-            })
-        : axios
-            .post(
-             `${base_url}/build/`,
-             postData,
-              axiosConfig
-            )
-            .then((res) => {
-              setLoading(false);
-              setBuildDetails((prev) => ({
-                ...prev,
-                newBuildId: res?.data?.data?.buildid,
-              }));
-              setActiveStep(activeStep + 1);
+    //         })
+    //     : axios
+    //         .post(
+    //          `${base_url}/build/`,
+    //          postData,
+    //           axiosConfig
+    //         )
+    //         .then((res) => {
+    //           setLoading(false);
+    //           setBuildDetails((prev) => ({
+    //             ...prev,
+    //             newBuildId: res?.data?.data?.buildid,
+    //           }));
+    //           setActiveStep(activeStep + 1);
              
-            })
-            .catch((err) => {
-              setLoading(false);
-              setSnackbarDetails({
-                open: true,
-                data: err.message ? err.message : "Network Error",
-                type: "error",
-              });
+    //         })
+    //         .catch((err) => {
+    //           setLoading(false);
+    //           setSnackbarDetails({
+    //             open: true,
+    //             data: err.message ? err.message : "Network Error",
+    //             type: "error",
+    //           });
              
-            });
-    }
+    //         });
+    // }
+
     actions.setSubmitting(false);
   }
+
   function _handleSubmit(values, actions) {
     if (isLastStep) {
       setFinalData(values);
