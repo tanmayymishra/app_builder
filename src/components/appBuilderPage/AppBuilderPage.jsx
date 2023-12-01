@@ -166,66 +166,7 @@ export default function AppBuilderPage({ selectForm }) {
               }
             }
           }
-          ]
-
-
-          // modes: {
-          //   Eco: {
-          //     id: "",
-          //     modeImage: "",
-          //     range: {
-          //       p1: "",
-          //       p2: "",
-          //     },
-          //     SOC: {
-          //       p1: "",
-          //       p2: "",
-          //     }
-          //   }
-
-
-            // Sports: {
-            //   id: "",
-            //   modeImage: "",
-            //   range: {
-            //     p1: "",
-            //     p2: "",
-            //   },
-            //   SOC: {
-            //     p1: "",
-            //     p2: "",
-            //   },
-            // },
-            // Hyper: {
-            //   id: "",
-            //   modeImage: "",
-            //   range: {
-            //     p1: "",
-            //     p2: "",
-            //   },
-            //   SOC: {
-            //     p1: "",
-            //     p2: "",
-            //   },
-            // },
-            // default: {
-            //   id: "",
-            //   modeImage: "",
-            //   range: {
-            //     p1: "",
-            //     p2: "",
-            //   },
-            //   SOC: {
-            //     p1: "",
-            //     p2: "",
-            //   },
-            // },
-
-            
-
-          //}
-          ,
-        
+          ],
           minimumVoltage: "",
           maximumVoltage: "",
           vehicleManual: "",
