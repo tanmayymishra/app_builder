@@ -111,9 +111,9 @@ function BuildSuccess() {
   return (
     <React.Fragment>
       <div className="buildContainer">
-        <Typography variant="h4" gutterBottom>
+        {/* <Typography variant="h4" gutterBottom>
           Your App Has Been Build Successfully.
-        </Typography>
+        </Typography> */}
         <Typography variant="h6">
           Build ID -
           <span className={classes.buildIdHeading}>
