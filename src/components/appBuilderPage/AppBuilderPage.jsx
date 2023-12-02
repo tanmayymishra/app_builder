@@ -263,8 +263,6 @@ export default function AppBuilderPage({ selectForm }) {
     },
   };
  
-  
-  const newInitValues = {...initValues,deviceInfo:{...initValues.deviceInfo}};
   let axiosConfig = {
     headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
   };
@@ -275,7 +273,6 @@ export default function AppBuilderPage({ selectForm }) {
     //setBuildDetails({...buildDetails,version:buildVersion.version});
     const parsedValues = DeviceInfoParsers(values);
     console.log("Parsed values in App Builder",parsedValues);
-    console.log("values of modes",values.deviceInfo.bikeModels.modes)
     setLoading(true);
     let postData = {};
     if(buildVersion.version && buildDetails.version !== buildVersion.version ){

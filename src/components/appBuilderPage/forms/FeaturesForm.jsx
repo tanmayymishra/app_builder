@@ -52,8 +52,7 @@ const FeauresForm = (props) => {
         ) : (
           ""
         )}
-            <Grid item xs={12} sm={12}></Grid>
-
+        <Grid item xs={12} sm={12}></Grid>
       </Grid>
       <Typography
         variant="h6"
@@ -72,7 +71,6 @@ const FeauresForm = (props) => {
       </Typography>
 
       <Grid container spacing={3}>
-       
         {values.features.tripPlanning.view ? (
           <>
             <Grid item xs={12} sm={12}>
@@ -92,7 +90,7 @@ const FeauresForm = (props) => {
         ) : (
           ""
         )}
-         <Grid item xs={12} sm={12}></Grid>
+        <Grid item xs={12} sm={12}></Grid>
       </Grid>
       <Typography
         variant="h6"
@@ -129,8 +127,7 @@ const FeauresForm = (props) => {
         ) : (
           ""
         )}
-                <Grid item xs={12} sm={12}></Grid>
-
+        <Grid item xs={12} sm={12}></Grid>
       </Grid>
       <Typography
         variant="h6"
@@ -215,7 +212,7 @@ const FeauresForm = (props) => {
                 fullWidth
               />
             </Grid>
-          <Grid item xs={12} sm={12}></Grid>
+            <Grid item xs={12} sm={12}></Grid>
           </Grid>
         </>
       ) : (
@@ -257,10 +254,7 @@ const FeauresForm = (props) => {
         />
       </Grid>
       <Grid item xs={12} sm={12}>
-        <CheckboxField
-          name="features.rewards"
-          label="Rewards"
-        />
+        <CheckboxField name="features.rewards" label="Rewards" />
       </Grid>
       <Grid item xs={12} sm={12}>
         <CheckboxField
@@ -269,10 +263,7 @@ const FeauresForm = (props) => {
         />
       </Grid>
       <Grid item xs={12} sm={12}>
-        <CheckboxField
-          name="features.trackBike"
-          label="Track Bike"
-        />
+        <CheckboxField name="features.trackBike" label="Track Bike" />
       </Grid>
       {/* <Grid container spacing={3}>
         <Grid item xs={12} sm={12}>
@@ -298,11 +289,10 @@ const FeauresForm = (props) => {
         Send Data to Cloud
       </Typography>
       <Grid container spacing={3}>
-       
         {values.features.sendDataToCloud.view ? (
           <Grid item xs={12} sm={6}>
             <InputField
-            type="number"
+              type="number"
               name="features.sendDataToCloud.transmittingFrequency"
               label="Transmitting Frequency"
               fullWidth
@@ -311,7 +301,7 @@ const FeauresForm = (props) => {
         ) : (
           ""
         )}
-         <Grid item xs={12} sm={12}></Grid>
+        <Grid item xs={12} sm={12}></Grid>
       </Grid>
 
       <Typography
@@ -331,7 +321,6 @@ const FeauresForm = (props) => {
       </Typography>
 
       <Grid container spacing={3}>
-       
         {values.features.serviceStation.view ? (
           <Grid item xs={12} sm={6}>
             <InputField
@@ -344,7 +333,7 @@ const FeauresForm = (props) => {
         ) : (
           ""
         )}
-         <Grid item xs={12} sm={12}></Grid>
+        <Grid item xs={12} sm={12}></Grid>
       </Grid>
       <Typography
         variant="h6"
@@ -363,7 +352,6 @@ const FeauresForm = (props) => {
       </Typography>
 
       <Grid container spacing={3}>
-       
         {values.features.chargingStation.view ? (
           <Grid item xs={12} sm={6}>
             <InputField
@@ -376,7 +364,7 @@ const FeauresForm = (props) => {
         ) : (
           ""
         )}
-         <Grid item xs={12} sm={12}></Grid>
+        <Grid item xs={12} sm={12}></Grid>
       </Grid>
       <Typography
         variant="h6"

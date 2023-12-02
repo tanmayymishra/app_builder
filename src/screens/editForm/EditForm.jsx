@@ -14,10 +14,11 @@ import {
   BuildContext,
   InitialFormContext,
   SnackbarContext,
-  LoaderContext,StepContext
+  LoaderContext,
+  StepContext,
 } from "../../context/contexts";
 import LogoutComponent from "../../components/logout/LogoutComponent";
-import {base_url} from "../../Config";
+import { base_url } from "../../Config";
 import DeviceEditInfoParsers from "./DeviceEditInfoParser";
 
 const EditForm = () => {
@@ -29,7 +30,7 @@ const EditForm = () => {
   const [versionData, setVersionData] = useState();
   const [buildIdData, setBuildIdData] = useState();
 
-  const {setLoading}= useContext(LoaderContext)
+  const { setLoading } = useContext(LoaderContext);
 
   useEffect(() => {
     getApps();
@@ -38,19 +39,19 @@ const EditForm = () => {
 
   useEffect(() => {
     if (buildDetails.app.length > 0) {
-      setLoading(true)
+      setLoading(true);
       const baseUrl = `${base_url}/apps/versions?appname=${buildDetails.app}`;
-  
+
       axios
         .get(baseUrl, {
           headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
         })
         .then((res) => {
           setVersionData(res.data.data);
-          setLoading(false)
+          setLoading(false);
         })
         .catch((e) => {
-          setLoading(false)
+          setLoading(false);
           setSnackbarDetails({
             open: true,
             data: e.message ? e.message : "Network Error",
@@ -64,9 +65,9 @@ const EditForm = () => {
         .then((res) => {
           setBuildIdData(res.data.data);
         })
-       
+
         .catch((e) => {
-          setLoading(false)
+          setLoading(false);
           setSnackbarDetails({
             open: true,
             data: e.message ? e.message : "Network Error",
@@ -78,16 +79,16 @@ const EditForm = () => {
 
   const getApps = async () => {
     try {
-      setLoading(true)
+      setLoading(true);
       const res = await axios.get(`${base_url}/apps/`, {
         headers: { Authorization: `Bearer ${buildDetails.credBase64}` },
       });
       if (res) {
         setAppData(res.data.data);
-        setLoading(false)
+        setLoading(false);
       }
-  } catch (e) {
-      setLoading(false)
+    } catch (e) {
+      setLoading(false);
       setSnackbarDetails({
         open: true,
         data: e.message ? e.message : "Can't Fetch Apps",
@@ -100,7 +101,7 @@ const EditForm = () => {
     // setAppData(res?.data.data);
   };
   const handleSelectBuildId = (e) => {
-    setLoading(true)
+    setLoading(true);
     setBuildDetails((prev) => ({ ...prev, buildId: e.target.value }));
     axios
       .get(
@@ -110,21 +111,18 @@ const EditForm = () => {
         }
       )
       .then((res) => {
-        setLoading(false)
+        setLoading(false);
         // setBuildConfig(res.data.data);
         setBuildDetails((prev) => ({
           ...prev,
           version: res.data.data.version,
         }));
-        console.log("Response Data Of Edit Form",res.data.data.buildconfig);
         let pasrsedValues = DeviceEditInfoParsers(res.data.data.buildconfig);
-        console.log("Parsed Values In Edit..",pasrsedValues);
+        console.log("Parsed Values In Edit..", pasrsedValues);
         setInitialEditForm(pasrsedValues);
-  
-      
       })
       .catch((e) => {
-        setLoading(false)
+        setLoading(false);
         setSnackbarDetails({
           open: true,
           data: e.message ? e.message : "Can't Fetch Current Version",
@@ -181,20 +179,20 @@ const EditForm = () => {
           </Grid>
           <Grid item xs={12} xm={6}>
             <Link to="/form" style={{ color: "white" }}>
-            <Button
-              className="editButton"
-              variant="contained"
-              disabled={!buildDetails.version && !buildDetails.buildId}
-              sx={{
-                backgroundColor: "#29242c",
-                "&:hover": {
-                  backgroundColor: "rgba(41, 36, 44, 0.8)",
-                },
-              }}
-            >
+              <Button
+                className="editButton"
+                variant="contained"
+                disabled={!buildDetails.version && !buildDetails.buildId}
+                sx={{
+                  backgroundColor: "#29242c",
+                  "&:hover": {
+                    backgroundColor: "rgba(41, 36, 44, 0.8)",
+                  },
+                }}
+              >
                 Start Editing
-            </Button>
-              </Link>
+              </Button>
+            </Link>
           </Grid>
         </Grid>
         {/* </div> */}

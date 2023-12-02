@@ -1,30 +1,24 @@
-import React, {  useContext } from "react";
+import React, { useContext } from "react";
 import { Grid, Typography } from "@mui/material";
 import { InputField, SelectField, FileField } from "../../formFields";
 import { FieldArray, useFormikContext } from "formik";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
-// import Button from "@mui/material/Button";
 import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
-import { DefaultContext} from "../../../context/contexts"
-import Tooltip from '@mui/material/Tooltip';
-
-
+import { DefaultContext } from "../../../context/contexts";
+import Tooltip from "@mui/material/Tooltip";
 
 const DeviceInfoForm = ({ formField }) => {
   // const { setFieldValue } = useFormikContext();
   // const [field,form, meta, helpers] = useField(props);
-  const {values,setFieldValue}= useFormikContext()
-  const {defaultBike, setDefaultBike}= useContext(DefaultContext)
-  // useEffect(() => {
-  //   setFieldValue(values.deviceInfo.bikeModels[0].modelName, "hello")
-  // }, [])
+  const { values, setFieldValue } = useFormikContext();
+  const { defaultBike, setDefaultBike } = useContext(DefaultContext);
 
-  console.log("Edit App Form",values);
+  console.log("Edit App Form", values);
   const modesObj = {
     Eco: {
       id: "",
-      modeName:"",
+      modeName: "",
       modeImage: "",
       range: {
         p1: "",
@@ -34,7 +28,7 @@ const DeviceInfoForm = ({ formField }) => {
         p1: "",
         p2: "",
       },
-    }
+    },
   };
 
   const bikeModelObj = {
@@ -42,74 +36,22 @@ const DeviceInfoForm = ({ formField }) => {
     frontViewImage: "",
     sideViewImage: "",
     inclinedViewImage: "",
-
-
-    // modes: {
-    //   Eco: {
-    //     id: 0,
-    //     modeImage: "",
-    //     range: {
-    //       p1: 0,
-    //       p2: 0,
-    //     },
-    //     SOC: {
-    //       p1: 0,
-    //       p2: 0,
-    //     },
-    //   },
-    //   Sports: {
-    //     id: 0,
-    //     modeImage: "",
-    //     range: {
-    //       p1: 0,
-    //       p2: 0,
-    //     },
-    //     SOC: {
-    //       p1: 1,
-    //       p2: 0,
-    //     },
-    //   },
-    //   Hyper: {
-    //     id: 0,
-    //     modeImage: "",
-    //     range: {
-    //       p1: 0,
-    //       p2: 0,
-    //     },
-    //     SOC: {
-    //       p1: 1,
-    //       p2: 0,
-    //     },
-    //   },
-    //   default: {
-    //     id: 0,
-    //     modeImage: "",
-    //     range: {
-    //       p1: 0,
-    //       p2: 0,
-    //     },
-    //     SOC: {
-    //       p1: 1,
-    //       p2: 0,
-    //     },
-    //   },
-    // },
-
-    modes:[ {
-      Eco: {
-        id:0,
-        modeName:"default",
-        modeImage: "",
-        range: {
-          p1: "1.2",
-          p2: "0.0659",
+    modes: [
+      {
+        Eco: {
+          id: 0,
+          modeName: "default",
+          modeImage: "",
+          range: {
+            p1: "1.2",
+            p2: "0.0659",
+          },
+          SOC: {
+            p1: "1",
+            p2: "0",
+          },
         },
-        SOC: {
-          p1: "1",
-          p2: "0",
-        }
-      }
-    }
+      },
     ],
     minimumVoltage: 0,
     maximumVoltage: 0,
@@ -128,23 +70,20 @@ const DeviceInfoForm = ({ formField }) => {
     },
   };
 
-  
-  let models=[]
-   models=values.deviceInfo.bikeModels.map((item, index)=>{
+  let models = [];
+  models = values.deviceInfo.bikeModels.map((item, index) => {
     return {
-      value:item.modelName,
-      label:item.modelName
-    }
-  })
-  values.deviceInfo.default && (
-    values.deviceInfo.bikeModels.map((bike, index)=>{
-      if(bike.modelName=== values.deviceInfo.default){
-        return setDefaultBike(bike)
+      value: item.modelName,
+      label: item.modelName,
+    };
+  });
+  values.deviceInfo.default &&
+    values.deviceInfo.bikeModels.map((bike, index) => {
+      if (bike.modelName === values.deviceInfo.default) {
+        return setDefaultBike(bike);
       }
       // else(setFieldValue(values.deviceInfo.default,""))
-    })
-  )
-  console.log("device info values...",values);
+    });
   return (
     <React.Fragment>
       <Typography variant="h5" gutterBottom>
@@ -227,516 +166,142 @@ const DeviceInfoForm = ({ formField }) => {
                       />
                     </Grid>
                   </Grid>
-
-                      
-                  
                   <Typography variant="h6" gutterBottom>
                     Modes
                   </Typography>
-                  <FieldArray
-                  name={`deviceInfo.bikeModels.${index}.modes`}
-                  >
-                  {({ insert, remove, push }) => (
-                <>
-                {values.deviceInfo.bikeModels[index].modes.length > 0 &&
-              values.deviceInfo.bikeModels[index].modes.map((mode, ind) => (
-                <>
-               {/* <Typography variant="h6" gutterBottom>
-                    Eco
-                  </Typography> */}
-                  <Grid container spacing={3} mt={1} mb={1}>
-                    <Grid item xs={12} sm={11}>
-                    <Typography variant="h6" gutterBottom>
-                    {`Mode${ind+1}`}
-                  </Typography>
-                    </Grid>
-                   {/* <Grid item xs={12} sm={6} > */}
-                   {/* <Typography variant="h6" gutterBottom>
-                    {mode.Eco.modeName}
-                  </Typography> */}
+                  <FieldArray name={`deviceInfo.bikeModels.${index}.modes`}>
+                    {({ insert, remove, push }) => (
+                      <>
+                        {values.deviceInfo.bikeModels[index].modes.length > 0 &&
+                          values.deviceInfo.bikeModels[index].modes.map(
+                            (mode, ind) => (
+                              <>
+                                <Grid container spacing={3} mt={1} mb={1}>
+                                  <Grid item xs={12} sm={11}>
+                                    <Typography variant="h6" gutterBottom>
+                                      {`Mode${ind + 1}`}
+                                    </Typography>
+                                  </Grid>
+                                  <Grid item xs={12} sm={1}>
+                                    {ind > 0 ? (
+                                      <Tooltip title="Delete Mode">
+                                        <IconButton
+                                          aria-label="delete"
+                                          size="large"
+                                          onClick={() => remove(ind)}
+                                        >
+                                          <DeleteIcon
+                                            fontSize="inherit"
+                                            color="error"
+                                            style={{ position: "absolute" }}
+                                          />
+                                        </IconButton>
+                                      </Tooltip>
+                                    ) : (
+                                      ""
+                                    )}
+                                  </Grid>
+                                </Grid>
 
-                        {/* <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.modeName`}
-                        label="Mode"
-                        
-                        fullWidth
-                      />
-                   </Grid> */}
-                  
-                    <Grid item xs={12} sm={1}>
-                      {ind > 0 ? (
-                        <Tooltip title="Delete Mode">
+                                <Grid container spacing={3}>
+                                  <Grid item xs={12} sm={12} mb={2}>
+                                    <InputField
+                                      name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.modeName`}
+                                      label="Mode"
+                                      fullWidth
+                                    />
+                                  </Grid>
+                                </Grid>
+
+                                <Grid container spacing={3}>
+                                  <Grid item xs={12} sm={6}>
+                                    <InputField
+                                      name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.id`}
+                                      label="ID"
+                                      type="number"
+                                      fullWidth
+                                    />
+                                  </Grid>
+                                  <Grid item xs={12} sm={6}>
+                                    <FileField
+                                      name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.modeImage`}
+                                      label="Mode Image"
+                                      type="file"
+                                      InputLabelProps={{
+                                        shrink: true,
+                                      }}
+                                      value={undefined}
+                                      fullWidth
+                                    />
+                                  </Grid>
+                                </Grid>
+                                <Typography variant="subtitle1" gutterBottom>
+                                  Range
+                                </Typography>
+                                <Grid container spacing={3}>
+                                  <Grid item xs={12} sm={6}>
+                                    <InputField
+                                      name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.range.p1`}
+                                      label="P1"
+                                      type="number"
+                                      fullWidth
+                                    />
+                                  </Grid>
+                                  <Grid item xs={12} sm={6}>
+                                    <InputField
+                                      name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.range.p2`}
+                                      label="P2"
+                                      type="number"
+                                      fullWidth
+                                    />
+                                  </Grid>
+                                </Grid>
+                                <Typography variant="subtitle1" gutterBottom>
+                                  SOC
+                                </Typography>
+                                <Grid container spacing={3}>
+                                  <Grid item xs={12} sm={6}>
+                                    <InputField
+                                      name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.SOC.p1`}
+                                      label="P1"
+                                      type="number"
+                                      fullWidth
+                                    />
+                                  </Grid>
+                                  <Grid item xs={12} sm={6}>
+                                    <InputField
+                                      name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.SOC.p2`}
+                                      label="P2"
+                                      type="number"
+                                      fullWidth
+                                    />
+                                  </Grid>
+                                </Grid>
+                              </>
+                            )
+                          )}
+
+                        <Tooltip title="Add Mode">
                           <IconButton
-                            aria-label="delete"
+                            aria-label="Add"
                             size="large"
-                            onClick={() => remove(ind)}
+                            onClick={() => push(modesObj)}
+                            style={{ position: "absolute", fontSize: 40 }}
                           >
-                            <DeleteIcon
+                            <AddCircleRoundedIcon
                               fontSize="inherit"
-                              color="error"
-                              style={{ position: "absolute" }}
+                              color="primary"
                             />
                           </IconButton>
                         </Tooltip>
-                      ) : (
-                        ""
-                      )}
-                    </Grid>
-                  </Grid>
-
-                        <Grid container spacing={3}>
-                        <Grid item xs={12} sm={12} mb={2} >
-                         <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.modeName`}
-                        label="Mode"
-                        
-                        fullWidth
-                      />
-                   </Grid>
-                        </Grid>
-                         
-
-
-
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.id`}
-                        label="ID"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <FileField
-                        name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.modeImage`}
-                        label="Mode Image"
-                        type="file"
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        value={undefined}
-                        fullWidth
-                      />
-                    </Grid>
-                  </Grid>
-                  <Typography variant="subtitle1" gutterBottom>
-                    Range
-                  </Typography>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.range.p1`}
-                        label="P1"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.range.p2`}
-                        label="P2"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                  </Grid>
-                  <Typography variant="subtitle1" gutterBottom>
-                    SOC
-                  </Typography>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.SOC.p1`}
-                        label="P1"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.SOC.p2`}
-                        label="P2"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                  </Grid>
-                
-                </>
-              ))}
-                 {/* <Typography variant="h6" gutterBottom>
-                    Eco
-                  </Typography>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Eco.id`}
-                        label="ID"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <FileField
-                        name={`deviceInfo.bikeModels.${index}.modes.Eco.modeImage`}
-                        label="Mode Image"
-                        type="file"
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        value={undefined}
-                        fullWidth
-                      />
-                    </Grid>
-                  </Grid>
-                    
-                  <Typography variant="subtitle1" gutterBottom>
-                    Range
-                  </Typography>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Eco.range.p1`}
-                        label="P1"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Eco.range.p2`}
-                        label="P2"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                  </Grid>
-                  <Typography variant="subtitle1" gutterBottom>
-                    SOC
-                  </Typography>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Eco.SOC.p1`}
-                        label="P1"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Eco.SOC.p2`}
-                        label="P2"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                  </Grid> */}
-                  <Tooltip title="Add Mode">
-                    <IconButton
-                      aria-label="Add"
-                      size="large"
-                      onClick={() => push(modesObj)}
-                      //onClick={() => push(bikeModelObj)}
-                      style={{ position: "absolute", fontSize: 40 }}
-                    >
-                      <AddCircleRoundedIcon
-                        fontSize="inherit"
-                        color="primary"
-                      />
-                    </IconButton>
-                  </Tooltip>
-
-                </>
-                  )}
+                      </>
+                    )}
                   </FieldArray>
-                  {/* <Typography variant="h6" gutterBottom>
-                    Eco
-                  </Typography>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Eco.id`}
-                        label="ID"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <FileField
-                        name={`deviceInfo.bikeModels.${index}.modes.Eco.modeImage`}
-                        label="Mode Image"
-                        type="file"
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        value={undefined}
-                        fullWidth
-                      />
-                    </Grid>
-                  </Grid>
-                    
-                  <Typography variant="subtitle1" gutterBottom>
-                    Range
-                  </Typography>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Eco.range.p1`}
-                        label="P1"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Eco.range.p2`}
-                        label="P2"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                  </Grid>
-                  <Typography variant="subtitle1" gutterBottom>
-                    SOC
-                  </Typography>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Eco.SOC.p1`}
-                        label="P1"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Eco.SOC.p2`}
-                        label="P2"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                  </Grid> */}
-                  {/* <Tooltip title="Add Mode">
-                    <IconButton
-                      aria-label="Add"
-                      size="large"
-                      onClick={() => push(modesObj)}
-                      //onClick={() => push(bikeModelObj)}
-                      style={{ position: "absolute", fontSize: 40 }}
-                    >
-                      <AddCircleRoundedIcon
-                        fontSize="inherit"
-                        color="primary"
-                      />
-                    </IconButton>
-                  </Tooltip> */}
-
-                  {/* <Typography variant="h6" gutterBottom>
-                    Sports
-                  </Typography>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Sports.id`}
-                        label="ID"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <FileField
-                        name={`deviceInfo.bikeModels.${index}.modes.Sports.modeImage`}
-                        label="Mode Image"
-                        type="file"
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        value={undefined}
-                        fullWidth
-                      />
-                    </Grid>
-                  </Grid>
-                  <Typography variant="subtitle1" gutterBottom>
-                    Range
-                  </Typography>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Sports.range.p1`}
-                        label="P1"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Sports.range.p2`}
-                        label="P2"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                  </Grid>
-                  <Typography variant="subtitle1" gutterBottom>
-                    SOC
-                  </Typography>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Sports.SOC.p1`}
-                        label="P1"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Sports.SOC.p2`}
-                        label="P2"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                  </Grid> */}
-                  {/* <Typography variant="h6" gutterBottom>
-                    Hyper
-                  </Typography>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Hyper.id`}
-                        label="ID"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <FileField
-                        name={`deviceInfo.bikeModels.${index}.modes.Hyper.modeImage`}
-                        label="Mode Image"
-                        type="file"
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        value={undefined}
-                        fullWidth
-                      />
-                    </Grid>
-                  </Grid>
-                  <Typography variant="subtitle1" gutterBottom>
-                    Range
-                  </Typography>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Hyper.range.p1`}
-                        label="P1"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Hyper.range.p2`}
-                        label="P2"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                  </Grid>
-                  <Typography variant="subtitle1" gutterBottom>
-                    SOC
-                  </Typography>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Hyper.SOC.p1`}
-                        label="P1"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Hyper.SOC.p2`}
-                        label="P2"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                  </Grid> */}
-                  {/* <Typography variant="h6" gutterBottom>
-                    Default
-                  </Typography>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.default.id`}
-                        label="ID"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <FileField
-                        name={`deviceInfo.bikeModels.${index}.modes.default.modeImage`}
-                        label="Mode Image"
-                        type="file"
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        value={undefined}
-                        fullWidth
-                      />
-                    </Grid>
-                  </Grid>
-
-                  <Typography variant="subtitle1" gutterBottom>
-                    Range
-                  </Typography>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.default.range.p1`}
-                        label="P1"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.default.range.p2`}
-                        label="P2"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                  </Grid>
-                  <Typography variant="subtitle1" gutterBottom>
-                    SOC
-                  </Typography>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.default.SOC.p1`}
-                        label="P1"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <InputField
-                        name={`deviceInfo.bikeModels.${index}.modes.Hyper.SOC.p2`}
-                        label="P2"
-                        type="number"
-                        fullWidth
-                      />
-                    </Grid>
-                  </Grid> */}
-                  <Typography variant="h6" gutterBottom sx={{marginTop:"4rem"}}>
+                  <Typography
+                    variant="h6"
+                    gutterBottom
+                    sx={{ marginTop: "4rem" }}
+                  >
                     Minimum & Maximum Voltage
                   </Typography>
                   <Grid container spacing={3}>
@@ -827,7 +392,6 @@ const DeviceInfoForm = ({ formField }) => {
                   </Grid>
                 </>
               ))}
-            {/* <Button variant="contained" sx={{fontSize:"50"}} style={{marginTop:"20px"}}>+</Button> */}
             <Tooltip title="Add Vehicle">
               <IconButton
                 aria-label="Add"
