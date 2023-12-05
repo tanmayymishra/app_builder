@@ -163,7 +163,8 @@ export default function AppBuilderPage({ selectForm }) {
               SOC: {
                 p1: "1",
                 p2: "0",
-              }
+              },
+              maxRange:100
             }
           }
           ],

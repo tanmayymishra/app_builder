@@ -28,6 +28,7 @@ const DeviceInfoForm = ({ formField }) => {
         p1: "",
         p2: "",
       },
+      maxRange:""
     },
   };
 
@@ -50,6 +51,7 @@ const DeviceInfoForm = ({ formField }) => {
             p1: "1",
             p2: "0",
           },
+          maxRange:100
         },
       },
     ],
@@ -202,12 +204,19 @@ const DeviceInfoForm = ({ formField }) => {
                                     )}
                                   </Grid>
                                 </Grid>
-
                                 <Grid container spacing={3}>
-                                  <Grid item xs={12} sm={12} mb={2}>
+                                  <Grid item xs={12} sm={6} mb={2}>
                                     <InputField
                                       name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.modeName`}
                                       label="Mode"
+                                      fullWidth
+                                    />
+                                  </Grid>
+                                  <Grid item xs={12} sm={6} mb={2}>
+                                    <InputField
+                                      name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.maxRange`}
+                                      label="Maximum Range"
+                                      type="number"
                                       fullWidth
                                     />
                                   </Grid>
