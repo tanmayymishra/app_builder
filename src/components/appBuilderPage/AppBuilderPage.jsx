@@ -202,6 +202,7 @@ export default function AppBuilderPage({ selectForm }) {
       alerts: {
         periodicAlert: false,
         geofenceAlert: false,
+        socAlert:false,
         view: false,
       },
       ticketSystem: false,
@@ -209,6 +210,7 @@ export default function AppBuilderPage({ selectForm }) {
       pushNotification: false,
       rewards: false,
       cloudDataFetch: false,
+      deviceHistory:false,
       trackBike: false,
       envBenefits: {
         savedTrees: {

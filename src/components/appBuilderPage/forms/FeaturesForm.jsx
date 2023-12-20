@@ -123,6 +123,12 @@ const FeauresForm = (props) => {
                 label="Geofence Alert"
               />
             </Grid>
+            <Grid item xs={12} sm={12}>
+              <CheckboxField
+                name="features.alerts.socAlert"
+                label="Soc Alert"
+              />
+            </Grid>
           </>
         ) : (
           ""
@@ -260,6 +266,12 @@ const FeauresForm = (props) => {
         <CheckboxField
           name="features.cloudDataFetch"
           label="Cloud Data Fetch"
+        />
+      </Grid>
+      <Grid item xs={12} sm={12}>
+        <CheckboxField
+          name="features.deviceHistory"
+          label="Device History"
         />
       </Grid>
       <Grid item xs={12} sm={12}>
