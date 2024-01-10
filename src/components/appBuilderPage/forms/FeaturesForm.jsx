@@ -184,10 +184,7 @@ const FeauresForm = (props) => {
         {values.features.screens.view ? (
           <>
             <Grid item xs={12} sm={12}>
-              <CheckboxField
-                name="features.screens.home"
-                label="Home"
-              />
+              <CheckboxField name="features.screens.home" label="Home" />
             </Grid>
             <Grid item xs={12} sm={12}>
               <CheckboxField
@@ -208,10 +205,7 @@ const FeauresForm = (props) => {
               />
             </Grid>
             <Grid item xs={12} sm={12}>
-              <CheckboxField
-                name="features.screens.profile"
-                label="Profile"
-              />
+              <CheckboxField name="features.screens.profile" label="Profile" />
             </Grid>
           </>
         ) : (
@@ -300,8 +294,23 @@ const FeauresForm = (props) => {
         />
         Weather
       </Typography>
+
       <Grid container spacing={3}>
         {values.features.weather.view ? (
+          <Grid item xs={12} sm={6}>
+            <CheckboxField
+              name="features.weather.weather"
+              value={values.features.weather.weather}
+              label="weather"
+            />
+          </Grid>
+        ) : (
+          ""
+        )}
+        <Grid item xs={12} sm={12}></Grid>
+      </Grid>
+      <Grid container spacing={3}>
+        {values.features.weather.view && values.features.weather.weather ? (
           <Grid item xs={12} sm={6}>
             <InputField
               type="number"
@@ -315,7 +324,7 @@ const FeauresForm = (props) => {
         )}
         <Grid item xs={12} sm={12}></Grid>
       </Grid>
-      
+
       <Typography
         variant="h6"
         gutterBottom
@@ -450,10 +459,7 @@ const FeauresForm = (props) => {
         />
       </Grid>
       <Grid item xs={12} sm={12}>
-        <CheckboxField
-          name="features.deviceHistory"
-          label="Device History"
-        />
+        <CheckboxField name="features.deviceHistory" label="Device History" />
       </Grid>
       <Grid item xs={12} sm={12}>
         <CheckboxField name="features.trackBike" label="Track Bike" />

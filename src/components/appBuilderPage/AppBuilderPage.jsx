@@ -8,6 +8,7 @@ import FeaturesForm from "./forms/FeaturesForm";
 import PackagesForm from "./forms/PackagesForm";
 import BuildForm from "./forms/BuildForm";
 import DeviceInfoParsers from "./forms/DeviceInfoParsers";
+import FeaturesInfoParsers from "./forms/FeaturesInfoParsers";
 import { BuilderFormModel } from "./formModel/BuilderFormModel";
 import {
   ColorContext,
@@ -301,7 +302,8 @@ export default function AppBuilderPage({ selectForm }) {
   }
   async function _submitForm(values, actions) {
     //setBuildDetails({...buildDetails,version:buildVersion.version});
-    const parsedValues = DeviceInfoParsers(values);
+    const featuresParsedValues = FeaturesInfoParsers(values);
+    const parsedValues = DeviceInfoParsers(featuresParsedValues);
     console.log("Parsed values in App Builder",parsedValues);
     setLoading(true);
     let postData = {};
@@ -497,58 +499,58 @@ export default function AppBuilderPage({ selectForm }) {
     await _sleep(1000);
     // alert(JSON.stringify(values, null, 2));
 
-    {
-      selectForm === "new"
-        ? axios
-            .post(
-             `${base_url}/build/`,
-             postData,
-              // liteData,
-              axiosConfig
-            )
-            .then((res) => {
-              setLoading(false);
-              setBuildDetails((prev) => ({
-                ...prev,
-                newBuildId: res?.data?.data?.buildid,
-              }));
-              setActiveStep(activeStep + 1);
+    // {
+    //   selectForm === "new"
+    //     ? axios
+    //         .post(
+    //          `${base_url}/build/`,
+    //          postData,
+    //           // liteData,
+    //           axiosConfig
+    //         )
+    //         .then((res) => {
+    //           setLoading(false);
+    //           setBuildDetails((prev) => ({
+    //             ...prev,
+    //             newBuildId: res?.data?.data?.buildid,
+    //           }));
+    //           setActiveStep(activeStep + 1);
              
-            })
-            .catch((err) => {
-              setSnackbarDetails({
-                open: true,
-                data: err.message ? err.message : "Network Error",
-                type: "error",
-              });
-              setLoading(false);
+    //         })
+    //         .catch((err) => {
+    //           setSnackbarDetails({
+    //             open: true,
+    //             data: err.message ? err.message : "Network Error",
+    //             type: "error",
+    //           });
+    //           setLoading(false);
 
-            })
-        : axios
-            .post(
-             `${base_url}/build/`,
-             postData,
-              axiosConfig
-            )
-            .then((res) => {
-              setLoading(false);
-              setBuildDetails((prev) => ({
-                ...prev,
-                newBuildId: res?.data?.data?.buildid,
-              }));
-              setActiveStep(activeStep + 1);
+    //         })
+    //     : axios
+    //         .post(
+    //          `${base_url}/build/`,
+    //          postData,
+    //           axiosConfig
+    //         )
+    //         .then((res) => {
+    //           setLoading(false);
+    //           setBuildDetails((prev) => ({
+    //             ...prev,
+    //             newBuildId: res?.data?.data?.buildid,
+    //           }));
+    //           setActiveStep(activeStep + 1);
              
-            })
-            .catch((err) => {
-              setLoading(false);
-              setSnackbarDetails({
-                open: true,
-                data: err.message ? err.message : "Network Error",
-                type: "error",
-              });
+    //         })
+    //         .catch((err) => {
+    //           setLoading(false);
+    //           setSnackbarDetails({
+    //             open: true,
+    //             data: err.message ? err.message : "Network Error",
+    //             type: "error",
+    //           });
              
-            });
-    }
+    //         });
+    // }
 
     actions.setSubmitting(false);
   }
