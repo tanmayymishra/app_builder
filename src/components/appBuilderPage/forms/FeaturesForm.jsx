@@ -20,6 +20,36 @@ const FeauresForm = (props) => {
         }}
       >
         <CheckboxField
+          name="features.splashScreen.view"
+          value={values.features.splashScreen.view}
+        />
+        Splash Screen
+      </Typography>
+      <Grid container spacing={3}>
+        {values.features.splashScreen.view ? (
+          <>
+            <Grid item xs={12} sm={12}>
+              <CheckboxField
+                name="features.splashScreen.showBrandName"
+                label="Show Brand Name"
+              />
+            </Grid>
+          </>
+        ) : (
+          ""
+        )}
+        <Grid item xs={12} sm={12}></Grid>
+      </Grid>
+      <Typography
+        variant="h6"
+        gutterBottom
+        style={{
+          display: "flex",
+          justifyContent: "flex-start",
+          alignItems: "center",
+        }}
+      >
+        <CheckboxField
           name="features.mapLocation.view"
           value={values.features.mapLocation.view}
         />
@@ -135,6 +165,157 @@ const FeauresForm = (props) => {
         )}
         <Grid item xs={12} sm={12}></Grid>
       </Grid>
+      <Typography
+        variant="h6"
+        gutterBottom
+        style={{
+          display: "flex",
+          justifyContent: "flex-start",
+          alignItems: "center",
+        }}
+      >
+        <CheckboxField
+          name="features.screens.view"
+          value={values.features.screens.view}
+        />
+        Screens
+      </Typography>
+      <Grid container spacing={3}>
+        {values.features.screens.view ? (
+          <>
+            <Grid item xs={12} sm={12}>
+              <CheckboxField
+                name="features.screens.home"
+                label="Home"
+              />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <CheckboxField
+                name="features.screens.vehicleSpecification"
+                label="Vehicle Specification"
+              />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <CheckboxField
+                name="features.screens.currentTripAndAlerts"
+                label="Current Trips & Alerts"
+              />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <CheckboxField
+                name="features.screens.tripPlanning"
+                label="Trip Planning"
+              />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <CheckboxField
+                name="features.screens.profile"
+                label="Profile"
+              />
+            </Grid>
+          </>
+        ) : (
+          ""
+        )}
+        <Grid item xs={12} sm={12}></Grid>
+      </Grid>
+      <Typography
+        variant="h6"
+        gutterBottom
+        style={{
+          display: "flex",
+          justifyContent: "flex-start",
+          alignItems: "center",
+        }}
+      >
+        <CheckboxField
+          name="features.bikeParameters.view"
+          value={values.features.bikeParameters.view}
+        />
+        Bike Parameters
+      </Typography>
+      <Grid container spacing={3}>
+        {values.features.bikeParameters.view ? (
+          <>
+            <Grid item xs={12} sm={12}>
+              <CheckboxField
+                name="features.bikeParameters.motorTemperature"
+                label="Motor Temperature"
+              />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <CheckboxField
+                name="features.bikeParameters.batteryTemperature"
+                label="Battery Temperature"
+              />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <CheckboxField
+                name="features.bikeParameters.batteryCapacity"
+                label="Battery Capacity"
+              />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <CheckboxField
+                name="features.bikeParameters.timeToFullCharge"
+                label="Time To Full Charge"
+              />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <CheckboxField
+                name="features.bikeParameters.softwareVersion"
+                label="Software Version"
+              />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <CheckboxField
+                name="features.bikeParameters.efficiency"
+                label="Efficiency"
+              />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <CheckboxField
+                name="features.bikeParameters.maxSpeed"
+                label="Maximum Speed"
+              />
+            </Grid>
+          </>
+        ) : (
+          ""
+        )}
+        <Grid item xs={12} sm={12}></Grid>
+      </Grid>
+      <Typography
+        variant="h6"
+        gutterBottom
+        style={{
+          display: "flex",
+          justifyContent: "flex-start",
+          alignItems: "center",
+        }}
+      >
+        <CheckboxField
+          name="features.weather.view"
+          value={values.features.weather.view}
+        />
+        Weather
+      </Typography>
+      <Grid container spacing={3}>
+        {values.features.weather.view ? (
+          <Grid item xs={12} sm={6}>
+            <InputField
+              type="number"
+              name="features.weather.interval"
+              label="Interval"
+              fullWidth
+            />
+          </Grid>
+        ) : (
+          ""
+        )}
+        <Grid item xs={12} sm={12}></Grid>
+      </Grid>
+      
       <Typography
         variant="h6"
         gutterBottom
