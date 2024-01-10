@@ -189,7 +189,8 @@ export default function AppBuilderPage({ selectForm }) {
     },
     features: {
       splashScreen:{
-        showBrandName:false
+        showBrandName:false,
+        view:false
       },
       mapLocation: {
         showDeviceLocation: false,
@@ -213,7 +214,8 @@ export default function AppBuilderPage({ selectForm }) {
         vehicleSpecification: false,
         currentTripAndAlerts: false,
         tripPlanning: false,
-        profile: false
+        profile: false,
+        view:false
       },
       bikeParameters: {
         motorTemperature: false,
@@ -222,11 +224,13 @@ export default function AppBuilderPage({ selectForm }) {
         timeToFullCharge: false,
         softwareVersion: false,
         efficiency: false,
-        maxSpeed: false
+        maxSpeed: false,
+        view:false
       },
       weather: {
         weather: false,
-        interval: 0
+        interval: 0,
+        view:false
       },
       ticketSystem: false,
       
