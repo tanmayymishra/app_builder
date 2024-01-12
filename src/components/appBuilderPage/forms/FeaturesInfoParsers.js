@@ -35,6 +35,11 @@ export default function FeaturesInfoParsers(values) {
                 delete appFeatures["sendDataToCloud"];
             }
         }
+        else if(k === "cloudDataFetch"){
+           if(appFeatures["cloudDataFetch"] === false){
+                delete appFeatures["cloudDataFetch"];
+           }
+        }
     }
     console.log("in app Features parser 1",appFeatures);
     values.features = appFeatures;
