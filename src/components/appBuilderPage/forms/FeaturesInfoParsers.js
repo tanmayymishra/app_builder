@@ -30,6 +30,11 @@ export default function FeaturesInfoParsers(values) {
                 delete appFeatures["weather"]["interval"];
             }
         }
+        else if(k === "sendDataToCloud"){
+            if(appFeatures["sendDataToCloud"].hasOwnProperty("transmittingFrequency") && appFeatures["sendDataToCloud"]["transmittingFrequency"] === ""){
+                delete appFeatures["sendDataToCloud"];
+            }
+        }
     }
     console.log("in app Features parser 1",appFeatures);
     values.features = appFeatures;
