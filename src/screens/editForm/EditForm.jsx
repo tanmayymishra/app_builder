@@ -20,6 +20,7 @@ import {
 import LogoutComponent from "../../components/logout/LogoutComponent";
 import { base_url } from "../../Config";
 import DeviceEditInfoParsers from "./DeviceEditInfoParser";
+import FeaturesEditInfoParsers from "./FeaturesEditInfoParser";
 
 const EditForm = () => {
   const { buildDetails, setBuildDetails } = useContext(BuildContext);
@@ -119,7 +120,8 @@ const EditForm = () => {
         }));
         let pasrsedValues = DeviceEditInfoParsers(res.data.data.buildconfig);
         console.log("Parsed Values In Edit..", pasrsedValues);
-        setInitialEditForm(pasrsedValues);
+        let newParsedValues = FeaturesEditInfoParsers(pasrsedValues);
+        setInitialEditForm(newParsedValues);
       })
       .catch((e) => {
         setLoading(false);
