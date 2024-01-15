@@ -112,7 +112,6 @@ const EditForm = () => {
         }
       )
       .then((res) => {
-        setLoading(false);
         // setBuildConfig(res.data.data);
         setBuildDetails((prev) => ({
           ...prev,
@@ -122,6 +121,7 @@ const EditForm = () => {
         console.log("Parsed Values In Edit..", pasrsedValues);
         let newParsedValues = FeaturesEditInfoParsers(pasrsedValues);
         setInitialEditForm(newParsedValues);
+        setLoading(false);
       })
       .catch((e) => {
         setLoading(false);
