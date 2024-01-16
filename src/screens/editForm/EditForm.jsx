@@ -119,7 +119,7 @@ const EditForm = () => {
         }));
         let pasrsedValues = DeviceEditInfoParsers(res.data.data.buildconfig);
         console.log("Parsed Values In Edit..", pasrsedValues);
-        //console.log("Build details..", buildDetails);
+        console.log("Build details..", buildDetails);
         let newParsedValues = FeaturesEditInfoParsers(pasrsedValues);
         setInitialEditForm(newParsedValues);
         setLoading(false);
