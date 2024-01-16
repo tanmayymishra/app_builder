@@ -32,10 +32,12 @@ function LogoutComponent() {
     localStorage.removeItem("username");
     localStorage.removeItem("password");
     localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("formVisited");
     if (
       !localStorage.getItem("isAuthenticated") &&
       !localStorage.getItem("username") &&
-      !localStorage.getItem("password")
+      !localStorage.getItem("password") &&
+      !localStorage.getItem("formVisited")
     ) {
       navigate("/login");
       setSnackbarDetails({

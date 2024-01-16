@@ -13,6 +13,11 @@ const AccountForm = (props) => {
   const { values } = useFormikContext();
   const { colors, setColors } = useContext(ColorContext);
   const { defaultBike, setDefaultBike } = useContext(DefaultContext);
+
+  useEffect(() => {
+    localStorage.setItem("formVisited",true);
+  },[])
+
   useEffect(() => {
    if(selectForm==="edit"){
     let models=[]

@@ -21,7 +21,7 @@ import LogoutComponent from "../../components/logout/LogoutComponent";
 import { base_url } from "../../Config";
 import DeviceEditInfoParsers from "./DeviceEditInfoParser";
 import FeaturesEditInfoParsers from "./FeaturesEditInfoParser";
-
+import { useNavigate } from "react-router-dom";
 const EditForm = () => {
   const { buildDetails, setBuildDetails } = useContext(BuildContext);
   const { setInitialEditForm } = useContext(InitialFormContext);
@@ -30,9 +30,18 @@ const EditForm = () => {
   const [appData, setAppData] = useState();
   const [versionData, setVersionData] = useState();
   const [buildIdData, setBuildIdData] = useState();
+  const navigate = useNavigate();
 
   const { setLoading } = useContext(LoaderContext);
-
+  
+  useEffect(() => {
+   let appFormVisited = localStorage.getItem("formVisited");
+   if(appFormVisited){
+    localStorage.removeItem("formVisited");
+    navigate("/chooseform");
+   }
+  },[localStorage.getItem("formVisited")])
+  
   useEffect(() => {
     getApps();
     setActiveStep(0);
@@ -121,6 +130,7 @@ const EditForm = () => {
         console.log("Parsed Values In Edit..", pasrsedValues);
         console.log("Build details..", buildDetails);
         let newParsedValues = FeaturesEditInfoParsers(pasrsedValues);
+        console.log("features edit Parsed Values",newParsedValues);
         setInitialEditForm(newParsedValues);
         setLoading(false);
       })
