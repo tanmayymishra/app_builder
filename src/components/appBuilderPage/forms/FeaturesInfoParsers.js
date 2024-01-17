@@ -56,6 +56,85 @@ export default function FeaturesInfoParsers(values) {
                 appFeatures["activityMonitoring"] = {};
            }
         }
+        else if(k === "chargingStation"){
+            if(appFeatures["chargingStation"].hasOwnProperty("chargingStationUrl") && appFeatures["chargingStation"]["chargingStationUrl"] === "" ){
+                delete appFeatures["chargingStation"];
+            }
+        }
+        else if(k === "mapLocation"){
+            if(appFeatures["mapLocation"].hasOwnProperty("androidKey") && appFeatures["mapLocation"]["androidKey"] === "" || appFeatures["mapLocation"].hasOwnProperty("iosKey") && appFeatures["mapLocation"]["iosKey"] === ""){
+                delete appFeatures["mapLocation"];
+            }
+        }
+        else if(k === "tripPlanning"){
+            if(appFeatures["tripPlanning"].hasOwnProperty("mapBoxAccessToken") && appFeatures["tripPlanning"]["mapBoxAccessToken"] === ""){
+                delete appFeatures["tripPlanning"];
+            }
+        }
+        else if(k === "envBenefits"){
+            if(appFeatures["envBenefits"].hasOwnProperty("savedTrees")){
+                if(appFeatures["envBenefits"]["savedTrees"].hasOwnProperty("p1") && appFeatures["envBenefits"]["savedTrees"]["p1"] === ""){
+                    delete appFeatures["envBenefits"];
+                }
+            }
+        }
+        else if(k === "bleFeatures"){
+            if(appFeatures["bleFeatures"].hasOwnProperty("bleCommunication")){
+                if(appFeatures["bleFeatures"]["bleCommunication"].hasOwnProperty("clusterBLEName") && appFeatures["bleFeatures"]["bleCommunication"]["clusterBLEName"] === ""){
+                    delete appFeatures["bleFeatures"];
+                }
+            }
+        }
+        else if(k === "serviceStation"){
+            if(appFeatures["serviceStation"].hasOwnProperty("serviceStationUrl") && appFeatures["serviceStation"]["serviceStationUrl"] === "" ){
+                delete appFeatures["serviceStation"];
+            }
+        }
+        else if(k === "trackBike"){
+            if(appFeatures["trackBike"] === false){
+                 delete appFeatures["trackBike"];
+            }
+         }
+         else if(k === "deviceHistory"){
+            if(appFeatures["deviceHistory"] === false){
+                 delete appFeatures["deviceHistory"];
+            }
+         }
+         else if(k === "rewards"){
+            if(appFeatures["rewards"] === false){
+                 delete appFeatures["rewards"];
+            }
+         }
+         else if(k === "pushNotification"){
+            if(appFeatures["pushNotification"] === false){
+                 delete appFeatures["pushNotification"];
+            }
+         }
+         else if(k === "ticketSystem"){
+            if(appFeatures["ticketSystem"] === false){
+                 delete appFeatures["ticketSystem"];
+            }
+         }
+         else if(k === "notifications"){
+            if(appFeatures["notifications"] === false){
+                 delete appFeatures["notifications"];
+            }
+         }
+         else if(k === "userDocumentUpload"){
+            if(appFeatures["userDocumentUpload"] === false){
+                 delete appFeatures["userDocumentUpload"];
+            }
+         }
+         else if(k === "tripAnalysis"){
+            if(appFeatures["tripAnalysis"] === false){
+                 delete appFeatures["tripAnalysis"];
+            }
+         }
+         else if(k === "immobilization"){
+            if(appFeatures["immobilization"] === false){
+                 delete appFeatures["immobilization"];
+            }
+         }
     }
     console.log("in app Features parser 1",appFeatures);
     values.features = appFeatures;
