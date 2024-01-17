@@ -8,5 +8,9 @@ export default function FeaturesEditInfoParsers(values) {
         console.log("sendDataToCloud property does not exist")
         values.features["sendDataToCloud"] = {transmittingFrequency:"",view:false}
     }
+    if(!values.features.hasOwnProperty("activityMonitoring")){
+        console.log("activityMonitoring property does not exist")
+        values.features["activityMonitoring"] = false;
+    }
     return values;
   }

@@ -49,6 +49,13 @@ export default function FeaturesInfoParsers(values) {
                 delete appFeatures["cloudDataFetch"];
            }
         }
+        else if(k === "activityMonitoring"){
+            if(appFeatures["activityMonitoring"] === false){
+                delete appFeatures["activityMonitoring"];
+           }else if(appFeatures["activityMonitoring"] === true){
+                appFeatures["activityMonitoring"] = {};
+           }
+        }
     }
     console.log("in app Features parser 1",appFeatures);
     values.features = appFeatures;

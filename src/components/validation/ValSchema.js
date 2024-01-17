@@ -40,56 +40,74 @@ const ValSchema = [
           frontViewImage: Yup.mixed().required("This field is required"),
           sideViewImage: Yup.mixed().required("This field is required"),
           inclinedViewImage: Yup.mixed().required("This field is required"),
-          modes: Yup.object().shape({
-            Eco: Yup.object().shape({
-              id: Yup.number().required("This field is required"),
-              modeImage: Yup.mixed().required("This field is required"),
-              range: Yup.object().shape({
+          // modes: Yup.object().shape({
+          //   Eco: Yup.object().shape({
+          //     id: Yup.number().required("This field is required"),
+          //     modeImage: Yup.mixed().required("This field is required"),
+          //     range: Yup.object().shape({
+          //       p1: Yup.number().required("This field is required"),
+          //       p2: Yup.number().required("This field is required"),
+          //     }),
+          //     SOC: Yup.object().shape({
+          //       p1: Yup.number().required("This field is required"),
+          //       p2: Yup.number().required("This field is required"),
+          //     }),
+          //   }),
+          //   // Sports: Yup.object().shape({
+          //   //   id: Yup.number().required("This field is required"),
+          //   //   modeImage: Yup.mixed().required("This field is required"),
+          //   //   range: Yup.object().shape({
+          //   //     p1: Yup.number().required("This field is required"),
+          //   //     p2: Yup.number().required("This field is required"),
+          //   //   }),
+          //   //   SOC: Yup.object().shape({
+          //   //     p1: Yup.number().required("This field is required"),
+          //   //     p2: Yup.number().required("This field is required"),
+          //   //   }),
+          //   // }),
+          //   // Hyper: Yup.object().shape({
+          //   //   id: Yup.number().required("This field is required"),
+          //   //   modeImage: Yup.mixed().required("This field is required"),
+          //   //   range: Yup.object().shape({
+          //   //     p1: Yup.number().required("This field is required"),
+          //   //     p2: Yup.number().required("This field is required"),
+          //   //   }),
+          //   //   SOC: Yup.object().shape({
+          //   //     p1: Yup.number().required("This field is required"),
+          //   //     p2: Yup.number().required("This field is required"),
+          //   //   }),
+          //   // }),
+          //   // default: Yup.object().shape({
+          //   //   id: Yup.number().required("This field is required"),
+          //   //   modeImage: Yup.mixed().required("This field is required"),
+          //   //   range: Yup.object().shape({
+          //   //     p1: Yup.number().required("This field is required"),
+          //   //     p2: Yup.number().required("This field is required"),
+          //   //   }),
+          //   //   SOC: Yup.object().shape({
+          //   //     p1: Yup.number().required("This field is required"),
+          //   //     p2: Yup.number().required("This field is required"),
+          //   //   }),
+          //   // }),
+          // }),
+          modes:Yup.array().of(
+            Yup.object().shape({
+              Eco: Yup.object().shape({
+                modeName:Yup.string().required("This field is required"),
+                maxRange:Yup.number().required("This field is required"),
+                id: Yup.number().required("This field is required"),
+                modeImage: Yup.mixed().required("This field is required"),
+                range: Yup.object().shape({
                 p1: Yup.number().required("This field is required"),
                 p2: Yup.number().required("This field is required"),
-              }),
-              SOC: Yup.object().shape({
+                }),
+                SOC: Yup.object().shape({
                 p1: Yup.number().required("This field is required"),
                 p2: Yup.number().required("This field is required"),
-              }),
-            }),
-            Sports: Yup.object().shape({
-              id: Yup.number().required("This field is required"),
-              modeImage: Yup.mixed().required("This field is required"),
-              range: Yup.object().shape({
-                p1: Yup.number().required("This field is required"),
-                p2: Yup.number().required("This field is required"),
-              }),
-              SOC: Yup.object().shape({
-                p1: Yup.number().required("This field is required"),
-                p2: Yup.number().required("This field is required"),
-              }),
-            }),
-            Hyper: Yup.object().shape({
-              id: Yup.number().required("This field is required"),
-              modeImage: Yup.mixed().required("This field is required"),
-              range: Yup.object().shape({
-                p1: Yup.number().required("This field is required"),
-                p2: Yup.number().required("This field is required"),
-              }),
-              SOC: Yup.object().shape({
-                p1: Yup.number().required("This field is required"),
-                p2: Yup.number().required("This field is required"),
-              }),
-            }),
-            default: Yup.object().shape({
-              id: Yup.number().required("This field is required"),
-              modeImage: Yup.mixed().required("This field is required"),
-              range: Yup.object().shape({
-                p1: Yup.number().required("This field is required"),
-                p2: Yup.number().required("This field is required"),
-              }),
-              SOC: Yup.object().shape({
-                p1: Yup.number().required("This field is required"),
-                p2: Yup.number().required("This field is required"),
-              }),
-            }),
-          }),
+               }),
+              })
+            })
+          ),
           minimumVoltage: Yup.number().required("This field is required"),
           maximumVoltage: Yup.number().required("This field is required"),
           vehicleManual: Yup.string().required("This field is required").url("Enter a valid URL"),
@@ -202,6 +220,7 @@ const ValSchema = [
     packages: Yup.object().shape({
         android:Yup.object().shape({
             packageName:Yup.string().required("This field is required"),
+            googleServiceJson:Yup.mixed().required("This field is required"),
             releaseStorePassword:Yup.string().required("This field is required"),
             releaseKeyPassword:Yup.string().required("This field is required"),
             releaseKeyAlias:Yup.string().required("This field is required"),

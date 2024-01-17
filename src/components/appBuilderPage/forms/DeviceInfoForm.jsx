@@ -210,6 +210,7 @@ const DeviceInfoForm = ({ formField }) => {
                                       name={`deviceInfo.bikeModels.${index}.modes.${ind}.Eco.modeName`}
                                       label="Mode"
                                       fullWidth
+                                      disabled={mode.Eco.modeName === "default"}
                                     />
                                   </Grid>
                                   <Grid item xs={12} sm={6} mb={2}>
