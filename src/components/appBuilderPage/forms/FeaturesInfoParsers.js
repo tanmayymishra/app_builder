@@ -33,6 +33,16 @@ export default function FeaturesInfoParsers(values) {
             }
             }
         }
+        else if(k === "alerts"){
+            for(let i in appFeatures["alerts"]){
+                if(i !== 'view'){
+                if(appFeatures["alerts"].hasOwnProperty(i) && appFeatures["alerts"][i] === false ){
+                    console.log("alerts view",i);
+                    delete appFeatures["alerts"][i];
+                }
+            }
+            }
+        }
         else if(k === "weather"){
             if(appFeatures["weather"].hasOwnProperty("weather") && appFeatures["weather"]["weather"] === false){
                 delete appFeatures["weather"]["weather"];
@@ -62,12 +72,13 @@ export default function FeaturesInfoParsers(values) {
             }
         }
         else if(k === "mapLocation"){
-            if(appFeatures["mapLocation"].hasOwnProperty("androidKey") && appFeatures["mapLocation"]["androidKey"] === "" || appFeatures["mapLocation"].hasOwnProperty("iosKey") && appFeatures["mapLocation"]["iosKey"] === ""){
-                delete appFeatures["mapLocation"];
+            if(appFeatures["mapLocation"].hasOwnProperty("showDeviceLocation") && appFeatures["mapLocation"]["showDeviceLocation"] === false && appFeatures["mapLocation"].hasOwnProperty("androidKey") && appFeatures["mapLocation"]["androidKey"] === "" )
+            {
+                delete appFeatures["mapLocation"];   
             }
         }
         else if(k === "tripPlanning"){
-            if(appFeatures["tripPlanning"].hasOwnProperty("mapBoxAccessToken") && appFeatures["tripPlanning"]["mapBoxAccessToken"] === ""){
+            if(appFeatures["tripPlanning"].hasOwnProperty("mapBoxAccessToken") && appFeatures["tripPlanning"]["mapBoxAccessToken"] === "" && appFeatures["tripPlanning"].hasOwnProperty("turnByTurnNavigation") && appFeatures["tripPlanning"]["turnByTurnNavigation"] === false ){
                 delete appFeatures["tripPlanning"];
             }
         }
@@ -80,7 +91,7 @@ export default function FeaturesInfoParsers(values) {
         }
         else if(k === "bleFeatures"){
             if(appFeatures["bleFeatures"].hasOwnProperty("bleCommunication")){
-                if(appFeatures["bleFeatures"]["bleCommunication"].hasOwnProperty("clusterBLEName") && appFeatures["bleFeatures"]["bleCommunication"]["clusterBLEName"] === ""){
+                if(appFeatures["bleFeatures"]["bleCommunication"].hasOwnProperty("clusterBLEName") && appFeatures["bleFeatures"]["bleCommunication"]["clusterBLEName"] === "" && appFeatures["bleFeatures"].hasOwnProperty("callDetails") && appFeatures["bleFeatures"]["callDetails"] === false && appFeatures["bleFeatures"].hasOwnProperty("smsDetails") && appFeatures["bleFeatures"]["smsDetails"] === false){
                     delete appFeatures["bleFeatures"];
                 }
             }

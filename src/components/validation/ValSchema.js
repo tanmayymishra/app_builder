@@ -149,6 +149,14 @@ const ValSchema = [
           then: () => Yup.string().required("This field is required"),
         }),
       }),
+      weather:Yup.object().shape({
+        view: Yup.boolean(),
+        weather:Yup.boolean(),
+        interval:Yup.number().when("weather",{
+          is: true,
+          then: () => Yup.number().required("This field is required")
+        })
+      }),
       envBenefits: Yup.object().shape({
         view: Yup.boolean(),
         savedTrees: Yup.object().when("view",{

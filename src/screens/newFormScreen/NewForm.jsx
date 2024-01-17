@@ -17,6 +17,7 @@ import {
 } from "../../context/contexts";
 import LogoutComponent from "../../components/logout/LogoutComponent";
 import {base_url} from "../../Config";
+import { useNavigate } from "react-router-dom";
 
 const NewForm = () => {
   const [appData, setAppData] = useState();
@@ -24,6 +25,16 @@ const NewForm = () => {
   const { buildDetails, setBuildDetails } = useContext(BuildContext);
   const { snackbarDetails, setSnackbarDetails } = useContext(SnackbarContext);
   const { setLoading } = useContext(LoaderContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let appFormVisited = localStorage.getItem("formVisited");
+    if(appFormVisited){
+     localStorage.removeItem("formVisited");
+     navigate("/chooseform");
+    }
+   },[localStorage.getItem("formVisited")])
+
   useEffect(() => {
     getApps();
     

@@ -58,7 +58,7 @@ export default function FeaturesEditInfoParsers(values) {
     }
     if(!values.features["weather"].hasOwnProperty("weather")){
         console.log("weather property does not exist")
-        values.features["weather"] = {weather:false,interval:0,view:false};
+        values.features["weather"] = {weather:false,interval:"",view:false};
     }
     if(!values.features.hasOwnProperty("mapLocation")){
         values.features["mapLocation"] = {androidKey:"",iosKey:"",showDeviceLocation:false,view:false};
@@ -91,7 +91,7 @@ export default function FeaturesEditInfoParsers(values) {
             },
             callDetails: false,
             smsDetails: false,
-            view: false,
+            view: false
           }
     }
 

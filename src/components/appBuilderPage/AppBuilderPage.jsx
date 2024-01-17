@@ -230,7 +230,7 @@ export default function AppBuilderPage({ selectForm }) {
       },
       weather: {
         weather: false,
-        interval: 0,
+        interval: "",
         view:false
       },
       ticketSystem: false,
