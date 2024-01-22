@@ -161,8 +161,6 @@ const ValSchema = [
       screens:Yup.object().shape({
         view:Yup.boolean(),
         home:Yup.boolean().oneOf([true],"You must accept the home screen")
-        
-
       }),
       envBenefits: Yup.object().shape({
         view: Yup.boolean(),
