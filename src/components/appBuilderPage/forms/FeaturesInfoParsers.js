@@ -62,8 +62,6 @@ export default function FeaturesInfoParsers(values) {
         else if(k === "activityMonitoring"){
             if(appFeatures["activityMonitoring"] === false){
                 delete appFeatures["activityMonitoring"];
-           }else if(appFeatures["activityMonitoring"] === true){
-                appFeatures["activityMonitoring"] = {};
            }
         }
         else if(k === "chargingStation"){
