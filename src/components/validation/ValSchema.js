@@ -25,6 +25,7 @@ const ValSchema = [
   Yup.object().shape({
     appTheme: Yup.object().shape({
       type: Yup.string().required("This field is required"),
+      theme: Yup.string().required("This field is required"),
       appLogo: Yup.mixed().required("This field is required"),
        
       appLauncherName: Yup.string().required("This field is required"),

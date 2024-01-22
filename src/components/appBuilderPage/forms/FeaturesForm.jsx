@@ -417,6 +417,14 @@ const FeauresForm = (props) => {
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12}>
           <CheckboxField
+            name="features.themeChange"
+            label="Theme Change"
+          />
+        </Grid>
+      </Grid>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={12}>
+          <CheckboxField
             name="features.immobilization"
             label="Immobilization"
           />

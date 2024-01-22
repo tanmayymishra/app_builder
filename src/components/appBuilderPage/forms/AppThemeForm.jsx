@@ -97,6 +97,17 @@ const AppThemeForm = (props) => {
     },
   ]
 
+  const themeTypes=[
+    {
+      value:"light",
+      label:"Light"
+    },
+    {
+      value:"dark",
+      label:"Dark"
+    }
+  ]
+
   const handleColorClose=()=>{
    setDisplayColorPicker({primary:false, secondary:false, accent:false})
   }
@@ -230,7 +241,12 @@ const AppThemeForm = (props) => {
             ""
           )}
         </Grid>
-       
+        <Grid item xs={12} sm={12}>
+        <SelectField name="appTheme.theme" label="Theme Type" fullWidth
+            select
+            data={themeTypes}
+        />
+        </Grid>
         <Grid item xs={13}>
           <FileField
             name="appTheme.appLogo"

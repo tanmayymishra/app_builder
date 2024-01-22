@@ -133,6 +133,7 @@ export default function AppBuilderPage({ selectForm }) {
     },
     appTheme: {
       type: "Modern",
+      theme: "light",
       primaryColor: `#26d2c4`,
       secondaryColor: `#3b37ff`,
       accentColor: `#dc2626`,
@@ -189,6 +190,7 @@ export default function AppBuilderPage({ selectForm }) {
       default: "",
     },
     features: {
+      themeChange:false,
       splashScreen:{
         showBrandName:false,
         view:false

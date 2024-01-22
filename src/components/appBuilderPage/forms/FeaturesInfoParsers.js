@@ -146,6 +146,11 @@ export default function FeaturesInfoParsers(values) {
                  delete appFeatures["immobilization"];
             }
          }
+         else if(k === "themeChange"){
+            if(appFeatures["themeChange"] === false){
+                 delete appFeatures["themeChange"];
+            }
+         }
     }
     console.log("in app Features parser 1",appFeatures);
     values.features = appFeatures;

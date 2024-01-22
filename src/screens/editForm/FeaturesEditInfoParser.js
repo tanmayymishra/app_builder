@@ -56,6 +56,10 @@ export default function FeaturesEditInfoParsers(values) {
         console.log("immobilization property does not exist")
         values.features["immobilization"] = false;
     }
+    if(!values.features.hasOwnProperty("themeChange")){
+        console.log("themeChange property does not exist")
+        values.features["themeChange"] = false;
+    }
     if(!values.features["weather"].hasOwnProperty("weather")){
         console.log("weather property does not exist")
         values.features["weather"] = {weather:false,interval:"",view:false};
