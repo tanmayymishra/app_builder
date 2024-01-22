@@ -199,7 +199,7 @@ export default function AppBuilderPage({ selectForm }) {
         showDeviceLocation: false,
         androidKey: "",
         iosKey: "",
-        view: false,
+        view: true,
       },
       tripPlanning: {
         turnByTurnNavigation: false,
