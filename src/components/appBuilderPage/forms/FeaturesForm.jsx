@@ -56,6 +56,7 @@ const FeauresForm = (props) => {
         Map Location
       </Typography>
       <Grid container spacing={3}>
+        {values.features.mapLocation.view ? (
           <>
             <Grid item xs={12} sm={12}>
               <CheckboxField
@@ -78,6 +79,10 @@ const FeauresForm = (props) => {
               />
             </Grid>
           </>
+        ) : (
+          ""
+        )}
+        <Grid item xs={12} sm={12}></Grid>
       </Grid>
       <Typography
         variant="h6"

@@ -69,6 +69,12 @@ export default function FeaturesInfoParsers(values) {
                 delete appFeatures["chargingStation"];
             }
         }
+        else if(k === "mapLocation"){
+            if(appFeatures["mapLocation"].hasOwnProperty("showDeviceLocation") && appFeatures["mapLocation"]["showDeviceLocation"] === false && appFeatures["mapLocation"].hasOwnProperty("androidKey") && appFeatures["mapLocation"]["androidKey"] === "" )
+            {
+                delete appFeatures["mapLocation"];   
+            }
+        }
         else if(k === "tripPlanning"){
             if(appFeatures["tripPlanning"].hasOwnProperty("mapBoxAccessToken") && appFeatures["tripPlanning"]["mapBoxAccessToken"] === "" && appFeatures["tripPlanning"].hasOwnProperty("turnByTurnNavigation") && appFeatures["tripPlanning"]["turnByTurnNavigation"] === false ){
                 delete appFeatures["tripPlanning"];
