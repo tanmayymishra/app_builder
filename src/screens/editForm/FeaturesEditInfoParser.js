@@ -64,29 +64,6 @@ export default function FeaturesEditInfoParsers(values) {
         console.log("weather property does not exist")
         values.features["weather"] = {weather:false,interval:"",view:false};
     }
-    if(!values.features.hasOwnProperty("mapLocation")){
-        values.features["mapLocation"] = {androidKey:"",iosKey:"",showDeviceLocation:false,view:false};
-    }
-    if(!values.features.hasOwnProperty("tripPlanning")){
-        values.features["tripPlanning"] = {mapBoxAccessToken:"",turnByTurnNavigation:false,view:false};
-    }
-    if(!values.features.hasOwnProperty("envBenefits")){
-        values.features["envBenefits"] = {
-            savedTrees: {
-              p1: "",
-              p2: "",
-            },
-            co2Emission: {
-              p1: "",
-              p2: "",
-            },
-            savedMoneyOnFuel: {
-              p1: "",
-              p2: "",
-            },
-            view: false,
-          }
-    }
     if(!values.features.hasOwnProperty("bleFeatures")){
      values.features["bleFeatures"] =  {
             bleCommunication: {

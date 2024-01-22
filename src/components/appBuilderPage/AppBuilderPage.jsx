@@ -199,12 +199,12 @@ export default function AppBuilderPage({ selectForm }) {
         showDeviceLocation: false,
         androidKey: "",
         iosKey: "",
-        view: false,
+        view: true,
       },
       tripPlanning: {
         turnByTurnNavigation: false,
         mapBoxAccessToken: "",
-        view: false,
+        view: true,
       },
       alerts: {
         periodicAlert: false,
@@ -218,7 +218,7 @@ export default function AppBuilderPage({ selectForm }) {
         currentTripAndAlerts: false,
         tripPlanning: false,
         profile: false,
-        view:false
+        view:true
       },
       bikeParameters: {
         motorTemperature: false,
@@ -256,7 +256,7 @@ export default function AppBuilderPage({ selectForm }) {
           p1: "",
           p2: "",
         },
-        view: false,
+        view: true,
       },
       immobilization: false,
       tripAnalysis: false,

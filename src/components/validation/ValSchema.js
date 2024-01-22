@@ -158,6 +158,12 @@ const ValSchema = [
           then: () => Yup.number().required("This field is required")
         })
       }),
+      screens:Yup.object().shape({
+        view:Yup.boolean(),
+        home:Yup.boolean().oneOf([true],"You must accept the home screen")
+        
+
+      }),
       envBenefits: Yup.object().shape({
         view: Yup.boolean(),
         savedTrees: Yup.object().when("view",{

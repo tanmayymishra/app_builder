@@ -49,10 +49,6 @@ const FeauresForm = (props) => {
           alignItems: "center",
         }}
       >
-        <CheckboxField
-          name="features.mapLocation.view"
-          value={values.features.mapLocation.view}
-        />
         Map Location
       </Typography>
       <Grid container spacing={3}>
@@ -93,10 +89,6 @@ const FeauresForm = (props) => {
           alignItems: "center",
         }}
       >
-        <CheckboxField
-          name="features.tripPlanning.view"
-          value={values.features.tripPlanning.view}
-        />
         Trip Planning
       </Typography>
 
@@ -174,10 +166,6 @@ const FeauresForm = (props) => {
           alignItems: "center",
         }}
       >
-        <CheckboxField
-          name="features.screens.view"
-          value={values.features.screens.view}
-        />
         Screens
       </Typography>
       <Grid container spacing={3}>
@@ -222,7 +210,7 @@ const FeauresForm = (props) => {
           alignItems: "center",
         }}
       >
-        <CheckboxField
+      <CheckboxField
           name="features.bikeParameters.view"
           value={values.features.bikeParameters.view}
         />
@@ -334,10 +322,6 @@ const FeauresForm = (props) => {
           alignItems: "center",
         }}
       >
-        <CheckboxField
-          name="features.envBenefits.view"
-          value={values.features.envBenefits.view}
-        />
         Env Benefits
       </Typography>
       <Grid item xs={12} sm={12}></Grid>

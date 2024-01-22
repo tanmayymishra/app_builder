@@ -15,7 +15,7 @@ export default function CheckboxField(props) {
   function _renderHelperText() {
     const [touched, error] = at(meta, 'touched', 'error');
     if (touched && error) {
-      return <FormHelperText>{error}</FormHelperText>;
+      return <FormHelperText error>{error}</FormHelperText>;
     }
   }
 

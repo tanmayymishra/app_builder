@@ -69,24 +69,6 @@ export default function FeaturesInfoParsers(values) {
                 delete appFeatures["chargingStation"];
             }
         }
-        else if(k === "mapLocation"){
-            if(appFeatures["mapLocation"].hasOwnProperty("showDeviceLocation") && appFeatures["mapLocation"]["showDeviceLocation"] === false && appFeatures["mapLocation"].hasOwnProperty("androidKey") && appFeatures["mapLocation"]["androidKey"] === "" )
-            {
-                delete appFeatures["mapLocation"];   
-            }
-        }
-        else if(k === "tripPlanning"){
-            if(appFeatures["tripPlanning"].hasOwnProperty("mapBoxAccessToken") && appFeatures["tripPlanning"]["mapBoxAccessToken"] === "" && appFeatures["tripPlanning"].hasOwnProperty("turnByTurnNavigation") && appFeatures["tripPlanning"]["turnByTurnNavigation"] === false ){
-                delete appFeatures["tripPlanning"];
-            }
-        }
-        else if(k === "envBenefits"){
-            if(appFeatures["envBenefits"].hasOwnProperty("savedTrees")){
-                if(appFeatures["envBenefits"]["savedTrees"].hasOwnProperty("p1") && appFeatures["envBenefits"]["savedTrees"]["p1"] === ""){
-                    delete appFeatures["envBenefits"];
-                }
-            }
-        }
         else if(k === "bleFeatures"){
             if(appFeatures["bleFeatures"].hasOwnProperty("bleCommunication")){
                 if(appFeatures["bleFeatures"]["bleCommunication"].hasOwnProperty("clusterBLEName") && appFeatures["bleFeatures"]["bleCommunication"]["clusterBLEName"] === "" && appFeatures["bleFeatures"].hasOwnProperty("callDetails") && appFeatures["bleFeatures"]["callDetails"] === false && appFeatures["bleFeatures"].hasOwnProperty("smsDetails") && appFeatures["bleFeatures"]["smsDetails"] === false){
