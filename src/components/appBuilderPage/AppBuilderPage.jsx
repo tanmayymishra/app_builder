@@ -629,24 +629,9 @@ export default function AppBuilderPage({ selectForm }) {
                       </Button>
                     )}
                     <div className={classes.wrapper}>
-                      {steps[activeStep] === "Previous Build" &&
-                      buildVersion.version !== buildDetails.version ? (
+                      {steps[activeStep] === "Previous Build"  ? (
                         <Button
-                          disabled={
-                            isSubmitting ||
-                            (!buildVersion.version ||
-                            buildVersion.isBuild ) || (buildVersion.isBuild)
-                          }
-                          type="submit"
-                          variant="contained"
-                          color="primary"
-                          className={classes.button}
-                        >
-                          Rebuild App
-                        </Button>
-                      ) : steps[activeStep] === "Previous Build"  ? (
-                        <Button
-                          disabled
+                          disabled={isSubmitting}
                           type="submit"
                           variant="contained"
                           color="primary"
