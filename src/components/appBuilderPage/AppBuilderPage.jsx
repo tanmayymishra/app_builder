@@ -137,6 +137,12 @@ export default function AppBuilderPage({ selectForm }) {
       primaryColor: `#26d2c4`,
       secondaryColor: `#3b37ff`,
       accentColor: `#dc2626`,
+      screenBackColorLight:`#E4EAFE`,
+      textTitleColorLight:`#383737`,
+      textSubtitleColorLight:`#383737`,
+      screenBackColorDark:`#0f0f0f`,
+      textTitleColorDark:`#ffffff`,
+      textSubtitleColorDark:`#cfcfcf`,
       supportedLanguages:{
         "English": "en",
         "हिंदी": "hi"
@@ -502,58 +508,58 @@ export default function AppBuilderPage({ selectForm }) {
     await _sleep(1000);
     // alert(JSON.stringify(values, null, 2));
 
-    {
-      selectForm === "new"
-        ? axios
-            .post(
-             `${base_url}/build/`,
-             postData,
-              // liteData,
-              axiosConfig
-            )
-            .then((res) => {
-              setLoading(false);
-              setBuildDetails((prev) => ({
-                ...prev,
-                newBuildId: res?.data?.data?.buildid,
-              }));
-              setActiveStep(activeStep + 1);
+    // {
+    //   selectForm === "new"
+    //     ? axios
+    //         .post(
+    //          `${base_url}/build/`,
+    //          postData,
+    //           // liteData,
+    //           axiosConfig
+    //         )
+    //         .then((res) => {
+    //           setLoading(false);
+    //           setBuildDetails((prev) => ({
+    //             ...prev,
+    //             newBuildId: res?.data?.data?.buildid,
+    //           }));
+    //           setActiveStep(activeStep + 1);
              
-            })
-            .catch((err) => {
-              setSnackbarDetails({
-                open: true,
-                data: err.message ? err.message : "Network Error",
-                type: "error",
-              });
-              setLoading(false);
+    //         })
+    //         .catch((err) => {
+    //           setSnackbarDetails({
+    //             open: true,
+    //             data: err.message ? err.message : "Network Error",
+    //             type: "error",
+    //           });
+    //           setLoading(false);
 
-            })
-        : axios
-            .post(
-             `${base_url}/build/`,
-             postData,
-              axiosConfig
-            )
-            .then((res) => {
-              setLoading(false);
-              setBuildDetails((prev) => ({
-                ...prev,
-                newBuildId: res?.data?.data?.buildid,
-              }));
-              setActiveStep(activeStep + 1);
+    //         })
+    //     : axios
+    //         .post(
+    //          `${base_url}/build/`,
+    //          postData,
+    //           axiosConfig
+    //         )
+    //         .then((res) => {
+    //           setLoading(false);
+    //           setBuildDetails((prev) => ({
+    //             ...prev,
+    //             newBuildId: res?.data?.data?.buildid,
+    //           }));
+    //           setActiveStep(activeStep + 1);
              
-            })
-            .catch((err) => {
-              setLoading(false);
-              setSnackbarDetails({
-                open: true,
-                data: err.message ? err.message : "Network Error",
-                type: "error",
-              });
+    //         })
+    //         .catch((err) => {
+    //           setLoading(false);
+    //           setSnackbarDetails({
+    //             open: true,
+    //             data: err.message ? err.message : "Network Error",
+    //             type: "error",
+    //           });
              
-            });
-    }
+    //         });
+    // }
 
     actions.setSubmitting(false);
   }
