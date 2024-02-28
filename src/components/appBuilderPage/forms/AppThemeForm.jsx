@@ -126,19 +126,108 @@ const AppThemeForm = (props) => {
           primary: !displayColorPicker.primary,
           accent: false,
           secondary: false,
+          screenBackColorLight:false,
+          textTitleColorLight:false,
+          textSubtitleColorLight:false,
+          screenBackColorDark:false,
+          textTitleColorDark:false,
+          textSubtitleColorDark:false
         })
       : type === "accent"
       ? setDisplayColorPicker({
           primary:false,
           accent: !displayColorPicker.accent,
           secondary: false,
+          screenBackColorLight:false,
+          textTitleColorLight:false,
+          textSubtitleColorLight:false,
+          screenBackColorDark:false,
+          textTitleColorDark:false,
+          textSubtitleColorDark:false
         })
-      : setDisplayColorPicker({
+      : type === "secondary" 
+      ? setDisplayColorPicker({
         primary: false,
         accent: false,
-          secondary: !displayColorPicker.secondary,
-        });
-    
+        secondary: !displayColorPicker.secondary,
+        screenBackColorLight:false,
+        textTitleColorLight:false,
+        textSubtitleColorLight:false,
+        screenBackColorDark:false,
+        textTitleColorDark:false,
+        textSubtitleColorDark:false
+        })
+      : type === "screenBackColorLight"
+      ? setDisplayColorPicker({
+        primary: false,
+        accent: false,
+        secondary: false,
+        screenBackColorLight:!displayColorPicker.screenBackColorLight,
+        textTitleColorLight:false,
+        textSubtitleColorLight:false,
+        screenBackColorDark:false,
+        textTitleColorDark:false,
+        textSubtitleColorDark:false
+        })
+      : type === "textTitleColorLight"
+      ? setDisplayColorPicker({
+        primary: false,
+        accent: false,
+        secondary: false,
+        screenBackColorLight:false,
+        textTitleColorLight:!displayColorPicker.textTitleColorLight,
+        textSubtitleColorLight:false,
+        screenBackColorDark:false,
+        textTitleColorDark:false,
+        textSubtitleColorDark:false
+        })
+      : type === "textSubtitleColorLight"
+      ? setDisplayColorPicker({
+          primary: false,
+          accent: false,
+          secondary: false,
+          screenBackColorLight:false,
+          textTitleColorLight:false,
+          textSubtitleColorLight:!displayColorPicker.textSubtitleColorLight,
+          screenBackColorDark:false,
+          textTitleColorDark:false,
+          textSubtitleColorDark:false
+          })
+      : type === "screenBackColorDark"
+      ? setDisplayColorPicker({
+        primary: false,
+        accent: false,
+        secondary: false,
+        screenBackColorLight:false,
+        textTitleColorLight:false,
+        textSubtitleColorLight:false,
+        screenBackColorDark:!displayColorPicker.screenBackColorDark,
+        textTitleColorDark:false,
+        textSubtitleColorDark:false
+        })
+        : type === "textTitleColorDark"
+        ? setDisplayColorPicker({
+          primary: false,
+          accent: false,
+          secondary: false,
+          screenBackColorLight:false,
+          textTitleColorLight:false,
+          textSubtitleColorLight:false,
+          screenBackColorDark:false,
+          textTitleColorDark:!displayColorPicker.textTitleColorDark,
+          textSubtitleColorDark:false
+          })
+        : setDisplayColorPicker({
+          primary: false,
+          accent: false,
+          secondary: false,
+          screenBackColorLight:false,
+          textTitleColorLight:false,
+          textSubtitleColorLight:false,
+          screenBackColorDark:false,
+          textTitleColorDark:false,
+          textSubtitleColorDark:!displayColorPicker.textSubtitleColorDark
+          });
   };
 
   const themeData=[
@@ -168,7 +257,13 @@ const AppThemeForm = (props) => {
   ]
 
   const handleColorClose=()=>{
-   setDisplayColorPicker({primary:false, secondary:false, accent:false})
+   setDisplayColorPicker({primary:false, secondary:false, accent:false,
+    screenBackColorLight:false,
+    textTitleColorLight:false,
+    textSubtitleColorLight:false,
+    screenBackColorDark:false,
+    textTitleColorDark:false,
+    textSubtitleColorDark:false})
   }
   const styles = reactCSS({
     default: {
@@ -189,6 +284,42 @@ const AppThemeForm = (props) => {
         height: "14px",
         borderRadius: "2px",
         background: `${color3}`,
+      },
+      color4: {
+        width: "100%",
+        height: "14px",
+        borderRadius: "2px",
+        background: `${color4}`,
+      },
+      color5: {
+        width: "100%",
+        height: "14px",
+        borderRadius: "2px",
+        background: `${color5}`,
+      },
+      color6: {
+        width: "100%",
+        height: "14px",
+        borderRadius: "2px",
+        background: `${color6}`,
+      },
+      color7: {
+        width: "100%",
+        height: "14px",
+        borderRadius: "2px",
+        background: `${color7}`,
+      },
+      color8: {
+        width: "100%",
+        height: "14px",
+        borderRadius: "2px",
+        background: `${color8}`,
+      },
+      color9: {
+        width: "100%",
+        height: "14px",
+        borderRadius: "2px",
+        background: `${color9}`,
       },
       swatch: {
         width: "100%",
