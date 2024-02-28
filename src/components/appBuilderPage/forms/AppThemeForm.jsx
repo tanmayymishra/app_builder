@@ -13,19 +13,46 @@ const AppThemeForm = (props) => {
     primary: false,
     secondary: false,
     accent: false,
+    screenBackColorLight:false,
+    textTitleColorLight:false,
+    textSubtitleColorLight:false,
+    screenBackColorDark:false,
+    textTitleColorDark:false,
+    textSubtitleColorDark:false
   });
   const [color2, setColor2] = useState("");
   const [color3, setColor3] = useState("");
+
+  const [color4, setColor4] = useState("");
+  const [color5, setColor5] = useState("");
+  const [color6, setColor6] = useState("");
+  const [color7, setColor7] = useState("");
+  const [color8, setColor8] = useState("");
+  const [color9, setColor9] = useState("");
+
+
   const { values, setFieldValue } = useFormikContext();
   const {appDetails, setAppDetails} = useContext(AppDetailsContext)
   useEffect(()=>{
     setColor1(values.appTheme.primaryColor)
     setColor2(values.appTheme.secondaryColor)
     setColor3(values.appTheme.accentColor)
+    setColor4(values.appTheme.screenBackColorLight)
+    setColor5(values.appTheme.textTitleColorLight)
+    setColor6(values.appTheme.textSubtitleColorLight)
+    setColor7(values.appTheme.screenBackColorDark)
+    setColor8(values.appTheme.textTitleColorDark)
+    setColor9(values.appTheme.textSubtitleColorDark)
     setColors(
       {primary: values.appTheme.primaryColor,
         secondary:values.appTheme.secondaryColor,
-        accent:values.appTheme.accentColor
+        accent:values.appTheme.accentColor,
+        screenBackColorLight:values.appTheme.screenBackColorLight,
+        textTitleColorLight:values.appTheme.textTitleColorLight,
+        textSubtitleColorLight:values.appTheme.textSubtitleColorLight,
+        screenBackColorDark:values.appTheme.screenBackColorDark,
+        textTitleColorDark:values.appTheme.textTitleColorDark,
+        textSubtitleColorDark:values.appTheme.textSubtitleColorDark
       }
     )
   },[])
@@ -47,7 +74,21 @@ const AppThemeForm = (props) => {
       ? setColors({ ...colors, primary: e.hex })
       : "secondary"
       ? setColors({ ...colors, secondary: e.hex })
-      : setColors({  ...colors, accent: e.hex });
+      : "accent" 
+      ? setColors({  ...colors, accent: e.hex })
+      : "screenBackColorLight"
+      ? setColors({  ...colors, screenBackColorLight: e.hex })
+      : "textTitleColorLight"
+      ? setColors({  ...colors, textTitleColorLight: e.hex })
+      : "textSubtitleColorLight"
+      ? setColors({  ...colors, textSubtitleColorLight: e.hex })
+      : "screenBackColorDark"
+      ? setColors({  ...colors, screenBackColorDark: e.hex })
+      : "textTitleColorDark"
+      ? setColors({  ...colors, textTitleColorDark: e.hex })
+      : setColors({  ...colors, textSubtitleColorDark: e.hex });
+      
+      
     // setColor(col.hex);
     if (type === "primary") {
       setColor1(e.hex);
