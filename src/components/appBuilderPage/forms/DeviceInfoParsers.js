@@ -1,8 +1,11 @@
 export default function DeviceInfoParsers(values) {
   let modesList = {};
   const deviceInfo = values.deviceInfo;
-
+  console.log("device info parser",values.deviceInfo);
   const newModes = deviceInfo?.bikeModels?.map((bikeModel, i) => {
+    if(bikeModel?.vehicleManual === "" && bikeModel.hasOwnProperty("vehicleManual")){
+      delete bikeModel["vehicleManual"];
+    }
     bikeModel?.modes?.map((mode, ind) => {
       modesList[mode.Eco.modeName] = mode.Eco;
     });

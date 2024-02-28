@@ -111,7 +111,7 @@ const ValSchema = [
           ),
           minimumVoltage: Yup.number().required("This field is required"),
           maximumVoltage: Yup.number().required("This field is required"),
-          vehicleManual: Yup.string().required("This field is required").url("Enter a valid URL"),
+          vehicleManual: Yup.string().url("Enter a valid URL"),
           batteryAlerts: Yup.object().shape({
             batteryVoltage: Yup.object().shape({
               min: Yup.string().required("This field is required"),
