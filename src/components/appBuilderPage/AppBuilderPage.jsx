@@ -199,6 +199,11 @@ export default function AppBuilderPage({ selectForm }) {
       themeChange:false,
       splashScreen:{
         showBrandName:false,
+        customTagline:false,
+        taglineText:"",
+        taglineImage:"",
+        splashScreenBackImage:"",
+        loginBackImage:"",
         view:false
       },
       mapLocation: {
