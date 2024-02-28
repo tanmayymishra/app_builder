@@ -74,6 +74,9 @@ export default function FeaturesInfoParsers(values) {
                 if(appFeatures["bleFeatures"]["bleCommunication"].hasOwnProperty("clusterBLEName") && appFeatures["bleFeatures"]["bleCommunication"]["clusterBLEName"] === "" && appFeatures["bleFeatures"].hasOwnProperty("callDetails") && appFeatures["bleFeatures"]["callDetails"] === false && appFeatures["bleFeatures"].hasOwnProperty("smsDetails") && appFeatures["bleFeatures"]["smsDetails"] === false){
                     delete appFeatures["bleFeatures"];
                 }
+                else if(appFeatures["bleFeatures"]["view"] === false){
+                    delete appFeatures["bleFeatures"];
+                }
             }
         }
         else if(k === "serviceStation"){
