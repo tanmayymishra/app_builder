@@ -506,6 +506,75 @@ const AppThemeForm = (props) => {
             ""
           )}
         </Grid>
+        <Grid item xs={12}>
+          <label>Screen Background Color In Dark Mode</label>
+          <div
+            style={styles.swatch}
+            onClick={() => handleDisplayColor("screenBackColorDark")}
+          >
+            <div style={styles.color7} />
+          </div>
+          {displayColorPicker.screenBackColorDark ? (
+            <div style={ styles.popover }>
+            <div style={ styles.cover } onClick={handleColorClose}/>
+            <ChromePicker
+              name="appTheme.screenBackColorDark"
+              color={color7}
+              disableAlpha
+              onChange={(e) => handleColorChange("screenBackColorDark", e)}
+              // onChangeComplete={color=> onChange(color.hex) }
+            />
+           </div>
+          ) : (
+            ""
+          )}
+        </Grid>
+        <Grid item xs={12}>
+          <label>Text Title Color In Dark Mode</label>
+          <div
+            style={styles.swatch}
+            onClick={() => handleDisplayColor("textTitleColorDark")}
+          >
+            <div style={styles.color8} />
+          </div>
+          {displayColorPicker.textTitleColorDark ? (
+            <div style={ styles.popover }>
+            <div style={ styles.cover } onClick={handleColorClose}/>
+            <ChromePicker
+              name="appTheme.textTitleColorDark"
+              color={color8}
+              disableAlpha
+              onChange={(e) => handleColorChange("textTitleColorDark", e)}
+              // onChangeComplete={color=> onChange(color.hex) }
+            />
+           </div>
+          ) : (
+            ""
+          )}
+        </Grid>
+        <Grid item xs={12}>
+          <label>Text Sub Title Color In Dark Mode</label>
+          <div
+            style={styles.swatch}
+            onClick={() => handleDisplayColor("textSubtitleColorDark")}
+          >
+            <div style={styles.color9} />
+          </div>
+          {displayColorPicker.textSubtitleColorDark ? (
+            <div style={ styles.popover }>
+            <div style={ styles.cover } onClick={handleColorClose}/>
+            <ChromePicker
+              name="appTheme.textSubtitleColorDark"
+              color={color9}
+              disableAlpha
+              onChange={(e) => handleColorChange("textSubtitleColorDark", e)}
+              // onChangeComplete={color=> onChange(color.hex) }
+            />
+           </div>
+          ) : (
+            ""
+          )}
+        </Grid>
         <Grid item xs={13}>
           <FileField
             name="appTheme.appLogo"
