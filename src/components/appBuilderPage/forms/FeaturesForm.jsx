@@ -40,6 +40,35 @@ const FeauresForm = (props) => {
         )}
         <Grid item xs={12} sm={12}></Grid>
       </Grid>
+      <Grid container spacing={3}>
+        {values.features.splashScreen.view ? (
+          <>
+            <Grid item xs={12} sm={12}>
+              <CheckboxField
+                name="features.splashScreen.customTagLine"
+                label="Custom Tag Line"
+              />
+            </Grid>
+          </>
+        ) : (
+          ""
+        )}
+        <Grid item xs={12} sm={12}></Grid>
+      </Grid>
+      <Grid container spacing={3}>
+        {values.features.splashScreen.view && values.features.splashScreen.customTagLine ? (
+          <Grid item xs={12} sm={6}>
+            <InputField
+              name="features.splashScreen.taglineText"
+              label="TagLineText"
+              fullWidth
+            />
+          </Grid>
+        ) : (
+          ""
+        )}
+        <Grid item xs={12} sm={12}></Grid>
+      </Grid>
       <Typography
         variant="h6"
         gutterBottom
