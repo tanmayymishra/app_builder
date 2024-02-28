@@ -101,6 +101,24 @@ const AppThemeForm = (props) => {
     if (type === "accent") {
       setColor3(e.hex);
     }
+    if (type === "screenBackColorLight") {
+      setColor4(e.hex);
+    }
+    if (type === "textTitleColorLight") {
+      setColor5(e.hex);
+    }
+    if (type === "textSubtitleColorLight") {
+      setColor6(e.hex);
+    }
+    if (type === "screenBackColorDark") {
+      setColor7(e.hex);
+    }
+    if (type === "textTitleColorDark") {
+      setColor8(e.hex);
+    }
+    if (type === "textSubtitleColorDark") {
+      setColor9(e.hex);
+    }
   };
   const handleDisplayColor = (type) => {
     type === "primary"
