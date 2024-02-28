@@ -88,6 +88,44 @@ const FeauresForm = (props) => {
         )}
         <Grid item xs={12} sm={12}></Grid>
       </Grid>
+      <Grid container spacing={3}>
+        {values.features.splashScreen.view ? (
+          <Grid item xs={12} sm={6}>
+           <FileField
+            name="features.splashScreen.splashScreenBackImage"
+            label="SplashScreenBackImage"
+            type="file"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={undefined}
+            fullWidth
+          />
+          </Grid>
+        ) : (
+          ""
+        )}
+        <Grid item xs={12} sm={12}></Grid>
+      </Grid>
+      <Grid container spacing={3}>
+        {values.features.splashScreen.view ? (
+          <Grid item xs={12} sm={6}>
+           <FileField
+            name="features.splashScreen.loginBackImage"
+            label="LoginBackImage"
+            type="file"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={undefined}
+            fullWidth
+          />
+          </Grid>
+        ) : (
+          ""
+        )}
+        <Grid item xs={12} sm={12}></Grid>
+      </Grid>
       <Typography
         variant="h6"
         gutterBottom
