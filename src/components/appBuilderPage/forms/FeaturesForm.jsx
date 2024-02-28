@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Grid, Typography } from "@mui/material";
-import { InputField, CheckboxField, SelectField } from "../../formFields";
+import { InputField, CheckboxField, SelectField,FileField } from "../../formFields";
 import { useFormikContext } from "formik";
 
 const FeauresForm = (props) => {
@@ -63,6 +63,25 @@ const FeauresForm = (props) => {
               label="TagLineText"
               fullWidth
             />
+          </Grid>
+        ) : (
+          ""
+        )}
+        <Grid item xs={12} sm={12}></Grid>
+      </Grid>
+      <Grid container spacing={3}>
+        {values.features.splashScreen.view && values.features.splashScreen.customTagLine ? (
+          <Grid item xs={12} sm={6}>
+           <FileField
+            name="features.splashScreen.taglineImage"
+            label="TagLineImage"
+            type="file"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={undefined}
+            fullWidth
+          />
           </Grid>
         ) : (
           ""
