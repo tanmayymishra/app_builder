@@ -2,6 +2,9 @@ export default function DeviceEditInfoParsers(values) {
   let modesList = [];
   const deviceInfo = values.deviceInfo;
   const newModes = deviceInfo.bikeModels.map((bikeModel, i) => {
+    if(!bikeModel?.hasOwnProperty("vehicleManual")){
+      bikeModel["vehicleManual"] = "";
+    }
     for (let key in bikeModel.modes) {
       bikeModel.modes[key]["modeName"] = key;
       let newEntry = {
