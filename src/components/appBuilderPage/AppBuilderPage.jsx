@@ -137,12 +137,12 @@ export default function AppBuilderPage({ selectForm }) {
       primaryColor: `#26d2c4`,
       secondaryColor: `#3b37ff`,
       accentColor: `#dc2626`,
-      screenBackColorLight:`#E4EAFE`,
-      textTitleColorLight:`#383737`,
-      textSubtitleColorLight:`#383737`,
-      screenBackColorDark:`#0f0f0f`,
-      textTitleColorDark:`#ffffff`,
-      textSubtitleColorDark:`#cfcfcf`,
+      // screenBackColorLight:`#E4EAFE`,
+      // textTitleColorLight:`#383737`,
+      // textSubtitleColorLight:`#383737`,
+      // screenBackColorDark:`#0f0f0f`,
+      // textTitleColorDark:`#ffffff`,
+      // textSubtitleColorDark:`#cfcfcf`,
       supportedLanguages:{
         "English": "en",
         "हिंदी": "hi"
