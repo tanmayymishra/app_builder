@@ -134,15 +134,11 @@ const ValSchema = [
     features: Yup.object().shape({
       splashScreen:Yup.object().shape({
         view: Yup.boolean(),
-        customTagline:Yup.boolean(),
-        taglineText:Yup.string().when("customTagline",{
+        customTag:Yup.boolean(),
+        taglineText:Yup.string().when("customTag",{
           is: true,
           then: () => Yup.string().required("This field is required")
         }),
-        taglineImage:Yup.string().when("customTagline",{
-          is: true,
-          then: () => Yup.string().required("This field is required")
-        })
       }),
       mapLocation: Yup.object().shape({
         view: Yup.boolean(),

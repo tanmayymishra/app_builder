@@ -199,7 +199,7 @@ export default function AppBuilderPage({ selectForm }) {
       themeChange:false,
       splashScreen:{
         showBrandName:false,
-        customTagline:false,
+        customTag:false,
         taglineText:"",
         taglineImage:"",
         splashScreenBackImage:"",
