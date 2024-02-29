@@ -48,6 +48,7 @@ const FeauresForm = (props) => {
               <CheckboxField
                 name="features.splashScreen.customTagLine"
                 label="Custom Tag Line"
+                value={values.features.splashScreen.customTagLine}
               />
             </Grid>
           </>

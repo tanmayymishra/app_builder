@@ -138,6 +138,10 @@ const ValSchema = [
         taglineText:Yup.string().when("customTagline",{
           is: true,
           then: () => Yup.string().required("This field is required")
+        }),
+        taglineImage:Yup.string().when("customTagline",{
+          is: true,
+          then: () => Yup.string().required("This field is required")
         })
       }),
       mapLocation: Yup.object().shape({
