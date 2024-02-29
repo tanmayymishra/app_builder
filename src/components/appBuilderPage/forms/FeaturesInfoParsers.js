@@ -6,7 +6,7 @@ export default function FeaturesInfoParsers(values) {
         if(k === "splashScreen"){
             for(let i in appFeatures["splashScreen"]){
                 if(i !== 'view'){
-                if(appFeatures["splashScreen"].hasOwnProperty(i) && appFeatures["splashScreen"][i] === false ){
+                if((appFeatures["splashScreen"].hasOwnProperty(i) && appFeatures["splashScreen"][i] === false) || (appFeatures["splashScreen"].hasOwnProperty(i) && appFeatures["splashScreen"][i] === "" )){
                     console.log("splash screen view",i);
                     delete appFeatures["splashScreen"][i];
                 }
