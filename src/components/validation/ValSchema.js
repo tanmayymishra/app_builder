@@ -132,6 +132,14 @@ const ValSchema = [
 
   Yup.object().shape({
     features: Yup.object().shape({
+      splashScreen:Yup.object().shape({
+        view: Yup.boolean(),
+        customTagline:Yup.boolean(),
+        taglineText:Yup.string().when("view",{
+          is: true,
+          then: () => Yup.string().required("This field is required")
+        })
+      }),
       mapLocation: Yup.object().shape({
         view: Yup.boolean(),
         androidKey: Yup.string().when("view", {

@@ -5,6 +5,7 @@ import { useFormikContext } from "formik";
 
 const FeauresForm = (props) => {
   const { values } = useFormikContext();
+  console.log("Features Form Values...",values);
   return (
     <React.Fragment>
       <Typography variant="h5" gutterBottom>
