@@ -143,8 +143,8 @@ export default function AppBuilderPage({ selectForm }) {
       textSubtitleColorLight:`#383737`,
       screenBackColorDark:`#00082c`,
       cardBackColorDark:`#0f0f0f`,
-      textTitleColorDark:`#dbfb12`,
-      textSubtitleColorDark:`#a0a0a0`,
+      textTitleColorDark:`#ffffff`,
+      textSubtitleColorDark:`#cfcfcf`,
       supportedLanguages:{
         "English": "en",
         "हिंदी": "hi"
