@@ -37,6 +37,7 @@ const DeviceInfoForm = ({ formField }) => {
     frontViewImage: "",
     sideViewImage: "",
     inclinedViewImage: "",
+    batteryStatusImage:"",
     modes: [
       {
         Eco: {
@@ -159,6 +160,18 @@ const DeviceInfoForm = ({ formField }) => {
                       <FileField
                         name={`deviceInfo.bikeModels.${index}.inclinedViewImage`}
                         label="Inclined View Image"
+                        type="file"
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                        value={undefined}
+                        fullWidth
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <FileField
+                        name={`deviceInfo.bikeModels.${index}.batteryStatusImage`}
+                        label="Battery Status Image"
                         type="file"
                         InputLabelProps={{
                           shrink: true,

@@ -159,6 +159,7 @@ export default function AppBuilderPage({ selectForm }) {
           frontViewImage: "",
           sideViewImage: "",
           inclinedViewImage: "",
+          batteryStatusImage:"",
           modes:[ {
             Eco: {
               id:0,

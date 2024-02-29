@@ -41,6 +41,7 @@ const ValSchema = [
           frontViewImage: Yup.mixed().required("This field is required"),
           sideViewImage: Yup.mixed().required("This field is required"),
           inclinedViewImage: Yup.mixed().required("This field is required"),
+          batteryStatusImage: Yup.mixed().required("This field is required"),
           // modes: Yup.object().shape({
           //   Eco: Yup.object().shape({
           //     id: Yup.number().required("This field is required"),
