@@ -13,12 +13,12 @@ const AppThemeForm = (props) => {
     primary: false,
     secondary: false,
     accent: false,
-    // screenBackColorLight:false,
-    // textTitleColorLight:false,
-    // textSubtitleColorLight:false,
-    // screenBackColorDark:false,
-    // textTitleColorDark:false,
-    // textSubtitleColorDark:false
+    screenBackColorLight:false,
+    textTitleColorLight:false,
+    textSubtitleColorLight:false,
+    screenBackColorDark:false,
+    textTitleColorDark:false,
+    textSubtitleColorDark:false
   });
   const [color2, setColor2] = useState("");
   const [color3, setColor3] = useState("");
@@ -37,22 +37,22 @@ const AppThemeForm = (props) => {
     setColor1(values.appTheme.primaryColor)
     setColor2(values.appTheme.secondaryColor)
     setColor3(values.appTheme.accentColor)
-    // setColor4(values.appTheme.screenBackColorLight)
-    // setColor5(values.appTheme.textTitleColorLight)
-    // setColor6(values.appTheme.textSubtitleColorLight)
-    // setColor7(values.appTheme.screenBackColorDark)
-    // setColor8(values.appTheme.textTitleColorDark)
-    // setColor9(values.appTheme.textSubtitleColorDark)
+    setColor4(values.appTheme.screenBackColorLight)
+    setColor5(values.appTheme.textTitleColorLight)
+    setColor6(values.appTheme.textSubtitleColorLight)
+    setColor7(values.appTheme.screenBackColorDark)
+    setColor8(values.appTheme.textTitleColorDark)
+    setColor9(values.appTheme.textSubtitleColorDark)
     setColors(
       {primary: values.appTheme.primaryColor,
         secondary:values.appTheme.secondaryColor,
         accent:values.appTheme.accentColor,
-        // screenBackColorLight:values.appTheme.screenBackColorLight,
-        // textTitleColorLight:values.appTheme.textTitleColorLight,
-        // textSubtitleColorLight:values.appTheme.textSubtitleColorLight,
-        // screenBackColorDark:values.appTheme.screenBackColorDark,
-        // textTitleColorDark:values.appTheme.textTitleColorDark,
-        // textSubtitleColorDark:values.appTheme.textSubtitleColorDark
+        screenBackColorLight:values.appTheme.screenBackColorLight,
+        textTitleColorLight:values.appTheme.textTitleColorLight,
+        textSubtitleColorLight:values.appTheme.textSubtitleColorLight,
+        screenBackColorDark:values.appTheme.screenBackColorDark,
+        textTitleColorDark:values.appTheme.textTitleColorDark,
+        textSubtitleColorDark:values.appTheme.textSubtitleColorDark
       }
     )
   },[])
@@ -126,107 +126,107 @@ const AppThemeForm = (props) => {
           primary: !displayColorPicker.primary,
           accent: false,
           secondary: false,
-          // screenBackColorLight:false,
-          // textTitleColorLight:false,
-          // textSubtitleColorLight:false,
-          // screenBackColorDark:false,
-          // textTitleColorDark:false,
-          // textSubtitleColorDark:false
+          screenBackColorLight:false,
+          textTitleColorLight:false,
+          textSubtitleColorLight:false,
+          screenBackColorDark:false,
+          textTitleColorDark:false,
+          textSubtitleColorDark:false
         })
       : type === "accent"
       ? setDisplayColorPicker({
           primary:false,
           accent: !displayColorPicker.accent,
           secondary: false,
-          // screenBackColorLight:false,
-          // textTitleColorLight:false,
-          // textSubtitleColorLight:false,
-          // screenBackColorDark:false,
-          // textTitleColorDark:false,
-          // textSubtitleColorDark:false
+          screenBackColorLight:false,
+          textTitleColorLight:false,
+          textSubtitleColorLight:false,
+          screenBackColorDark:false,
+          textTitleColorDark:false,
+          textSubtitleColorDark:false
         })
-      // : type === "secondary" 
-      // ? setDisplayColorPicker({
-      //   primary: false,
-      //   accent: false,
-      //   secondary: !displayColorPicker.secondary,
-      //   screenBackColorLight:false,
-      //   textTitleColorLight:false,
-      //   textSubtitleColorLight:false,
-      //   screenBackColorDark:false,
-      //   textTitleColorDark:false,
-      //   textSubtitleColorDark:false
-      //   })
-      // : type === "screenBackColorLight"
-      // ? setDisplayColorPicker({
-      //   primary: false,
-      //   accent: false,
-      //   secondary: false,
-      //   screenBackColorLight:!displayColorPicker.screenBackColorLight,
-      //   textTitleColorLight:false,
-      //   textSubtitleColorLight:false,
-      //   screenBackColorDark:false,
-      //   textTitleColorDark:false,
-      //   textSubtitleColorDark:false
-      //   })
-      // : type === "textTitleColorLight"
-      // ? setDisplayColorPicker({
-      //   primary: false,
-      //   accent: false,
-      //   secondary: false,
-      //   screenBackColorLight:false,
-      //   textTitleColorLight:!displayColorPicker.textTitleColorLight,
-      //   textSubtitleColorLight:false,
-      //   screenBackColorDark:false,
-      //   textTitleColorDark:false,
-      //   textSubtitleColorDark:false
-      //   })
-      // : type === "textSubtitleColorLight"
-      // ? setDisplayColorPicker({
-      //     primary: false,
-      //     accent: false,
-      //     secondary: false,
-      //     screenBackColorLight:false,
-      //     textTitleColorLight:false,
-      //     textSubtitleColorLight:!displayColorPicker.textSubtitleColorLight,
-      //     screenBackColorDark:false,
-      //     textTitleColorDark:false,
-      //     textSubtitleColorDark:false
-      //     })
-      // : type === "screenBackColorDark"
-      // ? setDisplayColorPicker({
-      //   primary: false,
-      //   accent: false,
-      //   secondary: false,
-      //   screenBackColorLight:false,
-      //   textTitleColorLight:false,
-      //   textSubtitleColorLight:false,
-      //   screenBackColorDark:!displayColorPicker.screenBackColorDark,
-      //   textTitleColorDark:false,
-      //   textSubtitleColorDark:false
-      //   })
-      //   : type === "textTitleColorDark"
-      //   ? setDisplayColorPicker({
-      //     primary: false,
-      //     accent: false,
-      //     secondary: false,
-      //     screenBackColorLight:false,
-      //     textTitleColorLight:false,
-      //     textSubtitleColorLight:false,
-      //     screenBackColorDark:false,
-      //     textTitleColorDark:!displayColorPicker.textTitleColorDark,
-      //     textSubtitleColorDark:false
-      //     })
+      : type === "secondary" 
+      ? setDisplayColorPicker({
+        primary: false,
+        accent: false,
+        secondary: !displayColorPicker.secondary,
+        screenBackColorLight:false,
+        textTitleColorLight:false,
+        textSubtitleColorLight:false,
+        screenBackColorDark:false,
+        textTitleColorDark:false,
+        textSubtitleColorDark:false
+        })
+      : type === "screenBackColorLight"
+      ? setDisplayColorPicker({
+        primary: false,
+        accent: false,
+        secondary: false,
+        screenBackColorLight:!displayColorPicker.screenBackColorLight,
+        textTitleColorLight:false,
+        textSubtitleColorLight:false,
+        screenBackColorDark:false,
+        textTitleColorDark:false,
+        textSubtitleColorDark:false
+        })
+      : type === "textTitleColorLight"
+      ? setDisplayColorPicker({
+        primary: false,
+        accent: false,
+        secondary: false,
+        screenBackColorLight:false,
+        textTitleColorLight:!displayColorPicker.textTitleColorLight,
+        textSubtitleColorLight:false,
+        screenBackColorDark:false,
+        textTitleColorDark:false,
+        textSubtitleColorDark:false
+        })
+      : type === "textSubtitleColorLight"
+      ? setDisplayColorPicker({
+          primary: false,
+          accent: false,
+          secondary: false,
+          screenBackColorLight:false,
+          textTitleColorLight:false,
+          textSubtitleColorLight:!displayColorPicker.textSubtitleColorLight,
+          screenBackColorDark:false,
+          textTitleColorDark:false,
+          textSubtitleColorDark:false
+          })
+      : type === "screenBackColorDark"
+      ? setDisplayColorPicker({
+        primary: false,
+        accent: false,
+        secondary: false,
+        screenBackColorLight:false,
+        textTitleColorLight:false,
+        textSubtitleColorLight:false,
+        screenBackColorDark:!displayColorPicker.screenBackColorDark,
+        textTitleColorDark:false,
+        textSubtitleColorDark:false
+        })
+        : type === "textTitleColorDark"
+        ? setDisplayColorPicker({
+          primary: false,
+          accent: false,
+          secondary: false,
+          screenBackColorLight:false,
+          textTitleColorLight:false,
+          textSubtitleColorLight:false,
+          screenBackColorDark:false,
+          textTitleColorDark:!displayColorPicker.textTitleColorDark,
+          textSubtitleColorDark:false
+          })
         : setDisplayColorPicker({
           primary: false,
           accent: false,
           secondary: false,
-          // screenBackColorLight:false,
-          // textTitleColorLight:false,
-          // textSubtitleColorLight:false,
-          // screenBackColorDark:false,
-          // textTitleColorDark:false,
-          // textSubtitleColorDark:!displayColorPicker.textSubtitleColorDark
+          screenBackColorLight:false,
+          textTitleColorLight:false,
+          textSubtitleColorLight:false,
+          screenBackColorDark:false,
+          textTitleColorDark:false,
+          textSubtitleColorDark:!displayColorPicker.textSubtitleColorDark
           });
   };
 
@@ -258,12 +258,12 @@ const AppThemeForm = (props) => {
 
   const handleColorClose=()=>{
    setDisplayColorPicker({primary:false, secondary:false, accent:false,
-    // screenBackColorLight:false,
-    // textTitleColorLight:false,
-    // textSubtitleColorLight:false,
-    // screenBackColorDark:false,
-    // textTitleColorDark:false,
-    // textSubtitleColorDark:false
+    screenBackColorLight:false,
+    textTitleColorLight:false,
+    textSubtitleColorLight:false,
+    screenBackColorDark:false,
+    textTitleColorDark:false,
+    textSubtitleColorDark:false
   })
   }
   const styles = reactCSS({
@@ -438,7 +438,7 @@ const AppThemeForm = (props) => {
             data={themeTypes}
         />
         </Grid>
-        {/* <Grid item xs={12}>
+         <Grid item xs={12}>
           <label>Screen Background Color In Light Mode</label>
           <div
             style={styles.swatch}
@@ -575,7 +575,7 @@ const AppThemeForm = (props) => {
           ) : (
             ""
           )}
-        </Grid> */}
+        </Grid> 
         <Grid item xs={13}>
           <FileField
             name="appTheme.appLogo"
