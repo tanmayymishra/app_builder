@@ -64,6 +64,13 @@ export default function FeaturesEditInfoParsers(values) {
         console.log("weather property does not exist")
         values.features["weather"] = {weather:false,interval:"",view:false};
     }
+    if(!values.features.hasOwnProperty("showComingSoonMessage")){
+        values.features["showComingSoonMessage"] = {
+            title:"",
+            subtitle:"",
+            view:false
+        }
+    }
     if(!values.features.hasOwnProperty("bleFeatures")){
      values.features["bleFeatures"] =  {
             bleCommunication: {
