@@ -620,7 +620,7 @@ export default function AppBuilderPage({ selectForm }) {
               initialValues={
                 selectForm === "new" ? initValues : selectForm === "edit"? initialEditForm:initValues
               }
-              validationSchema={currentValidationSchema}
+              //validationSchema={currentValidationSchema}
               onSubmit={_handleSubmit}
               validateOnChange={false}
               validateOnBlur={false}

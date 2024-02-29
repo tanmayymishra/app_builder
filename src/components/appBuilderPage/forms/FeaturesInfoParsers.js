@@ -13,6 +13,11 @@ export default function FeaturesInfoParsers(values) {
             }
             }
         }
+        else if(k === "showComingSoonMessage"){
+            if(appFeatures["showComingSoonMessage"].hasOwnProperty("view") && appFeatures["showComingSoonMessage"]["view"] === false){
+                delete appFeatures["showComingSoonMessage"];
+            }
+        }
         else if(k === "screens"){
             for(let i in appFeatures["screens"]){
                 if(i !== 'view'){
