@@ -141,6 +141,18 @@ const ValSchema = [
           then: () => Yup.string().required("This field is required")
         }),
       }),
+      showComingSoonMessage:Yup.object().shape({
+        view: Yup.boolean(),
+        showComingSoonMessage:Yup.boolean(),
+        title:Yup.string().when("showComingSoonMessage",{
+          is: true,
+          then: () => Yup.string().required("This field is required")
+        }),
+        subtitle:Yup.string().when("showComingSoonMessage",{
+          is: true,
+          then: () => Yup.string().required("This field is required")
+        })
+      }),
       mapLocation: Yup.object().shape({
         view: Yup.boolean(),
         androidKey: Yup.string().when("view", {
