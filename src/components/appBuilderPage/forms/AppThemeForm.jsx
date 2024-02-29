@@ -14,9 +14,11 @@ const AppThemeForm = (props) => {
     secondary: false,
     accent: false,
     screenBackColorLight:false,
+    cardBackColorLight:false,
     textTitleColorLight:false,
     textSubtitleColorLight:false,
     screenBackColorDark:false,
+    cardBackColorDark:false,
     textTitleColorDark:false,
     textSubtitleColorDark:false
   });
@@ -29,6 +31,8 @@ const AppThemeForm = (props) => {
   const [color7, setColor7] = useState("");
   const [color8, setColor8] = useState("");
   const [color9, setColor9] = useState("");
+  const [color10, setColor10] = useState("");
+  const [color11, setColor11] = useState("");
 
 
   const { values, setFieldValue } = useFormikContext();
@@ -43,6 +47,8 @@ const AppThemeForm = (props) => {
     setColor7(values.appTheme.screenBackColorDark)
     setColor8(values.appTheme.textTitleColorDark)
     setColor9(values.appTheme.textSubtitleColorDark)
+    setColor10(values.appTheme.cardBackColorLight)
+    setColor11(values.appTheme.cardBackColorDark)
     setColors(
       {primary: values.appTheme.primaryColor,
         secondary:values.appTheme.secondaryColor,
@@ -52,7 +58,9 @@ const AppThemeForm = (props) => {
         textSubtitleColorLight:values.appTheme.textSubtitleColorLight,
         screenBackColorDark:values.appTheme.screenBackColorDark,
         textTitleColorDark:values.appTheme.textTitleColorDark,
-        textSubtitleColorDark:values.appTheme.textSubtitleColorDark
+        textSubtitleColorDark:values.appTheme.textSubtitleColorDark,
+        cardBackColorLight:values.appTheme.cardBackColorLight,
+        cardBackColorDark:values.appTheme.cardBackColorDark
       }
     )
   },[])
@@ -86,7 +94,12 @@ const AppThemeForm = (props) => {
       ? setColors({  ...colors, screenBackColorDark: e.hex })
       : "textTitleColorDark"
       ? setColors({  ...colors, textTitleColorDark: e.hex })
-      : setColors({  ...colors, textSubtitleColorDark: e.hex });
+      : "textSubtitleColorDark"
+      ? setColors({  ...colors, textSubtitleColorDark: e.hex })
+      : "cardBackColorLight"
+      ? setColors({  ...colors, cardBackColorLight: e.hex })
+      : setColors({  ...colors, cardBackColorDark: e.hex })
+
       
       
     // setColor(col.hex);
@@ -119,6 +132,12 @@ const AppThemeForm = (props) => {
     if (type === "textSubtitleColorDark") {
       setColor9(e.hex);
     }
+    if (type === "cardBackColorLight") {
+      setColor10(e.hex);
+    }
+    if (type === "cardBackColorDark") {
+      setColor11(e.hex);
+    }
   };
   const handleDisplayColor = (type) => {
     type === "primary"
@@ -131,7 +150,9 @@ const AppThemeForm = (props) => {
           textSubtitleColorLight:false,
           screenBackColorDark:false,
           textTitleColorDark:false,
-          textSubtitleColorDark:false
+          textSubtitleColorDark:false,
+          cardBackColorLight:false,
+          cardBackColorDark:false
         })
       : type === "accent"
       ? setDisplayColorPicker({
@@ -143,7 +164,9 @@ const AppThemeForm = (props) => {
           textSubtitleColorLight:false,
           screenBackColorDark:false,
           textTitleColorDark:false,
-          textSubtitleColorDark:false
+          textSubtitleColorDark:false,
+          cardBackColorLight:false,
+          cardBackColorDark:false
         })
       : type === "secondary" 
       ? setDisplayColorPicker({
@@ -155,7 +178,9 @@ const AppThemeForm = (props) => {
         textSubtitleColorLight:false,
         screenBackColorDark:false,
         textTitleColorDark:false,
-        textSubtitleColorDark:false
+        textSubtitleColorDark:false,
+        cardBackColorLight:false,
+        cardBackColorDark:false
         })
       : type === "screenBackColorLight"
       ? setDisplayColorPicker({
@@ -167,7 +192,9 @@ const AppThemeForm = (props) => {
         textSubtitleColorLight:false,
         screenBackColorDark:false,
         textTitleColorDark:false,
-        textSubtitleColorDark:false
+        textSubtitleColorDark:false,
+        cardBackColorLight:false,
+        cardBackColorDark:false
         })
       : type === "textTitleColorLight"
       ? setDisplayColorPicker({
@@ -179,7 +206,9 @@ const AppThemeForm = (props) => {
         textSubtitleColorLight:false,
         screenBackColorDark:false,
         textTitleColorDark:false,
-        textSubtitleColorDark:false
+        textSubtitleColorDark:false,
+        cardBackColorLight:false,
+        cardBackColorDark:false
         })
       : type === "textSubtitleColorLight"
       ? setDisplayColorPicker({
@@ -191,7 +220,9 @@ const AppThemeForm = (props) => {
           textSubtitleColorLight:!displayColorPicker.textSubtitleColorLight,
           screenBackColorDark:false,
           textTitleColorDark:false,
-          textSubtitleColorDark:false
+          textSubtitleColorDark:false,
+          cardBackColorLight:false,
+          cardBackColorDark:false
           })
       : type === "screenBackColorDark"
       ? setDisplayColorPicker({
@@ -203,7 +234,9 @@ const AppThemeForm = (props) => {
         textSubtitleColorLight:false,
         screenBackColorDark:!displayColorPicker.screenBackColorDark,
         textTitleColorDark:false,
-        textSubtitleColorDark:false
+        textSubtitleColorDark:false,
+        cardBackColorLight:false,
+        cardBackColorDark:false
         })
         : type === "textTitleColorDark"
         ? setDisplayColorPicker({
@@ -215,19 +248,51 @@ const AppThemeForm = (props) => {
           textSubtitleColorLight:false,
           screenBackColorDark:false,
           textTitleColorDark:!displayColorPicker.textTitleColorDark,
-          textSubtitleColorDark:false
+          textSubtitleColorDark:false,
+          cardBackColorLight:false,
+          cardBackColorDark:false
           })
-        : setDisplayColorPicker({
-          primary: false,
-          accent: false,
-          secondary: false,
-          screenBackColorLight:false,
-          textTitleColorLight:false,
-          textSubtitleColorLight:false,
-          screenBackColorDark:false,
-          textTitleColorDark:false,
-          textSubtitleColorDark:!displayColorPicker.textSubtitleColorDark
-          });
+          : type === "textSubtitleColorDark"
+          ? setDisplayColorPicker({
+            primary: false,
+            accent: false,
+            secondary: false,
+            screenBackColorLight:false,
+            textTitleColorLight:false,
+            textSubtitleColorLight:false,
+            screenBackColorDark:false,
+            textTitleColorDark:false,
+            textSubtitleColorDark:!displayColorPicker.textSubtitleColorDark,
+            cardBackColorLight:false,
+            cardBackColorDark:false
+            })
+            : type === "cardBackColorLight"
+            ? setDisplayColorPicker({
+              primary: false,
+              accent: false,
+              secondary: false,
+              screenBackColorLight:false,
+              textTitleColorLight:false,
+              textSubtitleColorLight:false,
+              screenBackColorDark:false,
+              textTitleColorDark:false,
+              textSubtitleColorDark:false,
+              cardBackColorLight:!displayColorPicker.cardBackColorLight,
+              cardBackColorDark:false
+              })
+            : setDisplayColorPicker({
+              primary: false,
+              accent: false,
+              secondary: false,
+              screenBackColorLight:false,
+              textTitleColorLight:false,
+              textSubtitleColorLight:false,
+              screenBackColorDark:false,
+              textTitleColorDark:false,
+              textSubtitleColorDark:false,
+              cardBackColorLight:false,
+              cardBackColorDark:!displayColorPicker.cardBackColorDark
+              })
   };
 
   const themeData=[
@@ -263,7 +328,9 @@ const AppThemeForm = (props) => {
     textSubtitleColorLight:false,
     screenBackColorDark:false,
     textTitleColorDark:false,
-    textSubtitleColorDark:false
+    textSubtitleColorDark:false,
+    cardBackColorLight:false,
+    cardBackColorDark:false
   })
   }
   const styles = reactCSS({
@@ -321,6 +388,18 @@ const AppThemeForm = (props) => {
         height: "14px",
         borderRadius: "2px",
         background: `${color9}`,
+      },
+      color10: {
+        width: "100%",
+        height: "14px",
+        borderRadius: "2px",
+        background: `${color10}`,
+      },
+      color11: {
+        width: "100%",
+        height: "14px",
+        borderRadius: "2px",
+        background: `${color11}`,
       },
       swatch: {
         width: "100%",
@@ -462,6 +541,29 @@ const AppThemeForm = (props) => {
           )}
         </Grid>
         <Grid item xs={12}>
+          <label>Card Background Color In Light Mode</label>
+          <div
+            style={styles.swatch}
+            onClick={() => handleDisplayColor("cardBackColorLight")}
+          >
+            <div style={styles.color10} />
+          </div>
+          {displayColorPicker.cardBackColorLight ? (
+            <div style={ styles.popover }>
+            <div style={ styles.cover } onClick={handleColorClose}/>
+            <ChromePicker
+              name="appTheme.cardBackColorLight"
+              color={color10}
+              disableAlpha
+              onChange={(e) => handleColorChange("cardBackColorLight", e)}
+              // onChangeComplete={color=> onChange(color.hex) }
+            />
+           </div>
+          ) : (
+            ""
+          )}
+        </Grid>
+        <Grid item xs={12}>
           <label>Text Title Color In Light Mode</label>
           <div
             style={styles.swatch}
@@ -523,6 +625,29 @@ const AppThemeForm = (props) => {
               color={color7}
               disableAlpha
               onChange={(e) => handleColorChange("screenBackColorDark", e)}
+              // onChangeComplete={color=> onChange(color.hex) }
+            />
+           </div>
+          ) : (
+            ""
+          )}
+        </Grid>
+        <Grid item xs={12}>
+          <label>Card Background Color In Dark Mode</label>
+          <div
+            style={styles.swatch}
+            onClick={() => handleDisplayColor("cardBackColorDark")}
+          >
+            <div style={styles.color11} />
+          </div>
+          {displayColorPicker.cardBackColorDark ? (
+            <div style={ styles.popover }>
+            <div style={ styles.cover } onClick={handleColorClose}/>
+            <ChromePicker
+              name="appTheme.cardBackColorDark"
+              color={color11}
+              disableAlpha
+              onChange={(e) => handleColorChange("cardBackColorDark", e)}
               // onChangeComplete={color=> onChange(color.hex) }
             />
            </div>
