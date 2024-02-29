@@ -208,7 +208,6 @@ export default function AppBuilderPage({ selectForm }) {
         view:false
       },
       showComingSoonMessage:{
-        showComingSoonMessage:false,
         title:"",
         subtitle:"",
         view:false

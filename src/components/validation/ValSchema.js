@@ -143,12 +143,11 @@ const ValSchema = [
       }),
       showComingSoonMessage:Yup.object().shape({
         view: Yup.boolean(),
-        showComingSoonMessage:Yup.boolean(),
-        title:Yup.string().when("showComingSoonMessage",{
+        title:Yup.string().when("view",{
           is: true,
           then: () => Yup.string().required("This field is required")
         }),
-        subtitle:Yup.string().when("showComingSoonMessage",{
+        subtitle:Yup.string().when("view",{
           is: true,
           then: () => Yup.string().required("This field is required")
         })
