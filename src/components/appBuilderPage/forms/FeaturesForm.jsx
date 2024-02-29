@@ -127,6 +127,64 @@ const FeauresForm = (props) => {
         )}
         <Grid item xs={12} sm={12}></Grid>
       </Grid>
+      
+
+      <Typography
+        variant="h6"
+        gutterBottom
+        style={{
+          display: "flex",
+          justifyContent: "flex-start",
+          alignItems: "center",
+        }}
+      >
+        <CheckboxField
+          name="features.showComingSoonMessage.view"
+          value={values.features.showComingSoonMessage.view}
+        />
+        Show Comming Soon?
+      </Typography>
+
+      <Grid container spacing={3}>
+        {values.features.showComingSoonMessage.view ? (
+          <Grid item xs={12} sm={6}>
+            <CheckboxField
+              name="features.showComingSoonMessage.showComingSoonMessage"
+              value={values.features.showComingSoonMessage.showComingSoonMessage}
+              label="Show Comming Soon"
+            />
+          </Grid>
+        ) : (
+          ""
+        )}
+        <Grid item xs={12} sm={12}></Grid>
+      </Grid>
+      <Grid container spacing={3}>
+        {values.features.showComingSoonMessage.view && values.features.showComingSoonMessage.showComingSoonMessage ? (
+          <>
+          <Grid item xs={12} sm={6}>
+            <InputField
+              name="features.showComingSoonMessage.title"
+              label="Title"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <InputField
+              name="features.showComingSoonMessage.subtitle"
+              label="Sub Title"
+              fullWidth
+            />
+          </Grid>
+          </>
+        ) : (
+          ""
+        )}
+        <Grid item xs={12} sm={12}></Grid>
+      </Grid>
+
+
+
       <Typography
         variant="h6"
         gutterBottom

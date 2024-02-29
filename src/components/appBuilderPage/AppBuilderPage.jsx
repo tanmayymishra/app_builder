@@ -207,6 +207,12 @@ export default function AppBuilderPage({ selectForm }) {
         loginBackImage:"",
         view:false
       },
+      showComingSoonMessage:{
+        showComingSoonMessage:false,
+        title:"",
+        subtitle:"",
+        view:false
+      },
       mapLocation: {
         showDeviceLocation: false,
         androidKey: "",
