@@ -135,7 +135,7 @@ const ValSchema = [
       splashScreen:Yup.object().shape({
         view: Yup.boolean(),
         customTagline:Yup.boolean(),
-        taglineText:Yup.string().when("view",{
+        taglineText:Yup.string().when("customTagline",{
           is: true,
           then: () => Yup.string().required("This field is required")
         })

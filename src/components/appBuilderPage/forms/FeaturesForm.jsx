@@ -61,7 +61,7 @@ const FeauresForm = (props) => {
           <Grid item xs={12} sm={6}>
             <InputField
               name="features.splashScreen.taglineText"
-              label="TagLineText"
+              label="Tag Line Text"
               fullWidth
             />
           </Grid>
@@ -75,7 +75,7 @@ const FeauresForm = (props) => {
           <Grid item xs={12} sm={6}>
            <FileField
             name="features.splashScreen.taglineImage"
-            label="TagLineImage"
+            label="Tag Line Image"
             type="file"
             InputLabelProps={{
               shrink: true,
@@ -94,7 +94,7 @@ const FeauresForm = (props) => {
           <Grid item xs={12} sm={6}>
            <FileField
             name="features.splashScreen.splashScreenBackImage"
-            label="SplashScreenBackImage"
+            label="Splash Screen Back Image"
             type="file"
             InputLabelProps={{
               shrink: true,
@@ -113,7 +113,7 @@ const FeauresForm = (props) => {
           <Grid item xs={12} sm={6}>
            <FileField
             name="features.splashScreen.loginBackImage"
-            label="LoginBackImage"
+            label="Login Back Image"
             type="file"
             InputLabelProps={{
               shrink: true,
