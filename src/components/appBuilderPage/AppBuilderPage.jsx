@@ -521,58 +521,58 @@ export default function AppBuilderPage({ selectForm }) {
     await _sleep(1000);
     // alert(JSON.stringify(values, null, 2));
 
-    // {
-    //   selectForm === "new"
-    //     ? axios
-    //         .post(
-    //          `${base_url}/build/`,
-    //          postData,
-    //           // liteData,
-    //           axiosConfig
-    //         )
-    //         .then((res) => {
-    //           setLoading(false);
-    //           setBuildDetails((prev) => ({
-    //             ...prev,
-    //             newBuildId: res?.data?.data?.buildid,
-    //           }));
-    //           setActiveStep(activeStep + 1);
+    {
+      selectForm === "new"
+        ? axios
+            .post(
+             `${base_url}/build/`,
+             postData,
+              // liteData,
+              axiosConfig
+            )
+            .then((res) => {
+              setLoading(false);
+              setBuildDetails((prev) => ({
+                ...prev,
+                newBuildId: res?.data?.data?.buildid,
+              }));
+              setActiveStep(activeStep + 1);
              
-    //         })
-    //         .catch((err) => {
-    //           setSnackbarDetails({
-    //             open: true,
-    //             data: err.message ? err.message : "Network Error",
-    //             type: "error",
-    //           });
-    //           setLoading(false);
+            })
+            .catch((err) => {
+              setSnackbarDetails({
+                open: true,
+                data: err.message ? err.message : "Network Error",
+                type: "error",
+              });
+              setLoading(false);
 
-    //         })
-    //     : axios
-    //         .post(
-    //          `${base_url}/build/`,
-    //          postData,
-    //           axiosConfig
-    //         )
-    //         .then((res) => {
-    //           setLoading(false);
-    //           setBuildDetails((prev) => ({
-    //             ...prev,
-    //             newBuildId: res?.data?.data?.buildid,
-    //           }));
-    //           setActiveStep(activeStep + 1);
+            })
+        : axios
+            .post(
+             `${base_url}/build/`,
+             postData,
+              axiosConfig
+            )
+            .then((res) => {
+              setLoading(false);
+              setBuildDetails((prev) => ({
+                ...prev,
+                newBuildId: res?.data?.data?.buildid,
+              }));
+              setActiveStep(activeStep + 1);
              
-    //         })
-    //         .catch((err) => {
-    //           setLoading(false);
-    //           setSnackbarDetails({
-    //             open: true,
-    //             data: err.message ? err.message : "Network Error",
-    //             type: "error",
-    //           });
+            })
+            .catch((err) => {
+              setLoading(false);
+              setSnackbarDetails({
+                open: true,
+                data: err.message ? err.message : "Network Error",
+                type: "error",
+              });
              
-    //         });
-    // }
+            });
+    }
 
     actions.setSubmitting(false);
   }
@@ -622,7 +622,7 @@ export default function AppBuilderPage({ selectForm }) {
               initialValues={
                 selectForm === "new" ? initValues : selectForm === "edit"? initialEditForm:initValues
               }
-              //validationSchema={currentValidationSchema}
+              validationSchema={currentValidationSchema}
               onSubmit={_handleSubmit}
               validateOnChange={false}
               validateOnBlur={false}
