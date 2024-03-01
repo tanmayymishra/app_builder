@@ -140,6 +140,10 @@ const ValSchema = [
           is: true,
           then: () => Yup.string().required("This field is required")
         }),
+        taglineImage:Yup.string().when("customTag",{
+          is: true,
+          then: () => Yup.string().required("This field is required")
+        }),
       }),
       showComingSoonMessage:Yup.object().shape({
         view: Yup.boolean(),

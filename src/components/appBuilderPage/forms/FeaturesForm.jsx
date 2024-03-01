@@ -57,7 +57,7 @@ const FeauresForm = (props) => {
         <Grid item xs={12} sm={12}></Grid>
       </Grid>
       <Grid container spacing={3}>
-        {values.features.splashScreen.view && values.features.splashScreen.customTag && values.features.splashScreen.taglineImage === ""? (
+        {values.features.splashScreen.view && values.features.splashScreen.customTag ? (
           <Grid item xs={12} sm={6}>
             <InputField
               name="features.splashScreen.taglineText"
@@ -71,7 +71,7 @@ const FeauresForm = (props) => {
         <Grid item xs={12} sm={12}></Grid>
       </Grid>
       <Grid container spacing={3}>
-        {values.features.splashScreen.view && values.features.splashScreen.customTag && values.features.splashScreen.taglineText === "" ? (
+        {values.features.splashScreen.view && values.features.splashScreen.customTag ? (
           <Grid item xs={12} sm={6}>
            <FileField
             name="features.splashScreen.taglineImage"
